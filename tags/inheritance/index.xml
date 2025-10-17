@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Inheritance on phước Blog</title>
-    <link>http://localhost:1313/tags/inheritance/</link>
+    <link>http://example.org/tags/inheritance/</link>
     <description>Recent content in Inheritance on phước Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Oct 2025 09:20:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/inheritance/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/tags/inheritance/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java: Kế thừa và đa hình</title>
-      <link>http://localhost:1313/posts/java-3/</link>
+      <link>http://example.org/posts/java-3/</link>
       <pubDate>Fri, 17 Oct 2025 09:20:00 +0700</pubDate>
-      <guid>http://localhost:1313/posts/java-3/</guid>
+      <guid>http://example.org/posts/java-3/</guid>
       <description>&lt;p&gt;Giải thích kế thừa (extends), sử dụng abstract class và interface, cùng ví dụ minh họa đa hình trong Java.&lt;/p&gt;</description>
     </item>
   </channel>
