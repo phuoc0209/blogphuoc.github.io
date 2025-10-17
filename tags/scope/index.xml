@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scope on Púc Blog</title>
-    <link>http://example.org/tags/scope/</link>
-    <description>Recent content in Scope on Púc Blog</description>
+    <title>Scope on phước Blog</title>
+    <link>http://localhost:1313/tags/scope/</link>
+    <description>Recent content in Scope on phước Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Oct 2025 10:10:00 +0700</lastBuildDate>
-    <atom:link href="http://example.org/tags/scope/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/scope/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript: Hàm, closure và scope</title>
-      <link>http://example.org/posts/js-2/</link>
+      <link>http://localhost:1313/posts/js-2/</link>
       <pubDate>Fri, 17 Oct 2025 10:10:00 +0700</pubDate>
-      <guid>http://example.org/posts/js-2/</guid>
+      <guid>http://localhost:1313/posts/js-2/</guid>
       <description>&lt;p&gt;Giải thích hàm, biến cục bộ và toàn cục, hoisting, và closure với ví dụ thực tế.&lt;/p&gt;</description>
     </item>
   </channel>

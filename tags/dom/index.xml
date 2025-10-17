@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dom on Púc Blog</title>
-    <link>http://example.org/tags/dom/</link>
-    <description>Recent content in Dom on Púc Blog</description>
+    <title>Dom on phước Blog</title>
+    <link>http://localhost:1313/tags/dom/</link>
+    <description>Recent content in Dom on phước Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Oct 2025 10:30:00 +0700</lastBuildDate>
-    <atom:link href="http://example.org/tags/dom/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/dom/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript: Xử lý sự kiện và tạo tương tác đơn giản</title>
-      <link>http://example.org/posts/js-4/</link>
+      <link>http://localhost:1313/posts/js-4/</link>
       <pubDate>Fri, 17 Oct 2025 10:30:00 +0700</pubDate>
-      <guid>http://example.org/posts/js-4/</guid>
+      <guid>http://localhost:1313/posts/js-4/</guid>
       <description>&lt;p&gt;Ví dụ tạo form đơn giản, bắt sự kiện submit, validate và hiển thị thông báo. Mục tiêu là làm tương tác trên trang tĩnh.&lt;/p&gt;</description>
     </item>
     <item>
       <title>JavaScript: Tổng quan và cách thêm script vào trang web</title>
-      <link>http://example.org/posts/js-1/</link>
+      <link>http://localhost:1313/posts/js-1/</link>
       <pubDate>Fri, 17 Oct 2025 10:00:00 +0700</pubDate>
-      <guid>http://example.org/posts/js-1/</guid>
+      <guid>http://localhost:1313/posts/js-1/</guid>
       <description>&lt;p&gt;Giới thiệu JavaScript, cách nhúng script trong HTML, và thao tác DOM cơ bản (getElementById, querySelector, addEventListener).&lt;/p&gt;</description>
     </item>
   </channel>
