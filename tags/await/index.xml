@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Await on phước Blog</title>
-    <link>http://example.org/tags/await/</link>
+    <link>https://blogphuoc.github.io/tags/await/</link>
     <description>Recent content in Await on phước Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Oct 2025 10:20:00 +0700</lastBuildDate>
-    <atom:link href="http://example.org/tags/await/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blogphuoc.github.io/tags/await/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JavaScript: Promise và Async/Await</title>
-      <link>http://example.org/posts/js-3/</link>
+      <link>https://blogphuoc.github.io/posts/js-3/</link>
       <pubDate>Fri, 17 Oct 2025 10:20:00 +0700</pubDate>
-      <guid>http://example.org/posts/js-3/</guid>
+      <guid>https://blogphuoc.github.io/posts/js-3/</guid>
       <description>&lt;p&gt;Hướng dẫn Promise, chain, và sử dụng async/await để xử lý bất đồng bộ. Ví dụ fetch API giả lập.&lt;/p&gt;</description>
     </item>
   </channel>
