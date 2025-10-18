@@ -1,0 +1,29 @@
+baseURL = 'https://blogphuoc.github.io/'
+languageCode = 'vi'
+title = 'Blog Tiến Phước'
+theme = 'ananke'
+
+[menu]
+	[[menu.main]]
+		name = "Trang chủ"
+		url = "/"
+		weight = 1
+	[[menu.main]]
+		name = "Blog"
+		url = "/posts/"
+		weight = 2
+	[[menu.main]]
+		name = "Giới thiệu"
+		url = "/about/"
+		weight = 3
+
+[params]
+	github = "https://blogphuoc.github.io/"
+	description = "Chia sẻ kiến thức lập trình Java & JavaScript với ví dụ thực tế và code mẫu chi tiết"
+	author = "Nguyễn Tiến Phước"
+	keywords = ["Java", "JavaScript", "Lập trình", "Web Development", "OOP", "Async Programming"]
+	
+	[params.social]
+		github = "https://github.com/blogphuoc"
+		linkedin = "https://linkedin.com/in/phuoc-nguyen"
+		twitter = "https://twitter.com/phuoc_dev"
