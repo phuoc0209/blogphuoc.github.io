@@ -1,81 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Java: Lập trình hướng đối tượng - Lớp và đối tượng | Blog Tiến Phước</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Giới thiệu về OOP trong Java
-Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm &ldquo;đối tượng&rdquo;, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.
-Các khái niệm cơ bản
-1. Lớp (Class)
-Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.">
-    <meta name="generator" content="Hugo 0.151.2">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    <meta name="author" content="Nguyễn Tiến Phước">
-    
+  <meta charset="utf-8">
+  <title>Java: Lập trình hướng đối tượng - Lớp và đối tượng | Blog Tiến Phước</title>
 
-    
+  
 <link rel="stylesheet" href="/blogphuoc.github.io/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
 
+  
+
+
+  
     
 
+  
 
-    
-      
+  
+    <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-2/">
+  
 
-    
+  
+  <link rel="stylesheet" href="/css/custom.css">
 
-    
-
-    
-      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-2/">
-    
-
-    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-2/">
-  <meta property="og:site_name" content="Blog Tiến Phước">
-  <meta property="og:title" content="Java: Lập trình hướng đối tượng - Lớp và đối tượng">
-  <meta property="og:description" content="Giới thiệu về OOP trong Java Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm “đối tượng”, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.
-Các khái niệm cơ bản 1. Lớp (Class) Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.">
-  <meta property="og:locale" content="vi">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-10-17T09:10:00+07:00">
-    <meta property="article:modified_time" content="2025-10-17T09:10:00+07:00">
-    <meta property="article:tag" content="Oop">
-    <meta property="article:tag" content="Class">
-    <meta property="article:tag" content="Object">
-    <meta property="article:tag" content="Java">
-
-  <meta itemprop="name" content="Java: Lập trình hướng đối tượng - Lớp và đối tượng">
-  <meta itemprop="description" content="Giới thiệu về OOP trong Java Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm “đối tượng”, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.
-Các khái niệm cơ bản 1. Lớp (Class) Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.">
-  <meta itemprop="datePublished" content="2025-10-17T09:10:00+07:00">
-  <meta itemprop="dateModified" content="2025-10-17T09:10:00+07:00">
-  <meta itemprop="wordCount" content="1089">
-  <meta itemprop="keywords" content="Oop,Class,Object,Java">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java: Lập trình hướng đối tượng - Lớp và đối tượng">
-  <meta name="twitter:description" content="Giới thiệu về OOP trong Java Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm “đối tượng”, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.
-Các khái niệm cơ bản 1. Lớp (Class) Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.">
-      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
-
-      
-    
-	<link rel="stylesheet" href="/css/blogger-about.css" />
+  <link rel="stylesheet" href="/css/blogger-about.css" />
 <script src="/js/search.js" defer></script>
 <script src="/js/animations.js" defer></script>
 
 
-  </head><body class="ma0 avenir bg-near-white production">
+</head><body class="ma0 avenir bg-near-white production">
 
     
 
@@ -135,13 +90,15 @@ Các khái niệm cơ bản 1. Lớp (Class) Lớp là khuôn mẫu để tạo 
 
     <main class="pb7" role="main">
       
-  <article class="pa3 pa4-ns nested-copy-line-height">
+  <article class="mw8 center ph3 ph5-ns pv5">
     <header class="mb4">
-      <h1 class="f2 lh-title mv0">Java: Lập trình hướng đối tượng - Lớp và đối tượng</h1>
-      <p class="f6 gray mt2">October 17, 2025</p>
+      <h1 class="f2 lh-title mb2">Java: Lập trình hướng đối tượng - Lớp và đối tượng</h1>
+      
+        <p class="f6 gray">17 Oct 2025</p>
+      
     </header>
 
-    <section class="nested-copy-line-height lh-copy">
+    <section class="lh-copy f5 nested-copy-line-height">
       <h2 id="giới-thiệu-về-oop-trong-java">Giới thiệu về OOP trong Java</h2>
 <p>Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm &ldquo;đối tượng&rdquo;, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.</p>
 <h2 id="các-khái-niệm-cơ-bản">Các khái niệm cơ bản</h2>
@@ -401,27 +358,13 @@ Các khái niệm cơ bản 1. Lớp (Class) Lớp là khuôn mẫu để tạo 
 
     </section>
 
-    <footer class="mt5">
-      <p class="f6 gray">Tags:</p>
-      <ul class="list pl0">
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/oop" class="link dim blue">oop</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/class" class="link dim blue">class</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/object" class="link dim blue">object</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/java" class="link dim blue">java</a>
-          </li>
-        
-      </ul>
+    <footer class="mt5 pt3 bt b--moon-gray">
+      
+        <a href="/blogphuoc.github.io/posts/java-1/" class="link dim gray mr3">← Java: Kiến thức cơ bản và môi trường phát triển</a>
+      
+      
+        <a href="/blogphuoc.github.io/posts/java-3/" class="link dim gray">→ Java: Kế thừa và đa hình</a>
+      
     </footer>
   </article>
 

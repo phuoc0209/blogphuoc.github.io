@@ -1,127 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>JavaScript: Tổng quan và cách thêm script vào trang web | Blog Tiến Phước</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Giới thiệu về JavaScript
-JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.
-Cách thêm JavaScript vào HTML
-1. Inline JavaScript (trong thẻ HTML)
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&#34;vi&#34;&gt;
-&lt;head&gt;
-    &lt;meta charset=&#34;UTF-8&#34;&gt;
-    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
-    &lt;title&gt;JavaScript Cơ bản&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Chào mừng đến với JavaScript!&lt;/h1&gt;
-    &lt;button onclick=&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;&gt;Nhấn tôi&lt;/button&gt;
-    
-    &lt;!-- Inline script --&gt;
-    &lt;script&gt;
-        console.log(&#34;JavaScript đang chạy!&#34;);
-        document.write(&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;);
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-2. Internal JavaScript (trong thẻ script)
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&#34;vi&#34;&gt;
-&lt;head&gt;
-    &lt;meta charset=&#34;UTF-8&#34;&gt;
-    &lt;title&gt;Internal JavaScript&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1 id=&#34;title&#34;&gt;Tiêu đề động&lt;/h1&gt;
-    &lt;p id=&#34;content&#34;&gt;Nội dung sẽ thay đổi&lt;/p&gt;
-    &lt;button id=&#34;changeBtn&#34;&gt;Thay đổi nội dung&lt;/button&gt;
-    
-    &lt;script&gt;
-        // Chờ DOM load xong
-        document.addEventListener(&#39;DOMContentLoaded&#39;, function() {
-            const title = document.getElementById(&#39;title&#39;);
-            const content = document.getElementById(&#39;content&#39;);
-            const changeBtn = document.getElementById(&#39;changeBtn&#39;);
-            
-            changeBtn.addEventListener(&#39;click&#39;, function() {
-                title.textContent = &#39;Tiêu đề đã thay đổi!&#39;;
-                content.innerHTML = &#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;;
-                changeBtn.style.backgroundColor = &#39;#4CAF50&#39;;
-                changeBtn.textContent = &#39;Đã thay đổi!&#39;;
-            });
-        });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-3. External JavaScript (file riêng)
-index.html:">
-    <meta name="generator" content="Hugo 0.151.2">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    <meta name="author" content="Nguyễn Tiến Phước">
-    
+  <meta charset="utf-8">
+  <title>JavaScript: Tổng quan và cách thêm script vào trang web | Blog Tiến Phước</title>
 
-    
+  
 <link rel="stylesheet" href="/blogphuoc.github.io/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
 
+  
+
+
+  
     
 
+  
 
-    
-      
+  
+    <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/js-1/">
+  
 
-    
+  
+  <link rel="stylesheet" href="/css/custom.css">
 
-    
-
-    
-      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/js-1/">
-    
-
-    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io/posts/js-1/">
-  <meta property="og:site_name" content="Blog Tiến Phước">
-  <meta property="og:title" content="JavaScript: Tổng quan và cách thêm script vào trang web">
-  <meta property="og:description" content="Giới thiệu về JavaScript JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.
-Cách thêm JavaScript vào HTML 1. Inline JavaScript (trong thẻ HTML) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt; &lt;title&gt;JavaScript Cơ bản&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Chào mừng đến với JavaScript!&lt;/h1&gt; &lt;button onclick=&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;&gt;Nhấn tôi&lt;/button&gt; &lt;!-- Inline script --&gt; &lt;script&gt; console.log(&#34;JavaScript đang chạy!&#34;); document.write(&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 2. Internal JavaScript (trong thẻ script) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;title&gt;Internal JavaScript&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1 id=&#34;title&#34;&gt;Tiêu đề động&lt;/h1&gt; &lt;p id=&#34;content&#34;&gt;Nội dung sẽ thay đổi&lt;/p&gt; &lt;button id=&#34;changeBtn&#34;&gt;Thay đổi nội dung&lt;/button&gt; &lt;script&gt; // Chờ DOM load xong document.addEventListener(&#39;DOMContentLoaded&#39;, function() { const title = document.getElementById(&#39;title&#39;); const content = document.getElementById(&#39;content&#39;); const changeBtn = document.getElementById(&#39;changeBtn&#39;); changeBtn.addEventListener(&#39;click&#39;, function() { title.textContent = &#39;Tiêu đề đã thay đổi!&#39;; content.innerHTML = &#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;; changeBtn.style.backgroundColor = &#39;#4CAF50&#39;; changeBtn.textContent = &#39;Đã thay đổi!&#39;; }); }); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 3. External JavaScript (file riêng) index.html:">
-  <meta property="og:locale" content="vi">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-10-17T10:00:00+07:00">
-    <meta property="article:modified_time" content="2025-10-17T10:00:00+07:00">
-    <meta property="article:tag" content="Javascript">
-    <meta property="article:tag" content="Dom">
-
-  <meta itemprop="name" content="JavaScript: Tổng quan và cách thêm script vào trang web">
-  <meta itemprop="description" content="Giới thiệu về JavaScript JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.
-Cách thêm JavaScript vào HTML 1. Inline JavaScript (trong thẻ HTML) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt; &lt;title&gt;JavaScript Cơ bản&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Chào mừng đến với JavaScript!&lt;/h1&gt; &lt;button onclick=&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;&gt;Nhấn tôi&lt;/button&gt; &lt;!-- Inline script --&gt; &lt;script&gt; console.log(&#34;JavaScript đang chạy!&#34;); document.write(&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 2. Internal JavaScript (trong thẻ script) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;title&gt;Internal JavaScript&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1 id=&#34;title&#34;&gt;Tiêu đề động&lt;/h1&gt; &lt;p id=&#34;content&#34;&gt;Nội dung sẽ thay đổi&lt;/p&gt; &lt;button id=&#34;changeBtn&#34;&gt;Thay đổi nội dung&lt;/button&gt; &lt;script&gt; // Chờ DOM load xong document.addEventListener(&#39;DOMContentLoaded&#39;, function() { const title = document.getElementById(&#39;title&#39;); const content = document.getElementById(&#39;content&#39;); const changeBtn = document.getElementById(&#39;changeBtn&#39;); changeBtn.addEventListener(&#39;click&#39;, function() { title.textContent = &#39;Tiêu đề đã thay đổi!&#39;; content.innerHTML = &#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;; changeBtn.style.backgroundColor = &#39;#4CAF50&#39;; changeBtn.textContent = &#39;Đã thay đổi!&#39;; }); }); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 3. External JavaScript (file riêng) index.html:">
-  <meta itemprop="datePublished" content="2025-10-17T10:00:00+07:00">
-  <meta itemprop="dateModified" content="2025-10-17T10:00:00+07:00">
-  <meta itemprop="wordCount" content="1492">
-  <meta itemprop="keywords" content="Javascript,Dom">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JavaScript: Tổng quan và cách thêm script vào trang web">
-  <meta name="twitter:description" content="Giới thiệu về JavaScript JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.
-Cách thêm JavaScript vào HTML 1. Inline JavaScript (trong thẻ HTML) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt; &lt;title&gt;JavaScript Cơ bản&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Chào mừng đến với JavaScript!&lt;/h1&gt; &lt;button onclick=&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;&gt;Nhấn tôi&lt;/button&gt; &lt;!-- Inline script --&gt; &lt;script&gt; console.log(&#34;JavaScript đang chạy!&#34;); document.write(&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 2. Internal JavaScript (trong thẻ script) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;title&gt;Internal JavaScript&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1 id=&#34;title&#34;&gt;Tiêu đề động&lt;/h1&gt; &lt;p id=&#34;content&#34;&gt;Nội dung sẽ thay đổi&lt;/p&gt; &lt;button id=&#34;changeBtn&#34;&gt;Thay đổi nội dung&lt;/button&gt; &lt;script&gt; // Chờ DOM load xong document.addEventListener(&#39;DOMContentLoaded&#39;, function() { const title = document.getElementById(&#39;title&#39;); const content = document.getElementById(&#39;content&#39;); const changeBtn = document.getElementById(&#39;changeBtn&#39;); changeBtn.addEventListener(&#39;click&#39;, function() { title.textContent = &#39;Tiêu đề đã thay đổi!&#39;; content.innerHTML = &#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;; changeBtn.style.backgroundColor = &#39;#4CAF50&#39;; changeBtn.textContent = &#39;Đã thay đổi!&#39;; }); }); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 3. External JavaScript (file riêng) index.html:">
-      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
-
-      
-    
-	<link rel="stylesheet" href="/css/blogger-about.css" />
+  <link rel="stylesheet" href="/css/blogger-about.css" />
 <script src="/js/search.js" defer></script>
 <script src="/js/animations.js" defer></script>
 
 
-  </head><body class="ma0 avenir bg-near-white production">
+</head><body class="ma0 avenir bg-near-white production">
 
     
 
@@ -181,13 +90,15 @@ Cách thêm JavaScript vào HTML 1. Inline JavaScript (trong thẻ HTML) &lt;!DO
 
     <main class="pb7" role="main">
       
-  <article class="pa3 pa4-ns nested-copy-line-height">
+  <article class="mw8 center ph3 ph5-ns pv5">
     <header class="mb4">
-      <h1 class="f2 lh-title mv0">JavaScript: Tổng quan và cách thêm script vào trang web</h1>
-      <p class="f6 gray mt2">October 17, 2025</p>
+      <h1 class="f2 lh-title mb2">JavaScript: Tổng quan và cách thêm script vào trang web</h1>
+      
+        <p class="f6 gray">17 Oct 2025</p>
+      
     </header>
 
-    <section class="nested-copy-line-height lh-copy">
+    <section class="lh-copy f5 nested-copy-line-height">
       <h2 id="giới-thiệu-về-javascript">Giới thiệu về JavaScript</h2>
 <p>JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.</p>
 <h2 id="cách-thêm-javascript-vào-html">Cách thêm JavaScript vào HTML</h2>
@@ -721,19 +632,13 @@ Cách thêm JavaScript vào HTML 1. Inline JavaScript (trong thẻ HTML) &lt;!DO
 
     </section>
 
-    <footer class="mt5">
-      <p class="f6 gray">Tags:</p>
-      <ul class="list pl0">
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/javascript" class="link dim blue">javascript</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/dom" class="link dim blue">dom</a>
-          </li>
-        
-      </ul>
+    <footer class="mt5 pt3 bt b--moon-gray">
+      
+        <a href="/blogphuoc.github.io/posts/java-5/" class="link dim gray mr3">← Java: Làm việc với file và I/O</a>
+      
+      
+        <a href="/blogphuoc.github.io/posts/js-2/" class="link dim gray">→ JavaScript: Hàm, closure và scope</a>
+      
     </footer>
   </article>
 

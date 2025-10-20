@@ -1,413 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Java: Xử lý ngoại lệ và logging | Blog Tiến Phước</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Giới thiệu về Exception Handling
-Xử lý ngoại lệ (Exception Handling) là cơ chế cho phép chương trình Java xử lý các lỗi runtime một cách an toàn và có kiểm soát. Điều này giúp chương trình không bị crash và có thể phục hồi từ lỗi.
-Các loại Exception
-1. Checked Exceptions (Compile-time)
+  <meta charset="utf-8">
+  <title>Java: Xử lý ngoại lệ và logging | Blog Tiến Phước</title>
 
-Phải được xử lý hoặc khai báo trong method signature
-Ví dụ: IOException, SQLException, ClassNotFoundException
-
-2. Unchecked Exceptions (Runtime)
-
-Không bắt buộc phải xử lý
-Ví dụ: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException
-
-Cú pháp try-catch-finally
-try {
-    // Code có thể gây ra exception
-} catch (ExceptionType e) {
-    // Xử lý exception
-} finally {
-    // Code luôn được thực thi (có thể có hoặc không)
-}
-Ví dụ 1: Xử lý ArithmeticException
-public class BasicExceptionHandling {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        try {
-            System.out.print(&#34;Nhập số thứ nhất: &#34;);
-            int a = scanner.nextInt();
-            
-            System.out.print(&#34;Nhập số thứ hai: &#34;);
-            int b = scanner.nextInt();
-            
-            // Phép chia có thể gây ra ArithmeticException
-            double result = divide(a, b);
-            System.out.println(&#34;Kết quả: &#34; &#43; result);
-            
-        } catch (ArithmeticException e) {
-            System.out.println(&#34;Lỗi: Không thể chia cho 0!&#34;);
-            System.out.println(&#34;Chi tiết lỗi: &#34; &#43; e.getMessage());
-        } catch (InputMismatchException e) {
-            System.out.println(&#34;Lỗi: Vui lòng nhập số nguyên hợp lệ!&#34;);
-        } catch (Exception e) {
-            System.out.println(&#34;Lỗi không xác định: &#34; &#43; e.getMessage());
-        } finally {
-            System.out.println(&#34;Chương trình kết thúc.&#34;);
-            scanner.close();
-        }
-    }
-    
-    public static double divide(int a, int b) {
-        if (b == 0) {
-            throw new ArithmeticException(&#34;Chia cho 0 không được phép&#34;);
-        }
-        return (double) a / b;
-    }
-}
-Ví dụ 2: Xử lý ArrayIndexOutOfBoundsException
-public class ArrayExceptionHandling {
-    public static void main(String[] args) {
-        int[] numbers = {1, 2, 3, 4, 5};
-        
-        try {
-            // Truy cập phần tử ngoài phạm vi
-            for (int i = 0; i &lt;= numbers.length; i&#43;&#43;) {
-                System.out.println(&#34;Phần tử &#34; &#43; i &#43; &#34;: &#34; &#43; numbers[i]);
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(&#34;Lỗi: Truy cập phần tử ngoài phạm vi mảng!&#34;);
-            System.out.println(&#34;Chỉ số tối đa: &#34; &#43; (numbers.length - 1));
-        }
-        
-        // Cách an toàn để duyệt mảng
-        System.out.println(&#34;\nDuyệt mảng an toàn:&#34;);
-        for (int i = 0; i &lt; numbers.length; i&#43;&#43;) {
-            System.out.println(&#34;Phần tử &#34; &#43; i &#43; &#34;: &#34; &#43; numbers[i]);
-        }
-    }
-}
-Ví dụ 3: Tạo Custom Exception
-// Custom Exception cho tài khoản ngân hàng
-public class InsufficientFundsException extends Exception {
-    private double amount;
-    private double balance;
-    
-    public InsufficientFundsException(double amount, double balance) {
-        super(&#34;Số dư không đủ! Cần: &#34; &#43; amount &#43; &#34;, Có: &#34; &#43; balance);
-        this.amount = amount;
-        this.balance = balance;
-    }
-    
-    public double getAmount() { return amount; }
-    public double getBalance() { return balance; }
-}
-
-// Lớp BankAccount với exception handling
-public class BankAccount {
-    private String accountNumber;
-    private double balance;
-    
-    public BankAccount(String accountNumber, double initialBalance) {
-        this.accountNumber = accountNumber;
-        this.balance = initialBalance;
-    }
-    
-    public void withdraw(double amount) throws InsufficientFundsException {
-        if (amount &gt; balance) {
-            throw new InsufficientFundsException(amount, balance);
-        }
-        balance -= amount;
-        System.out.println(&#34;Rút thành công &#34; &#43; amount &#43; &#34; VND. Số dư còn lại: &#34; &#43; balance);
-    }
-    
-    public void deposit(double amount) {
-        if (amount &gt; 0) {
-            balance &#43;= amount;
-            System.out.println(&#34;Nạp thành công &#34; &#43; amount &#43; &#34; VND. Số dư: &#34; &#43; balance);
-        } else {
-            throw new IllegalArgumentException(&#34;Số tiền nạp phải lớn hơn 0&#34;);
-        }
-    }
-    
-    public double getBalance() { return balance; }
-}
-
-// Demo sử dụng custom exception
-public class BankDemo {
-    public static void main(String[] args) {
-        BankAccount account = new BankAccount(&#34;ACC001&#34;, 1000000);
-        
-        try {
-            account.deposit(500000);
-            account.withdraw(200000);
-            account.withdraw(2000000); // Sẽ gây ra InsufficientFundsException
-            
-        } catch (InsufficientFundsException e) {
-            System.out.println(&#34;Lỗi rút tiền: &#34; &#43; e.getMessage());
-            System.out.println(&#34;Số tiền cần rút: &#34; &#43; e.getAmount());
-            System.out.println(&#34;Số dư hiện tại: &#34; &#43; e.getBalance());
-            
-        } catch (IllegalArgumentException e) {
-            System.out.println(&#34;Lỗi nạp tiền: &#34; &#43; e.getMessage());
-        }
-    }
-}
-Ví dụ 4: Try-with-resources
-import java.io.*;
-import java.util.Scanner;
-
-public class TryWithResourcesDemo {
-    public static void main(String[] args) {
-        // Try-with-resources tự động đóng file
-        try (FileWriter writer = new FileWriter(&#34;output.txt&#34;);
-             Scanner scanner = new Scanner(System.in)) {
-            
-            System.out.print(&#34;Nhập nội dung để ghi vào file: &#34;);
-            String content = scanner.nextLine();
-            
-            writer.write(&#34;Nội dung: &#34; &#43; content &#43; &#34;\n&#34;);
-            writer.write(&#34;Thời gian: &#34; &#43; new java.util.Date() &#43; &#34;\n&#34;);
-            
-            System.out.println(&#34;Đã ghi file thành công!&#34;);
-            
-        } catch (IOException e) {
-            System.out.println(&#34;Lỗi ghi file: &#34; &#43; e.getMessage());
-        }
-        // FileWriter và Scanner sẽ tự động được đóng ở đây
-    }
-}
-Logging trong Java
-Sử dụng java.util.logging
-import java.util.logging.*;
-
-public class LoggingDemo {
-    private static final Logger logger = Logger.getLogger(LoggingDemo.class.getName());
-    
-    public static void main(String[] args) {
-        // Cấu hình logging
-        setupLogging();
-        
-        logger.info(&#34;Chương trình bắt đầu&#34;);
-        
-        try {
-            int result = divide(10, 0);
-            logger.info(&#34;Kết quả: &#34; &#43; result);
-        } catch (ArithmeticException e) {
-            logger.severe(&#34;Lỗi chia cho 0: &#34; &#43; e.getMessage());
-        }
-        
-        logger.info(&#34;Chương trình kết thúc&#34;);
-    }
-    
-    public static int divide(int a, int b) {
-        logger.fine(&#34;Thực hiện phép chia: &#34; &#43; a &#43; &#34; / &#34; &#43; b);
-        
-        if (b == 0) {
-            logger.warning(&#34;Cố gắng chia cho 0&#34;);
-            throw new ArithmeticException(&#34;Chia cho 0&#34;);
-        }
-        
-        int result = a / b;
-        logger.fine(&#34;Kết quả phép chia: &#34; &#43; result);
-        return result;
-    }
-    
-    private static void setupLogging() {
-        try {
-            // Tạo file handler
-            FileHandler fileHandler = new FileHandler(&#34;application.log&#34;);
-            fileHandler.setFormatter(new SimpleFormatter());
-            
-            // Thêm handler vào logger
-            logger.addHandler(fileHandler);
-            logger.setLevel(Level.ALL);
-            
-            // Tắt console handler để chỉ ghi vào file
-            logger.setUseParentHandlers(false);
-            
-        } catch (IOException e) {
-            System.err.println(&#34;Không thể tạo file log: &#34; &#43; e.getMessage());
-        }
-    }
-}
-Ví dụ Logging với SLF4J (Simple Logging Facade)
-// Cần thêm dependency SLF4J vào project
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class SLF4JLoggingDemo {
-    private static final Logger logger = LoggerFactory.getLogger(SLF4JLoggingDemo.class);
-    
-    public static void main(String[] args) {
-        logger.info(&#34;Ứng dụng khởi động&#34;);
-        
-        try {
-            processUserInput();
-        } catch (Exception e) {
-            logger.error(&#34;Lỗi xử lý: {}&#34;, e.getMessage(), e);
-        }
-        
-        logger.info(&#34;Ứng dụng kết thúc&#34;);
-    }
-    
-    public static void processUserInput() {
-        logger.debug(&#34;Bắt đầu xử lý input&#34;);
-        
-        // Giả lập xử lý
-        for (int i = 0; i &lt; 5; i&#43;&#43;) {
-            logger.trace(&#34;Xử lý bước {}&#34;, i);
-            
-            if (i == 3) {
-                logger.warn(&#34;Gặp vấn đề ở bước {}&#34;, i);
-            }
-        }
-        
-        logger.debug(&#34;Hoàn thành xử lý input&#34;);
-    }
-}
-Ví dụ 5: Xử lý Multiple Exceptions
-import java.io.*;
-import java.net.*;
-
-public class MultipleExceptionHandling {
-    public static void main(String[] args) {
-        try {
-            // Có thể gây ra nhiều loại exception
-            processFile(&#34;input.txt&#34;);
-            connectToServer(&#34;http://example.com&#34;);
-            
-        } catch (FileNotFoundException e) {
-            System.out.println(&#34;Không tìm thấy file: &#34; &#43; e.getMessage());
-            
-        } catch (IOException e) {
-            System.out.println(&#34;Lỗi I/O: &#34; &#43; e.getMessage());
-            
-        } catch (MalformedURLException e) {
-            System.out.println(&#34;URL không hợp lệ: &#34; &#43; e.getMessage());
-            
-        } catch (Exception e) {
-            System.out.println(&#34;Lỗi không xác định: &#34; &#43; e.getMessage());
-        }
-    }
-    
-    public static void processFile(String filename) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(&#34;Đọc: &#34; &#43; line);
-            }
-        }
-    }
-    
-    public static void connectToServer(String urlString) throws MalformedURLException, IOException {
-        URL url = new URL(urlString);
-        // Giả lập kết nối
-        System.out.println(&#34;Kết nối đến: &#34; &#43; url);
-    }
-}
-Best Practices cho Exception Handling
-1. Sử dụng try-with-resources
-// Tốt
-try (FileInputStream fis = new FileInputStream(&#34;file.txt&#34;)) {
-    // xử lý file
-} catch (IOException e) {
-    // xử lý lỗi
-}
-
-// Tránh
-FileInputStream fis = null;
-try {
-    fis = new FileInputStream(&#34;file.txt&#34;);
-    // xử lý file
-} finally {
-    if (fis != null) {
-        try { fis.close(); } catch (IOException e) { }
-    }
-}
-2. Không bắt Exception chung chung
-// Tránh
-try {
-    // code
-} catch (Exception e) {
-    // xử lý tất cả exception
-}
-
-// Tốt hơn
-try {
-    // code
-} catch (SpecificException e) {
-    // xử lý exception cụ thể
-}
-3. Logging phù hợp
-logger.error(&#34;Lỗi xử lý file: {}&#34;, filename, exception);
-logger.warn(&#34;Cảnh báo: {}&#34;, warningMessage);
-logger.info(&#34;Thông tin: {}&#34;, infoMessage);
-logger.debug(&#34;Debug: {}&#34;, debugInfo);
-Kết luận
-Exception handling và logging là những kỹ năng quan trọng trong lập trình Java. Chúng giúp tạo ra ứng dụng ổn định, dễ debug và bảo trì. Việc sử dụng đúng các cơ chế này sẽ giúp bạn trở thành lập trình viên Java chuyên nghiệp.">
-    <meta name="generator" content="Hugo 0.151.2">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    <meta name="author" content="Nguyễn Tiến Phước">
-    
-
-    
+  
 <link rel="stylesheet" href="/blogphuoc.github.io/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
 
+  
+
+
+  
     
 
+  
 
-    
-      
+  
+    <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-4/">
+  
 
-    
+  
+  <link rel="stylesheet" href="/css/custom.css">
 
-    
-
-    
-      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-4/">
-    
-
-    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-4/">
-  <meta property="og:site_name" content="Blog Tiến Phước">
-  <meta property="og:title" content="Java: Xử lý ngoại lệ và logging">
-  <meta property="og:description" content="Giới thiệu về Exception Handling Xử lý ngoại lệ (Exception Handling) là cơ chế cho phép chương trình Java xử lý các lỗi runtime một cách an toàn và có kiểm soát. Điều này giúp chương trình không bị crash và có thể phục hồi từ lỗi.
-Các loại Exception 1. Checked Exceptions (Compile-time) Phải được xử lý hoặc khai báo trong method signature Ví dụ: IOException, SQLException, ClassNotFoundException 2. Unchecked Exceptions (Runtime) Không bắt buộc phải xử lý Ví dụ: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException Cú pháp try-catch-finally try { // Code có thể gây ra exception } catch (ExceptionType e) { // Xử lý exception } finally { // Code luôn được thực thi (có thể có hoặc không) } Ví dụ 1: Xử lý ArithmeticException public class BasicExceptionHandling { public static void main(String[] args) { Scanner scanner = new Scanner(System.in); try { System.out.print(&#34;Nhập số thứ nhất: &#34;); int a = scanner.nextInt(); System.out.print(&#34;Nhập số thứ hai: &#34;); int b = scanner.nextInt(); // Phép chia có thể gây ra ArithmeticException double result = divide(a, b); System.out.println(&#34;Kết quả: &#34; &#43; result); } catch (ArithmeticException e) { System.out.println(&#34;Lỗi: Không thể chia cho 0!&#34;); System.out.println(&#34;Chi tiết lỗi: &#34; &#43; e.getMessage()); } catch (InputMismatchException e) { System.out.println(&#34;Lỗi: Vui lòng nhập số nguyên hợp lệ!&#34;); } catch (Exception e) { System.out.println(&#34;Lỗi không xác định: &#34; &#43; e.getMessage()); } finally { System.out.println(&#34;Chương trình kết thúc.&#34;); scanner.close(); } } public static double divide(int a, int b) { if (b == 0) { throw new ArithmeticException(&#34;Chia cho 0 không được phép&#34;); } return (double) a / b; } } Ví dụ 2: Xử lý ArrayIndexOutOfBoundsException public class ArrayExceptionHandling { public static void main(String[] args) { int[] numbers = {1, 2, 3, 4, 5}; try { // Truy cập phần tử ngoài phạm vi for (int i = 0; i &lt;= numbers.length; i&#43;&#43;) { System.out.println(&#34;Phần tử &#34; &#43; i &#43; &#34;: &#34; &#43; numbers[i]); } } catch (ArrayIndexOutOfBoundsException e) { System.out.println(&#34;Lỗi: Truy cập phần tử ngoài phạm vi mảng!&#34;); System.out.println(&#34;Chỉ số tối đa: &#34; &#43; (numbers.length - 1)); } // Cách an toàn để duyệt mảng System.out.println(&#34;\nDuyệt mảng an toàn:&#34;); for (int i = 0; i &lt; numbers.length; i&#43;&#43;) { System.out.println(&#34;Phần tử &#34; &#43; i &#43; &#34;: &#34; &#43; numbers[i]); } } } Ví dụ 3: Tạo Custom Exception // Custom Exception cho tài khoản ngân hàng public class InsufficientFundsException extends Exception { private double amount; private double balance; public InsufficientFundsException(double amount, double balance) { super(&#34;Số dư không đủ! Cần: &#34; &#43; amount &#43; &#34;, Có: &#34; &#43; balance); this.amount = amount; this.balance = balance; } public double getAmount() { return amount; } public double getBalance() { return balance; } } // Lớp BankAccount với exception handling public class BankAccount { private String accountNumber; private double balance; public BankAccount(String accountNumber, double initialBalance) { this.accountNumber = accountNumber; this.balance = initialBalance; } public void withdraw(double amount) throws InsufficientFundsException { if (amount &gt; balance) { throw new InsufficientFundsException(amount, balance); } balance -= amount; System.out.println(&#34;Rút thành công &#34; &#43; amount &#43; &#34; VND. Số dư còn lại: &#34; &#43; balance); } public void deposit(double amount) { if (amount &gt; 0) { balance &#43;= amount; System.out.println(&#34;Nạp thành công &#34; &#43; amount &#43; &#34; VND. Số dư: &#34; &#43; balance); } else { throw new IllegalArgumentException(&#34;Số tiền nạp phải lớn hơn 0&#34;); } } public double getBalance() { return balance; } } // Demo sử dụng custom exception public class BankDemo { public static void main(String[] args) { BankAccount account = new BankAccount(&#34;ACC001&#34;, 1000000); try { account.deposit(500000); account.withdraw(200000); account.withdraw(2000000); // Sẽ gây ra InsufficientFundsException } catch (InsufficientFundsException e) { System.out.println(&#34;Lỗi rút tiền: &#34; &#43; e.getMessage()); System.out.println(&#34;Số tiền cần rút: &#34; &#43; e.getAmount()); System.out.println(&#34;Số dư hiện tại: &#34; &#43; e.getBalance()); } catch (IllegalArgumentException e) { System.out.println(&#34;Lỗi nạp tiền: &#34; &#43; e.getMessage()); } } } Ví dụ 4: Try-with-resources import java.io.*; import java.util.Scanner; public class TryWithResourcesDemo { public static void main(String[] args) { // Try-with-resources tự động đóng file try (FileWriter writer = new FileWriter(&#34;output.txt&#34;); Scanner scanner = new Scanner(System.in)) { System.out.print(&#34;Nhập nội dung để ghi vào file: &#34;); String content = scanner.nextLine(); writer.write(&#34;Nội dung: &#34; &#43; content &#43; &#34;\n&#34;); writer.write(&#34;Thời gian: &#34; &#43; new java.util.Date() &#43; &#34;\n&#34;); System.out.println(&#34;Đã ghi file thành công!&#34;); } catch (IOException e) { System.out.println(&#34;Lỗi ghi file: &#34; &#43; e.getMessage()); } // FileWriter và Scanner sẽ tự động được đóng ở đây } } Logging trong Java Sử dụng java.util.logging import java.util.logging.*; public class LoggingDemo { private static final Logger logger = Logger.getLogger(LoggingDemo.class.getName()); public static void main(String[] args) { // Cấu hình logging setupLogging(); logger.info(&#34;Chương trình bắt đầu&#34;); try { int result = divide(10, 0); logger.info(&#34;Kết quả: &#34; &#43; result); } catch (ArithmeticException e) { logger.severe(&#34;Lỗi chia cho 0: &#34; &#43; e.getMessage()); } logger.info(&#34;Chương trình kết thúc&#34;); } public static int divide(int a, int b) { logger.fine(&#34;Thực hiện phép chia: &#34; &#43; a &#43; &#34; / &#34; &#43; b); if (b == 0) { logger.warning(&#34;Cố gắng chia cho 0&#34;); throw new ArithmeticException(&#34;Chia cho 0&#34;); } int result = a / b; logger.fine(&#34;Kết quả phép chia: &#34; &#43; result); return result; } private static void setupLogging() { try { // Tạo file handler FileHandler fileHandler = new FileHandler(&#34;application.log&#34;); fileHandler.setFormatter(new SimpleFormatter()); // Thêm handler vào logger logger.addHandler(fileHandler); logger.setLevel(Level.ALL); // Tắt console handler để chỉ ghi vào file logger.setUseParentHandlers(false); } catch (IOException e) { System.err.println(&#34;Không thể tạo file log: &#34; &#43; e.getMessage()); } } } Ví dụ Logging với SLF4J (Simple Logging Facade) // Cần thêm dependency SLF4J vào project import org.slf4j.Logger; import org.slf4j.LoggerFactory; public class SLF4JLoggingDemo { private static final Logger logger = LoggerFactory.getLogger(SLF4JLoggingDemo.class); public static void main(String[] args) { logger.info(&#34;Ứng dụng khởi động&#34;); try { processUserInput(); } catch (Exception e) { logger.error(&#34;Lỗi xử lý: {}&#34;, e.getMessage(), e); } logger.info(&#34;Ứng dụng kết thúc&#34;); } public static void processUserInput() { logger.debug(&#34;Bắt đầu xử lý input&#34;); // Giả lập xử lý for (int i = 0; i &lt; 5; i&#43;&#43;) { logger.trace(&#34;Xử lý bước {}&#34;, i); if (i == 3) { logger.warn(&#34;Gặp vấn đề ở bước {}&#34;, i); } } logger.debug(&#34;Hoàn thành xử lý input&#34;); } } Ví dụ 5: Xử lý Multiple Exceptions import java.io.*; import java.net.*; public class MultipleExceptionHandling { public static void main(String[] args) { try { // Có thể gây ra nhiều loại exception processFile(&#34;input.txt&#34;); connectToServer(&#34;http://example.com&#34;); } catch (FileNotFoundException e) { System.out.println(&#34;Không tìm thấy file: &#34; &#43; e.getMessage()); } catch (IOException e) { System.out.println(&#34;Lỗi I/O: &#34; &#43; e.getMessage()); } catch (MalformedURLException e) { System.out.println(&#34;URL không hợp lệ: &#34; &#43; e.getMessage()); } catch (Exception e) { System.out.println(&#34;Lỗi không xác định: &#34; &#43; e.getMessage()); } } public static void processFile(String filename) throws IOException { try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { String line; while ((line = reader.readLine()) != null) { System.out.println(&#34;Đọc: &#34; &#43; line); } } } public static void connectToServer(String urlString) throws MalformedURLException, IOException { URL url = new URL(urlString); // Giả lập kết nối System.out.println(&#34;Kết nối đến: &#34; &#43; url); } } Best Practices cho Exception Handling 1. Sử dụng try-with-resources // Tốt try (FileInputStream fis = new FileInputStream(&#34;file.txt&#34;)) { // xử lý file } catch (IOException e) { // xử lý lỗi } // Tránh FileInputStream fis = null; try { fis = new FileInputStream(&#34;file.txt&#34;); // xử lý file } finally { if (fis != null) { try { fis.close(); } catch (IOException e) { } } } 2. Không bắt Exception chung chung // Tránh try { // code } catch (Exception e) { // xử lý tất cả exception } // Tốt hơn try { // code } catch (SpecificException e) { // xử lý exception cụ thể } 3. Logging phù hợp logger.error(&#34;Lỗi xử lý file: {}&#34;, filename, exception); logger.warn(&#34;Cảnh báo: {}&#34;, warningMessage); logger.info(&#34;Thông tin: {}&#34;, infoMessage); logger.debug(&#34;Debug: {}&#34;, debugInfo); Kết luận Exception handling và logging là những kỹ năng quan trọng trong lập trình Java. Chúng giúp tạo ra ứng dụng ổn định, dễ debug và bảo trì. Việc sử dụng đúng các cơ chế này sẽ giúp bạn trở thành lập trình viên Java chuyên nghiệp.">
-  <meta property="og:locale" content="vi">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-10-17T09:30:00+07:00">
-    <meta property="article:modified_time" content="2025-10-17T09:30:00+07:00">
-    <meta property="article:tag" content="Exception">
-    <meta property="article:tag" content="Logging">
-    <meta property="article:tag" content="Java">
-
-  <meta itemprop="name" content="Java: Xử lý ngoại lệ và logging">
-  <meta itemprop="description" content="Giới thiệu về Exception Handling Xử lý ngoại lệ (Exception Handling) là cơ chế cho phép chương trình Java xử lý các lỗi runtime một cách an toàn và có kiểm soát. Điều này giúp chương trình không bị crash và có thể phục hồi từ lỗi.
-Các loại Exception 1. Checked Exceptions (Compile-time) Phải được xử lý hoặc khai báo trong method signature Ví dụ: IOException, SQLException, ClassNotFoundException 2. Unchecked Exceptions (Runtime) Không bắt buộc phải xử lý Ví dụ: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException Cú pháp try-catch-finally try { // Code có thể gây ra exception } catch (ExceptionType e) { // Xử lý exception } finally { // Code luôn được thực thi (có thể có hoặc không) } Ví dụ 1: Xử lý ArithmeticException public class BasicExceptionHandling { public static void main(String[] args) { Scanner scanner = new Scanner(System.in); try { System.out.print(&#34;Nhập số thứ nhất: &#34;); int a = scanner.nextInt(); System.out.print(&#34;Nhập số thứ hai: &#34;); int b = scanner.nextInt(); // Phép chia có thể gây ra ArithmeticException double result = divide(a, b); System.out.println(&#34;Kết quả: &#34; &#43; result); } catch (ArithmeticException e) { System.out.println(&#34;Lỗi: Không thể chia cho 0!&#34;); System.out.println(&#34;Chi tiết lỗi: &#34; &#43; e.getMessage()); } catch (InputMismatchException e) { System.out.println(&#34;Lỗi: Vui lòng nhập số nguyên hợp lệ!&#34;); } catch (Exception e) { System.out.println(&#34;Lỗi không xác định: &#34; &#43; e.getMessage()); } finally { System.out.println(&#34;Chương trình kết thúc.&#34;); scanner.close(); } } public static double divide(int a, int b) { if (b == 0) { throw new ArithmeticException(&#34;Chia cho 0 không được phép&#34;); } return (double) a / b; } } Ví dụ 2: Xử lý ArrayIndexOutOfBoundsException public class ArrayExceptionHandling { public static void main(String[] args) { int[] numbers = {1, 2, 3, 4, 5}; try { // Truy cập phần tử ngoài phạm vi for (int i = 0; i &lt;= numbers.length; i&#43;&#43;) { System.out.println(&#34;Phần tử &#34; &#43; i &#43; &#34;: &#34; &#43; numbers[i]); } } catch (ArrayIndexOutOfBoundsException e) { System.out.println(&#34;Lỗi: Truy cập phần tử ngoài phạm vi mảng!&#34;); System.out.println(&#34;Chỉ số tối đa: &#34; &#43; (numbers.length - 1)); } // Cách an toàn để duyệt mảng System.out.println(&#34;\nDuyệt mảng an toàn:&#34;); for (int i = 0; i &lt; numbers.length; i&#43;&#43;) { System.out.println(&#34;Phần tử &#34; &#43; i &#43; &#34;: &#34; &#43; numbers[i]); } } } Ví dụ 3: Tạo Custom Exception // Custom Exception cho tài khoản ngân hàng public class InsufficientFundsException extends Exception { private double amount; private double balance; public InsufficientFundsException(double amount, double balance) { super(&#34;Số dư không đủ! Cần: &#34; &#43; amount &#43; &#34;, Có: &#34; &#43; balance); this.amount = amount; this.balance = balance; } public double getAmount() { return amount; } public double getBalance() { return balance; } } // Lớp BankAccount với exception handling public class BankAccount { private String accountNumber; private double balance; public BankAccount(String accountNumber, double initialBalance) { this.accountNumber = accountNumber; this.balance = initialBalance; } public void withdraw(double amount) throws InsufficientFundsException { if (amount &gt; balance) { throw new InsufficientFundsException(amount, balance); } balance -= amount; System.out.println(&#34;Rút thành công &#34; &#43; amount &#43; &#34; VND. Số dư còn lại: &#34; &#43; balance); } public void deposit(double amount) { if (amount &gt; 0) { balance &#43;= amount; System.out.println(&#34;Nạp thành công &#34; &#43; amount &#43; &#34; VND. Số dư: &#34; &#43; balance); } else { throw new IllegalArgumentException(&#34;Số tiền nạp phải lớn hơn 0&#34;); } } public double getBalance() { return balance; } } // Demo sử dụng custom exception public class BankDemo { public static void main(String[] args) { BankAccount account = new BankAccount(&#34;ACC001&#34;, 1000000); try { account.deposit(500000); account.withdraw(200000); account.withdraw(2000000); // Sẽ gây ra InsufficientFundsException } catch (InsufficientFundsException e) { System.out.println(&#34;Lỗi rút tiền: &#34; &#43; e.getMessage()); System.out.println(&#34;Số tiền cần rút: &#34; &#43; e.getAmount()); System.out.println(&#34;Số dư hiện tại: &#34; &#43; e.getBalance()); } catch (IllegalArgumentException e) { System.out.println(&#34;Lỗi nạp tiền: &#34; &#43; e.getMessage()); } } } Ví dụ 4: Try-with-resources import java.io.*; import java.util.Scanner; public class TryWithResourcesDemo { public static void main(String[] args) { // Try-with-resources tự động đóng file try (FileWriter writer = new FileWriter(&#34;output.txt&#34;); Scanner scanner = new Scanner(System.in)) { System.out.print(&#34;Nhập nội dung để ghi vào file: &#34;); String content = scanner.nextLine(); writer.write(&#34;Nội dung: &#34; &#43; content &#43; &#34;\n&#34;); writer.write(&#34;Thời gian: &#34; &#43; new java.util.Date() &#43; &#34;\n&#34;); System.out.println(&#34;Đã ghi file thành công!&#34;); } catch (IOException e) { System.out.println(&#34;Lỗi ghi file: &#34; &#43; e.getMessage()); } // FileWriter và Scanner sẽ tự động được đóng ở đây } } Logging trong Java Sử dụng java.util.logging import java.util.logging.*; public class LoggingDemo { private static final Logger logger = Logger.getLogger(LoggingDemo.class.getName()); public static void main(String[] args) { // Cấu hình logging setupLogging(); logger.info(&#34;Chương trình bắt đầu&#34;); try { int result = divide(10, 0); logger.info(&#34;Kết quả: &#34; &#43; result); } catch (ArithmeticException e) { logger.severe(&#34;Lỗi chia cho 0: &#34; &#43; e.getMessage()); } logger.info(&#34;Chương trình kết thúc&#34;); } public static int divide(int a, int b) { logger.fine(&#34;Thực hiện phép chia: &#34; &#43; a &#43; &#34; / &#34; &#43; b); if (b == 0) { logger.warning(&#34;Cố gắng chia cho 0&#34;); throw new ArithmeticException(&#34;Chia cho 0&#34;); } int result = a / b; logger.fine(&#34;Kết quả phép chia: &#34; &#43; result); return result; } private static void setupLogging() { try { // Tạo file handler FileHandler fileHandler = new FileHandler(&#34;application.log&#34;); fileHandler.setFormatter(new SimpleFormatter()); // Thêm handler vào logger logger.addHandler(fileHandler); logger.setLevel(Level.ALL); // Tắt console handler để chỉ ghi vào file logger.setUseParentHandlers(false); } catch (IOException e) { System.err.println(&#34;Không thể tạo file log: &#34; &#43; e.getMessage()); } } } Ví dụ Logging với SLF4J (Simple Logging Facade) // Cần thêm dependency SLF4J vào project import org.slf4j.Logger; import org.slf4j.LoggerFactory; public class SLF4JLoggingDemo { private static final Logger logger = LoggerFactory.getLogger(SLF4JLoggingDemo.class); public static void main(String[] args) { logger.info(&#34;Ứng dụng khởi động&#34;); try { processUserInput(); } catch (Exception e) { logger.error(&#34;Lỗi xử lý: {}&#34;, e.getMessage(), e); } logger.info(&#34;Ứng dụng kết thúc&#34;); } public static void processUserInput() { logger.debug(&#34;Bắt đầu xử lý input&#34;); // Giả lập xử lý for (int i = 0; i &lt; 5; i&#43;&#43;) { logger.trace(&#34;Xử lý bước {}&#34;, i); if (i == 3) { logger.warn(&#34;Gặp vấn đề ở bước {}&#34;, i); } } logger.debug(&#34;Hoàn thành xử lý input&#34;); } } Ví dụ 5: Xử lý Multiple Exceptions import java.io.*; import java.net.*; public class MultipleExceptionHandling { public static void main(String[] args) { try { // Có thể gây ra nhiều loại exception processFile(&#34;input.txt&#34;); connectToServer(&#34;http://example.com&#34;); } catch (FileNotFoundException e) { System.out.println(&#34;Không tìm thấy file: &#34; &#43; e.getMessage()); } catch (IOException e) { System.out.println(&#34;Lỗi I/O: &#34; &#43; e.getMessage()); } catch (MalformedURLException e) { System.out.println(&#34;URL không hợp lệ: &#34; &#43; e.getMessage()); } catch (Exception e) { System.out.println(&#34;Lỗi không xác định: &#34; &#43; e.getMessage()); } } public static void processFile(String filename) throws IOException { try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { String line; while ((line = reader.readLine()) != null) { System.out.println(&#34;Đọc: &#34; &#43; line); } } } public static void connectToServer(String urlString) throws MalformedURLException, IOException { URL url = new URL(urlString); // Giả lập kết nối System.out.println(&#34;Kết nối đến: &#34; &#43; url); } } Best Practices cho Exception Handling 1. Sử dụng try-with-resources // Tốt try (FileInputStream fis = new FileInputStream(&#34;file.txt&#34;)) { // xử lý file } catch (IOException e) { // xử lý lỗi } // Tránh FileInputStream fis = null; try { fis = new FileInputStream(&#34;file.txt&#34;); // xử lý file } finally { if (fis != null) { try { fis.close(); } catch (IOException e) { } } } 2. Không bắt Exception chung chung // Tránh try { // code } catch (Exception e) { // xử lý tất cả exception } // Tốt hơn try { // code } catch (SpecificException e) { // xử lý exception cụ thể } 3. Logging phù hợp logger.error(&#34;Lỗi xử lý file: {}&#34;, filename, exception); logger.warn(&#34;Cảnh báo: {}&#34;, warningMessage); logger.info(&#34;Thông tin: {}&#34;, infoMessage); logger.debug(&#34;Debug: {}&#34;, debugInfo); Kết luận Exception handling và logging là những kỹ năng quan trọng trong lập trình Java. Chúng giúp tạo ra ứng dụng ổn định, dễ debug và bảo trì. Việc sử dụng đúng các cơ chế này sẽ giúp bạn trở thành lập trình viên Java chuyên nghiệp.">
-  <meta itemprop="datePublished" content="2025-10-17T09:30:00+07:00">
-  <meta itemprop="dateModified" content="2025-10-17T09:30:00+07:00">
-  <meta itemprop="wordCount" content="1319">
-  <meta itemprop="keywords" content="Exception,Logging,Java">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java: Xử lý ngoại lệ và logging">
-  <meta name="twitter:description" content="Giới thiệu về Exception Handling Xử lý ngoại lệ (Exception Handling) là cơ chế cho phép chương trình Java xử lý các lỗi runtime một cách an toàn và có kiểm soát. Điều này giúp chương trình không bị crash và có thể phục hồi từ lỗi.
-Các loại Exception 1. Checked Exceptions (Compile-time) Phải được xử lý hoặc khai báo trong method signature Ví dụ: IOException, SQLException, ClassNotFoundException 2. Unchecked Exceptions (Runtime) Không bắt buộc phải xử lý Ví dụ: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException Cú pháp try-catch-finally try { // Code có thể gây ra exception } catch (ExceptionType e) { // Xử lý exception } finally { // Code luôn được thực thi (có thể có hoặc không) } Ví dụ 1: Xử lý ArithmeticException public class BasicExceptionHandling { public static void main(String[] args) { Scanner scanner = new Scanner(System.in); try { System.out.print(&#34;Nhập số thứ nhất: &#34;); int a = scanner.nextInt(); System.out.print(&#34;Nhập số thứ hai: &#34;); int b = scanner.nextInt(); // Phép chia có thể gây ra ArithmeticException double result = divide(a, b); System.out.println(&#34;Kết quả: &#34; &#43; result); } catch (ArithmeticException e) { System.out.println(&#34;Lỗi: Không thể chia cho 0!&#34;); System.out.println(&#34;Chi tiết lỗi: &#34; &#43; e.getMessage()); } catch (InputMismatchException e) { System.out.println(&#34;Lỗi: Vui lòng nhập số nguyên hợp lệ!&#34;); } catch (Exception e) { System.out.println(&#34;Lỗi không xác định: &#34; &#43; e.getMessage()); } finally { System.out.println(&#34;Chương trình kết thúc.&#34;); scanner.close(); } } public static double divide(int a, int b) { if (b == 0) { throw new ArithmeticException(&#34;Chia cho 0 không được phép&#34;); } return (double) a / b; } } Ví dụ 2: Xử lý ArrayIndexOutOfBoundsException public class ArrayExceptionHandling { public static void main(String[] args) { int[] numbers = {1, 2, 3, 4, 5}; try { // Truy cập phần tử ngoài phạm vi for (int i = 0; i &lt;= numbers.length; i&#43;&#43;) { System.out.println(&#34;Phần tử &#34; &#43; i &#43; &#34;: &#34; &#43; numbers[i]); } } catch (ArrayIndexOutOfBoundsException e) { System.out.println(&#34;Lỗi: Truy cập phần tử ngoài phạm vi mảng!&#34;); System.out.println(&#34;Chỉ số tối đa: &#34; &#43; (numbers.length - 1)); } // Cách an toàn để duyệt mảng System.out.println(&#34;\nDuyệt mảng an toàn:&#34;); for (int i = 0; i &lt; numbers.length; i&#43;&#43;) { System.out.println(&#34;Phần tử &#34; &#43; i &#43; &#34;: &#34; &#43; numbers[i]); } } } Ví dụ 3: Tạo Custom Exception // Custom Exception cho tài khoản ngân hàng public class InsufficientFundsException extends Exception { private double amount; private double balance; public InsufficientFundsException(double amount, double balance) { super(&#34;Số dư không đủ! Cần: &#34; &#43; amount &#43; &#34;, Có: &#34; &#43; balance); this.amount = amount; this.balance = balance; } public double getAmount() { return amount; } public double getBalance() { return balance; } } // Lớp BankAccount với exception handling public class BankAccount { private String accountNumber; private double balance; public BankAccount(String accountNumber, double initialBalance) { this.accountNumber = accountNumber; this.balance = initialBalance; } public void withdraw(double amount) throws InsufficientFundsException { if (amount &gt; balance) { throw new InsufficientFundsException(amount, balance); } balance -= amount; System.out.println(&#34;Rút thành công &#34; &#43; amount &#43; &#34; VND. Số dư còn lại: &#34; &#43; balance); } public void deposit(double amount) { if (amount &gt; 0) { balance &#43;= amount; System.out.println(&#34;Nạp thành công &#34; &#43; amount &#43; &#34; VND. Số dư: &#34; &#43; balance); } else { throw new IllegalArgumentException(&#34;Số tiền nạp phải lớn hơn 0&#34;); } } public double getBalance() { return balance; } } // Demo sử dụng custom exception public class BankDemo { public static void main(String[] args) { BankAccount account = new BankAccount(&#34;ACC001&#34;, 1000000); try { account.deposit(500000); account.withdraw(200000); account.withdraw(2000000); // Sẽ gây ra InsufficientFundsException } catch (InsufficientFundsException e) { System.out.println(&#34;Lỗi rút tiền: &#34; &#43; e.getMessage()); System.out.println(&#34;Số tiền cần rút: &#34; &#43; e.getAmount()); System.out.println(&#34;Số dư hiện tại: &#34; &#43; e.getBalance()); } catch (IllegalArgumentException e) { System.out.println(&#34;Lỗi nạp tiền: &#34; &#43; e.getMessage()); } } } Ví dụ 4: Try-with-resources import java.io.*; import java.util.Scanner; public class TryWithResourcesDemo { public static void main(String[] args) { // Try-with-resources tự động đóng file try (FileWriter writer = new FileWriter(&#34;output.txt&#34;); Scanner scanner = new Scanner(System.in)) { System.out.print(&#34;Nhập nội dung để ghi vào file: &#34;); String content = scanner.nextLine(); writer.write(&#34;Nội dung: &#34; &#43; content &#43; &#34;\n&#34;); writer.write(&#34;Thời gian: &#34; &#43; new java.util.Date() &#43; &#34;\n&#34;); System.out.println(&#34;Đã ghi file thành công!&#34;); } catch (IOException e) { System.out.println(&#34;Lỗi ghi file: &#34; &#43; e.getMessage()); } // FileWriter và Scanner sẽ tự động được đóng ở đây } } Logging trong Java Sử dụng java.util.logging import java.util.logging.*; public class LoggingDemo { private static final Logger logger = Logger.getLogger(LoggingDemo.class.getName()); public static void main(String[] args) { // Cấu hình logging setupLogging(); logger.info(&#34;Chương trình bắt đầu&#34;); try { int result = divide(10, 0); logger.info(&#34;Kết quả: &#34; &#43; result); } catch (ArithmeticException e) { logger.severe(&#34;Lỗi chia cho 0: &#34; &#43; e.getMessage()); } logger.info(&#34;Chương trình kết thúc&#34;); } public static int divide(int a, int b) { logger.fine(&#34;Thực hiện phép chia: &#34; &#43; a &#43; &#34; / &#34; &#43; b); if (b == 0) { logger.warning(&#34;Cố gắng chia cho 0&#34;); throw new ArithmeticException(&#34;Chia cho 0&#34;); } int result = a / b; logger.fine(&#34;Kết quả phép chia: &#34; &#43; result); return result; } private static void setupLogging() { try { // Tạo file handler FileHandler fileHandler = new FileHandler(&#34;application.log&#34;); fileHandler.setFormatter(new SimpleFormatter()); // Thêm handler vào logger logger.addHandler(fileHandler); logger.setLevel(Level.ALL); // Tắt console handler để chỉ ghi vào file logger.setUseParentHandlers(false); } catch (IOException e) { System.err.println(&#34;Không thể tạo file log: &#34; &#43; e.getMessage()); } } } Ví dụ Logging với SLF4J (Simple Logging Facade) // Cần thêm dependency SLF4J vào project import org.slf4j.Logger; import org.slf4j.LoggerFactory; public class SLF4JLoggingDemo { private static final Logger logger = LoggerFactory.getLogger(SLF4JLoggingDemo.class); public static void main(String[] args) { logger.info(&#34;Ứng dụng khởi động&#34;); try { processUserInput(); } catch (Exception e) { logger.error(&#34;Lỗi xử lý: {}&#34;, e.getMessage(), e); } logger.info(&#34;Ứng dụng kết thúc&#34;); } public static void processUserInput() { logger.debug(&#34;Bắt đầu xử lý input&#34;); // Giả lập xử lý for (int i = 0; i &lt; 5; i&#43;&#43;) { logger.trace(&#34;Xử lý bước {}&#34;, i); if (i == 3) { logger.warn(&#34;Gặp vấn đề ở bước {}&#34;, i); } } logger.debug(&#34;Hoàn thành xử lý input&#34;); } } Ví dụ 5: Xử lý Multiple Exceptions import java.io.*; import java.net.*; public class MultipleExceptionHandling { public static void main(String[] args) { try { // Có thể gây ra nhiều loại exception processFile(&#34;input.txt&#34;); connectToServer(&#34;http://example.com&#34;); } catch (FileNotFoundException e) { System.out.println(&#34;Không tìm thấy file: &#34; &#43; e.getMessage()); } catch (IOException e) { System.out.println(&#34;Lỗi I/O: &#34; &#43; e.getMessage()); } catch (MalformedURLException e) { System.out.println(&#34;URL không hợp lệ: &#34; &#43; e.getMessage()); } catch (Exception e) { System.out.println(&#34;Lỗi không xác định: &#34; &#43; e.getMessage()); } } public static void processFile(String filename) throws IOException { try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { String line; while ((line = reader.readLine()) != null) { System.out.println(&#34;Đọc: &#34; &#43; line); } } } public static void connectToServer(String urlString) throws MalformedURLException, IOException { URL url = new URL(urlString); // Giả lập kết nối System.out.println(&#34;Kết nối đến: &#34; &#43; url); } } Best Practices cho Exception Handling 1. Sử dụng try-with-resources // Tốt try (FileInputStream fis = new FileInputStream(&#34;file.txt&#34;)) { // xử lý file } catch (IOException e) { // xử lý lỗi } // Tránh FileInputStream fis = null; try { fis = new FileInputStream(&#34;file.txt&#34;); // xử lý file } finally { if (fis != null) { try { fis.close(); } catch (IOException e) { } } } 2. Không bắt Exception chung chung // Tránh try { // code } catch (Exception e) { // xử lý tất cả exception } // Tốt hơn try { // code } catch (SpecificException e) { // xử lý exception cụ thể } 3. Logging phù hợp logger.error(&#34;Lỗi xử lý file: {}&#34;, filename, exception); logger.warn(&#34;Cảnh báo: {}&#34;, warningMessage); logger.info(&#34;Thông tin: {}&#34;, infoMessage); logger.debug(&#34;Debug: {}&#34;, debugInfo); Kết luận Exception handling và logging là những kỹ năng quan trọng trong lập trình Java. Chúng giúp tạo ra ứng dụng ổn định, dễ debug và bảo trì. Việc sử dụng đúng các cơ chế này sẽ giúp bạn trở thành lập trình viên Java chuyên nghiệp.">
-      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
-
-      
-    
-	<link rel="stylesheet" href="/css/blogger-about.css" />
+  <link rel="stylesheet" href="/css/blogger-about.css" />
 <script src="/js/search.js" defer></script>
 <script src="/js/animations.js" defer></script>
 
 
-  </head><body class="ma0 avenir bg-near-white production">
+</head><body class="ma0 avenir bg-near-white production">
 
     
 
@@ -467,13 +90,15 @@ Các loại Exception 1. Checked Exceptions (Compile-time) Phải được xử 
 
     <main class="pb7" role="main">
       
-  <article class="pa3 pa4-ns nested-copy-line-height">
+  <article class="mw8 center ph3 ph5-ns pv5">
     <header class="mb4">
-      <h1 class="f2 lh-title mv0">Java: Xử lý ngoại lệ và logging</h1>
-      <p class="f6 gray mt2">October 17, 2025</p>
+      <h1 class="f2 lh-title mb2">Java: Xử lý ngoại lệ và logging</h1>
+      
+        <p class="f6 gray">17 Oct 2025</p>
+      
     </header>
 
-    <section class="nested-copy-line-height lh-copy">
+    <section class="lh-copy f5 nested-copy-line-height">
       <h2 id="giới-thiệu-về-exception-handling">Giới thiệu về Exception Handling</h2>
 <p>Xử lý ngoại lệ (Exception Handling) là cơ chế cho phép chương trình Java xử lý các lỗi runtime một cách an toàn và có kiểm soát. Điều này giúp chương trình không bị crash và có thể phục hồi từ lỗi.</p>
 <h2 id="các-loại-exception">Các loại Exception</h2>
@@ -815,23 +440,13 @@ Các loại Exception 1. Checked Exceptions (Compile-time) Phải được xử 
 
     </section>
 
-    <footer class="mt5">
-      <p class="f6 gray">Tags:</p>
-      <ul class="list pl0">
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/exception" class="link dim blue">exception</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/logging" class="link dim blue">logging</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/java" class="link dim blue">java</a>
-          </li>
-        
-      </ul>
+    <footer class="mt5 pt3 bt b--moon-gray">
+      
+        <a href="/blogphuoc.github.io/posts/java-3/" class="link dim gray mr3">← Java: Kế thừa và đa hình</a>
+      
+      
+        <a href="/blogphuoc.github.io/posts/java-5/" class="link dim gray">→ Java: Làm việc với file và I/O</a>
+      
     </footer>
   </article>
 

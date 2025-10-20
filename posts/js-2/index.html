@@ -1,226 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>JavaScript: Hàm, closure và scope | Blog Tiến Phước</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Giới thiệu về Hàm trong JavaScript
-Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.
-Các cách khai báo hàm
-1. Function Declaration (Khai báo hàm)
-// Function declaration
-function greet(name) {
-    return `Xin chào, ${name}!`;
-}
+  <meta charset="utf-8">
+  <title>JavaScript: Hàm, closure và scope | Blog Tiến Phước</title>
 
-// Sử dụng
-console.log(greet(&#34;Nguyễn Văn A&#34;)); // Xin chào, Nguyễn Văn A!
-2. Function Expression (Biểu thức hàm)
-// Function expression
-const greet = function(name) {
-    return `Xin chào, ${name}!`;
-};
-
-// Sử dụng
-console.log(greet(&#34;Trần Thị B&#34;)); // Xin chào, Trần Thị B!
-3. Arrow Function (Hàm mũi tên)
-// Arrow function
-const greet = (name) =&gt; {
-    return `Xin chào, ${name}!`;
-};
-
-// Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return)
-const greet = name =&gt; `Xin chào, ${name}!`;
-
-// Sử dụng
-console.log(greet(&#34;Lê Văn C&#34;)); // Xin chào, Lê Văn C!
-Ví dụ 1: Các loại hàm cơ bản
-// 1. Hàm không tham số
-function sayHello() {
-    console.log(&#34;Xin chào thế giới!&#34;);
-}
-
-// 2. Hàm có tham số
-function add(a, b) {
-    return a &#43; b;
-}
-
-// 3. Hàm có tham số mặc định
-function greet(name = &#34;Khách&#34;) {
-    return `Xin chào, ${name}!`;
-}
-
-// 4. Hàm với rest parameters
-function sum(...numbers) {
-    return numbers.reduce((total, num) =&gt; total &#43; num, 0);
-}
-
-// 5. Hàm trả về một hàm
-function createMultiplier(factor) {
-    return function(number) {
-        return number * factor;
-    };
-}
-
-// Sử dụng các hàm
-sayHello(); // Xin chào thế giới!
-console.log(add(5, 3)); // 8
-console.log(greet()); // Xin chào, Khách!
-console.log(greet(&#34;Alice&#34;)); // Xin chào, Alice!
-console.log(sum(1, 2, 3, 4, 5)); // 15
-
-const double = createMultiplier(2);
-console.log(double(5)); // 10
-Scope (Phạm vi) trong JavaScript
-1. Global Scope (Phạm vi toàn cục)
-// Biến toàn cục
-var globalVar = &#34;Tôi là biến toàn cục&#34;;
-let globalLet = &#34;Tôi cũng là biến toàn cục&#34;;
-const globalConst = &#34;Tôi cũng là biến toàn cục&#34;;
-
-function checkGlobalScope() {
-    console.log(globalVar); // Có thể truy cập
-    console.log(globalLet); // Có thể truy cập
-    console.log(globalConst); // Có thể truy cập
-}
-
-checkGlobalScope();
-2. Local Scope (Phạm vi cục bộ)
-function demonstrateLocalScope() {
-    // Biến cục bộ
-    var localVar = &#34;Tôi là biến cục bộ&#34;;
-    let localLet = &#34;Tôi cũng là biến cục bộ&#34;;
-    const localConst = &#34;Tôi cũng là biến cục bộ&#34;;
-    
-    console.log(localVar); // Có thể truy cập
-    console.log(localLet); // Có thể truy cập
-    console.log(localConst); // Có thể truy cập
-    
-    // Nested function
-    function innerFunction() {
-        console.log(localVar); // Có thể truy cập từ hàm con
-        console.log(localLet); // Có thể truy cập từ hàm con
-        console.log(localConst); // Có thể truy cập từ hàm con
-    }
-    
-    innerFunction();
-}
-
-demonstrateLocalScope();
-
-// console.log(localVar); // Lỗi: localVar is not defined
-// console.log(localLet); // Lỗi: localLet is not defined
-// console.log(localConst); // Lỗi: localConst is not defined
-3. Block Scope (Phạm vi khối)
-function demonstrateBlockScope() {
-    if (true) {
-        var varVariable = &#34;Tôi là var&#34;;
-        let letVariable = &#34;Tôi là let&#34;;
-        const constVariable = &#34;Tôi là const&#34;;
-        
-        console.log(varVariable); // Có thể truy cập
-        console.log(letVariable); // Có thể truy cập
-        console.log(constVariable); // Có thể truy cập
-    }
-    
-    console.log(varVariable); // Có thể truy cập (var không có block scope)
-    // console.log(letVariable); // Lỗi: letVariable is not defined
-    // console.log(constVariable); // Lỗi: constVariable is not defined
-}
-
-demonstrateBlockScope();
-Hoisting trong JavaScript
-1. Function Hoisting
-// Có thể gọi hàm trước khi khai báo (function declaration)
-console.log(hoistedFunction()); // &#34;Tôi được hoisted!&#34;
-
-function hoistedFunction() {
-    return &#34;Tôi được hoisted!&#34;;
-}
-
-// Không thể gọi trước khi khai báo (function expression)
-// console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization
-
-const notHoistedFunction = function() {
-    return &#34;Tôi không được hoisted!&#34;;
-};
-2. Variable Hoisting
-console.log(hoistedVar); // undefined (không lỗi)
-console.log(hoistedLet); // Lỗi: Cannot access before initialization
-console.log(hoistedConst); // Lỗi: Cannot access before initialization
-
-var hoistedVar = &#34;Tôi được hoisted nhưng giá trị là undefined&#34;;
-let hoistedLet = &#34;Tôi không được hoisted&#34;;
-const hoistedConst = &#34;Tôi không được hoisted&#34;;
-Closure (Đóng gói) trong JavaScript
-Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.">
-    <meta name="generator" content="Hugo 0.151.2">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    <meta name="author" content="Nguyễn Tiến Phước">
-    
-
-    
+  
 <link rel="stylesheet" href="/blogphuoc.github.io/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
 
+  
+
+
+  
     
 
+  
 
-    
-      
+  
+    <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/js-2/">
+  
 
-    
+  
+  <link rel="stylesheet" href="/css/custom.css">
 
-    
-
-    
-      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/js-2/">
-    
-
-    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io/posts/js-2/">
-  <meta property="og:site_name" content="Blog Tiến Phước">
-  <meta property="og:title" content="JavaScript: Hàm, closure và scope">
-  <meta property="og:description" content="Giới thiệu về Hàm trong JavaScript Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.
-Các cách khai báo hàm 1. Function Declaration (Khai báo hàm) // Function declaration function greet(name) { return `Xin chào, ${name}!`; } // Sử dụng console.log(greet(&#34;Nguyễn Văn A&#34;)); // Xin chào, Nguyễn Văn A! 2. Function Expression (Biểu thức hàm) // Function expression const greet = function(name) { return `Xin chào, ${name}!`; }; // Sử dụng console.log(greet(&#34;Trần Thị B&#34;)); // Xin chào, Trần Thị B! 3. Arrow Function (Hàm mũi tên) // Arrow function const greet = (name) =&gt; { return `Xin chào, ${name}!`; }; // Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return) const greet = name =&gt; `Xin chào, ${name}!`; // Sử dụng console.log(greet(&#34;Lê Văn C&#34;)); // Xin chào, Lê Văn C! Ví dụ 1: Các loại hàm cơ bản // 1. Hàm không tham số function sayHello() { console.log(&#34;Xin chào thế giới!&#34;); } // 2. Hàm có tham số function add(a, b) { return a &#43; b; } // 3. Hàm có tham số mặc định function greet(name = &#34;Khách&#34;) { return `Xin chào, ${name}!`; } // 4. Hàm với rest parameters function sum(...numbers) { return numbers.reduce((total, num) =&gt; total &#43; num, 0); } // 5. Hàm trả về một hàm function createMultiplier(factor) { return function(number) { return number * factor; }; } // Sử dụng các hàm sayHello(); // Xin chào thế giới! console.log(add(5, 3)); // 8 console.log(greet()); // Xin chào, Khách! console.log(greet(&#34;Alice&#34;)); // Xin chào, Alice! console.log(sum(1, 2, 3, 4, 5)); // 15 const double = createMultiplier(2); console.log(double(5)); // 10 Scope (Phạm vi) trong JavaScript 1. Global Scope (Phạm vi toàn cục) // Biến toàn cục var globalVar = &#34;Tôi là biến toàn cục&#34;; let globalLet = &#34;Tôi cũng là biến toàn cục&#34;; const globalConst = &#34;Tôi cũng là biến toàn cục&#34;; function checkGlobalScope() { console.log(globalVar); // Có thể truy cập console.log(globalLet); // Có thể truy cập console.log(globalConst); // Có thể truy cập } checkGlobalScope(); 2. Local Scope (Phạm vi cục bộ) function demonstrateLocalScope() { // Biến cục bộ var localVar = &#34;Tôi là biến cục bộ&#34;; let localLet = &#34;Tôi cũng là biến cục bộ&#34;; const localConst = &#34;Tôi cũng là biến cục bộ&#34;; console.log(localVar); // Có thể truy cập console.log(localLet); // Có thể truy cập console.log(localConst); // Có thể truy cập // Nested function function innerFunction() { console.log(localVar); // Có thể truy cập từ hàm con console.log(localLet); // Có thể truy cập từ hàm con console.log(localConst); // Có thể truy cập từ hàm con } innerFunction(); } demonstrateLocalScope(); // console.log(localVar); // Lỗi: localVar is not defined // console.log(localLet); // Lỗi: localLet is not defined // console.log(localConst); // Lỗi: localConst is not defined 3. Block Scope (Phạm vi khối) function demonstrateBlockScope() { if (true) { var varVariable = &#34;Tôi là var&#34;; let letVariable = &#34;Tôi là let&#34;; const constVariable = &#34;Tôi là const&#34;; console.log(varVariable); // Có thể truy cập console.log(letVariable); // Có thể truy cập console.log(constVariable); // Có thể truy cập } console.log(varVariable); // Có thể truy cập (var không có block scope) // console.log(letVariable); // Lỗi: letVariable is not defined // console.log(constVariable); // Lỗi: constVariable is not defined } demonstrateBlockScope(); Hoisting trong JavaScript 1. Function Hoisting // Có thể gọi hàm trước khi khai báo (function declaration) console.log(hoistedFunction()); // &#34;Tôi được hoisted!&#34; function hoistedFunction() { return &#34;Tôi được hoisted!&#34;; } // Không thể gọi trước khi khai báo (function expression) // console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization const notHoistedFunction = function() { return &#34;Tôi không được hoisted!&#34;; }; 2. Variable Hoisting console.log(hoistedVar); // undefined (không lỗi) console.log(hoistedLet); // Lỗi: Cannot access before initialization console.log(hoistedConst); // Lỗi: Cannot access before initialization var hoistedVar = &#34;Tôi được hoisted nhưng giá trị là undefined&#34;; let hoistedLet = &#34;Tôi không được hoisted&#34;; const hoistedConst = &#34;Tôi không được hoisted&#34;; Closure (Đóng gói) trong JavaScript Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.">
-  <meta property="og:locale" content="vi">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-10-17T10:10:00+07:00">
-    <meta property="article:modified_time" content="2025-10-17T10:10:00+07:00">
-    <meta property="article:tag" content="Function">
-    <meta property="article:tag" content="Closure">
-    <meta property="article:tag" content="Scope">
-    <meta property="article:tag" content="Javascript">
-
-  <meta itemprop="name" content="JavaScript: Hàm, closure và scope">
-  <meta itemprop="description" content="Giới thiệu về Hàm trong JavaScript Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.
-Các cách khai báo hàm 1. Function Declaration (Khai báo hàm) // Function declaration function greet(name) { return `Xin chào, ${name}!`; } // Sử dụng console.log(greet(&#34;Nguyễn Văn A&#34;)); // Xin chào, Nguyễn Văn A! 2. Function Expression (Biểu thức hàm) // Function expression const greet = function(name) { return `Xin chào, ${name}!`; }; // Sử dụng console.log(greet(&#34;Trần Thị B&#34;)); // Xin chào, Trần Thị B! 3. Arrow Function (Hàm mũi tên) // Arrow function const greet = (name) =&gt; { return `Xin chào, ${name}!`; }; // Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return) const greet = name =&gt; `Xin chào, ${name}!`; // Sử dụng console.log(greet(&#34;Lê Văn C&#34;)); // Xin chào, Lê Văn C! Ví dụ 1: Các loại hàm cơ bản // 1. Hàm không tham số function sayHello() { console.log(&#34;Xin chào thế giới!&#34;); } // 2. Hàm có tham số function add(a, b) { return a &#43; b; } // 3. Hàm có tham số mặc định function greet(name = &#34;Khách&#34;) { return `Xin chào, ${name}!`; } // 4. Hàm với rest parameters function sum(...numbers) { return numbers.reduce((total, num) =&gt; total &#43; num, 0); } // 5. Hàm trả về một hàm function createMultiplier(factor) { return function(number) { return number * factor; }; } // Sử dụng các hàm sayHello(); // Xin chào thế giới! console.log(add(5, 3)); // 8 console.log(greet()); // Xin chào, Khách! console.log(greet(&#34;Alice&#34;)); // Xin chào, Alice! console.log(sum(1, 2, 3, 4, 5)); // 15 const double = createMultiplier(2); console.log(double(5)); // 10 Scope (Phạm vi) trong JavaScript 1. Global Scope (Phạm vi toàn cục) // Biến toàn cục var globalVar = &#34;Tôi là biến toàn cục&#34;; let globalLet = &#34;Tôi cũng là biến toàn cục&#34;; const globalConst = &#34;Tôi cũng là biến toàn cục&#34;; function checkGlobalScope() { console.log(globalVar); // Có thể truy cập console.log(globalLet); // Có thể truy cập console.log(globalConst); // Có thể truy cập } checkGlobalScope(); 2. Local Scope (Phạm vi cục bộ) function demonstrateLocalScope() { // Biến cục bộ var localVar = &#34;Tôi là biến cục bộ&#34;; let localLet = &#34;Tôi cũng là biến cục bộ&#34;; const localConst = &#34;Tôi cũng là biến cục bộ&#34;; console.log(localVar); // Có thể truy cập console.log(localLet); // Có thể truy cập console.log(localConst); // Có thể truy cập // Nested function function innerFunction() { console.log(localVar); // Có thể truy cập từ hàm con console.log(localLet); // Có thể truy cập từ hàm con console.log(localConst); // Có thể truy cập từ hàm con } innerFunction(); } demonstrateLocalScope(); // console.log(localVar); // Lỗi: localVar is not defined // console.log(localLet); // Lỗi: localLet is not defined // console.log(localConst); // Lỗi: localConst is not defined 3. Block Scope (Phạm vi khối) function demonstrateBlockScope() { if (true) { var varVariable = &#34;Tôi là var&#34;; let letVariable = &#34;Tôi là let&#34;; const constVariable = &#34;Tôi là const&#34;; console.log(varVariable); // Có thể truy cập console.log(letVariable); // Có thể truy cập console.log(constVariable); // Có thể truy cập } console.log(varVariable); // Có thể truy cập (var không có block scope) // console.log(letVariable); // Lỗi: letVariable is not defined // console.log(constVariable); // Lỗi: constVariable is not defined } demonstrateBlockScope(); Hoisting trong JavaScript 1. Function Hoisting // Có thể gọi hàm trước khi khai báo (function declaration) console.log(hoistedFunction()); // &#34;Tôi được hoisted!&#34; function hoistedFunction() { return &#34;Tôi được hoisted!&#34;; } // Không thể gọi trước khi khai báo (function expression) // console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization const notHoistedFunction = function() { return &#34;Tôi không được hoisted!&#34;; }; 2. Variable Hoisting console.log(hoistedVar); // undefined (không lỗi) console.log(hoistedLet); // Lỗi: Cannot access before initialization console.log(hoistedConst); // Lỗi: Cannot access before initialization var hoistedVar = &#34;Tôi được hoisted nhưng giá trị là undefined&#34;; let hoistedLet = &#34;Tôi không được hoisted&#34;; const hoistedConst = &#34;Tôi không được hoisted&#34;; Closure (Đóng gói) trong JavaScript Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.">
-  <meta itemprop="datePublished" content="2025-10-17T10:10:00+07:00">
-  <meta itemprop="dateModified" content="2025-10-17T10:10:00+07:00">
-  <meta itemprop="wordCount" content="1738">
-  <meta itemprop="keywords" content="Function,Closure,Scope,Javascript">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JavaScript: Hàm, closure và scope">
-  <meta name="twitter:description" content="Giới thiệu về Hàm trong JavaScript Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.
-Các cách khai báo hàm 1. Function Declaration (Khai báo hàm) // Function declaration function greet(name) { return `Xin chào, ${name}!`; } // Sử dụng console.log(greet(&#34;Nguyễn Văn A&#34;)); // Xin chào, Nguyễn Văn A! 2. Function Expression (Biểu thức hàm) // Function expression const greet = function(name) { return `Xin chào, ${name}!`; }; // Sử dụng console.log(greet(&#34;Trần Thị B&#34;)); // Xin chào, Trần Thị B! 3. Arrow Function (Hàm mũi tên) // Arrow function const greet = (name) =&gt; { return `Xin chào, ${name}!`; }; // Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return) const greet = name =&gt; `Xin chào, ${name}!`; // Sử dụng console.log(greet(&#34;Lê Văn C&#34;)); // Xin chào, Lê Văn C! Ví dụ 1: Các loại hàm cơ bản // 1. Hàm không tham số function sayHello() { console.log(&#34;Xin chào thế giới!&#34;); } // 2. Hàm có tham số function add(a, b) { return a &#43; b; } // 3. Hàm có tham số mặc định function greet(name = &#34;Khách&#34;) { return `Xin chào, ${name}!`; } // 4. Hàm với rest parameters function sum(...numbers) { return numbers.reduce((total, num) =&gt; total &#43; num, 0); } // 5. Hàm trả về một hàm function createMultiplier(factor) { return function(number) { return number * factor; }; } // Sử dụng các hàm sayHello(); // Xin chào thế giới! console.log(add(5, 3)); // 8 console.log(greet()); // Xin chào, Khách! console.log(greet(&#34;Alice&#34;)); // Xin chào, Alice! console.log(sum(1, 2, 3, 4, 5)); // 15 const double = createMultiplier(2); console.log(double(5)); // 10 Scope (Phạm vi) trong JavaScript 1. Global Scope (Phạm vi toàn cục) // Biến toàn cục var globalVar = &#34;Tôi là biến toàn cục&#34;; let globalLet = &#34;Tôi cũng là biến toàn cục&#34;; const globalConst = &#34;Tôi cũng là biến toàn cục&#34;; function checkGlobalScope() { console.log(globalVar); // Có thể truy cập console.log(globalLet); // Có thể truy cập console.log(globalConst); // Có thể truy cập } checkGlobalScope(); 2. Local Scope (Phạm vi cục bộ) function demonstrateLocalScope() { // Biến cục bộ var localVar = &#34;Tôi là biến cục bộ&#34;; let localLet = &#34;Tôi cũng là biến cục bộ&#34;; const localConst = &#34;Tôi cũng là biến cục bộ&#34;; console.log(localVar); // Có thể truy cập console.log(localLet); // Có thể truy cập console.log(localConst); // Có thể truy cập // Nested function function innerFunction() { console.log(localVar); // Có thể truy cập từ hàm con console.log(localLet); // Có thể truy cập từ hàm con console.log(localConst); // Có thể truy cập từ hàm con } innerFunction(); } demonstrateLocalScope(); // console.log(localVar); // Lỗi: localVar is not defined // console.log(localLet); // Lỗi: localLet is not defined // console.log(localConst); // Lỗi: localConst is not defined 3. Block Scope (Phạm vi khối) function demonstrateBlockScope() { if (true) { var varVariable = &#34;Tôi là var&#34;; let letVariable = &#34;Tôi là let&#34;; const constVariable = &#34;Tôi là const&#34;; console.log(varVariable); // Có thể truy cập console.log(letVariable); // Có thể truy cập console.log(constVariable); // Có thể truy cập } console.log(varVariable); // Có thể truy cập (var không có block scope) // console.log(letVariable); // Lỗi: letVariable is not defined // console.log(constVariable); // Lỗi: constVariable is not defined } demonstrateBlockScope(); Hoisting trong JavaScript 1. Function Hoisting // Có thể gọi hàm trước khi khai báo (function declaration) console.log(hoistedFunction()); // &#34;Tôi được hoisted!&#34; function hoistedFunction() { return &#34;Tôi được hoisted!&#34;; } // Không thể gọi trước khi khai báo (function expression) // console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization const notHoistedFunction = function() { return &#34;Tôi không được hoisted!&#34;; }; 2. Variable Hoisting console.log(hoistedVar); // undefined (không lỗi) console.log(hoistedLet); // Lỗi: Cannot access before initialization console.log(hoistedConst); // Lỗi: Cannot access before initialization var hoistedVar = &#34;Tôi được hoisted nhưng giá trị là undefined&#34;; let hoistedLet = &#34;Tôi không được hoisted&#34;; const hoistedConst = &#34;Tôi không được hoisted&#34;; Closure (Đóng gói) trong JavaScript Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.">
-      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
-
-      
-    
-	<link rel="stylesheet" href="/css/blogger-about.css" />
+  <link rel="stylesheet" href="/css/blogger-about.css" />
 <script src="/js/search.js" defer></script>
 <script src="/js/animations.js" defer></script>
 
 
-  </head><body class="ma0 avenir bg-near-white production">
+</head><body class="ma0 avenir bg-near-white production">
 
     
 
@@ -280,13 +90,15 @@ Các cách khai báo hàm 1. Function Declaration (Khai báo hàm) // Function d
 
     <main class="pb7" role="main">
       
-  <article class="pa3 pa4-ns nested-copy-line-height">
+  <article class="mw8 center ph3 ph5-ns pv5">
     <header class="mb4">
-      <h1 class="f2 lh-title mv0">JavaScript: Hàm, closure và scope</h1>
-      <p class="f6 gray mt2">October 17, 2025</p>
+      <h1 class="f2 lh-title mb2">JavaScript: Hàm, closure và scope</h1>
+      
+        <p class="f6 gray">17 Oct 2025</p>
+      
     </header>
 
-    <section class="nested-copy-line-height lh-copy">
+    <section class="lh-copy f5 nested-copy-line-height">
       <h2 id="giới-thiệu-về-hàm-trong-javascript">Giới thiệu về Hàm trong JavaScript</h2>
 <p>Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.</p>
 <h2 id="các-cách-khai-báo-hàm">Các cách khai báo hàm</h2>
@@ -790,27 +602,13 @@ Các cách khai báo hàm 1. Function Declaration (Khai báo hàm) // Function d
 
     </section>
 
-    <footer class="mt5">
-      <p class="f6 gray">Tags:</p>
-      <ul class="list pl0">
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/function" class="link dim blue">function</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/closure" class="link dim blue">closure</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/scope" class="link dim blue">scope</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/javascript" class="link dim blue">javascript</a>
-          </li>
-        
-      </ul>
+    <footer class="mt5 pt3 bt b--moon-gray">
+      
+        <a href="/blogphuoc.github.io/posts/js-1/" class="link dim gray mr3">← JavaScript: Tổng quan và cách thêm script vào trang web</a>
+      
+      
+        <a href="/blogphuoc.github.io/posts/js-3/" class="link dim gray">→ JavaScript: Promise và Async/Await</a>
+      
     </footer>
   </article>
 

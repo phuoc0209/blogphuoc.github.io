@@ -1,198 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Java: Kế thừa và đa hình | Blog Tiến Phước</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Giới thiệu về Kế thừa và Đa hình
-Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.
-Kế thừa (Inheritance)
-Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).
-Cú pháp:
-class SubClass extends SuperClass {
-    // code của lớp con
-}
-Ví dụ 1: Hệ thống động vật
-// Lớp cha - Animal
-public class Animal {
-    protected String name;
-    protected int age;
-    protected String species;
-    
-    public Animal(String name, int age, String species) {
-        this.name = name;
-        this.age = age;
-        this.species = species;
-    }
-    
-    public void eat() {
-        System.out.println(name &#43; &#34; đang ăn&#34;);
-    }
-    
-    public void sleep() {
-        System.out.println(name &#43; &#34; đang ngủ&#34;);
-    }
-    
-    public void makeSound() {
-        System.out.println(name &#43; &#34; phát ra âm thanh&#34;);
-    }
-    
-    public void displayInfo() {
-        System.out.println(&#34;Tên: &#34; &#43; name &#43; &#34;, Tuổi: &#34; &#43; age &#43; &#34;, Loài: &#34; &#43; species);
-    }
-}
+  <meta charset="utf-8">
+  <title>Java: Kế thừa và đa hình | Blog Tiến Phước</title>
 
-// Lớp con - Dog
-public class Dog extends Animal {
-    private String breed;
-    
-    public Dog(String name, int age, String breed) {
-        super(name, age, &#34;Chó&#34;); // Gọi constructor của lớp cha
-        this.breed = breed;
-    }
-    
-    @Override
-    public void makeSound() {
-        System.out.println(name &#43; &#34; sủa: Gâu gâu!&#34;);
-    }
-    
-    public void wagTail() {
-        System.out.println(name &#43; &#34; đang vẫy đuôi&#34;);
-    }
-    
-    public void fetch() {
-        System.out.println(name &#43; &#34; đang chạy lấy bóng&#34;);
-    }
-    
-    @Override
-    public void displayInfo() {
-        super.displayInfo();
-        System.out.println(&#34;Giống: &#34; &#43; breed);
-    }
-}
-
-// Lớp con - Cat
-public class Cat extends Animal {
-    private boolean isIndoor;
-    
-    public Cat(String name, int age, boolean isIndoor) {
-        super(name, age, &#34;Mèo&#34;);
-        this.isIndoor = isIndoor;
-    }
-    
-    @Override
-    public void makeSound() {
-        System.out.println(name &#43; &#34; kêu: Meo meo!&#34;);
-    }
-    
-    public void purr() {
-        System.out.println(name &#43; &#34; đang kêu rừ rừ&#34;);
-    }
-    
-    public void climb() {
-        System.out.println(name &#43; &#34; đang leo trèo&#34;);
-    }
-    
-    @Override
-    public void displayInfo() {
-        super.displayInfo();
-        System.out.println(&#34;Sống trong nhà: &#34; &#43; (isIndoor ? &#34;Có&#34; : &#34;Không&#34;));
-    }
-}
-Demo kế thừa:
-public class AnimalDemo {
-    public static void main(String[] args) {
-        Dog dog = new Dog(&#34;Buddy&#34;, 3, &#34;Golden Retriever&#34;);
-        Cat cat = new Cat(&#34;Whiskers&#34;, 2, true);
-        
-        // Sử dụng phương thức từ lớp cha
-        dog.eat();
-        cat.sleep();
-        
-        // Sử dụng phương thức đã override
-        dog.makeSound();
-        cat.makeSound();
-        
-        // Sử dụng phương thức riêng của lớp con
-        dog.wagTail();
-        cat.purr();
-        
-        // Hiển thị thông tin
-        dog.displayInfo();
-        cat.displayInfo();
-    }
-}
-Abstract Class (Lớp trừu tượng)
-Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.">
-    <meta name="generator" content="Hugo 0.151.2">
-    
-    
-    
-      <meta name="robots" content="index, follow">
-    
-    <meta name="author" content="Nguyễn Tiến Phước">
-    
-
-    
+  
 <link rel="stylesheet" href="/blogphuoc.github.io/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
 
+  
+
+
+  
     
 
+  
 
-    
-      
+  
+    <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-3/">
+  
 
-    
+  
+  <link rel="stylesheet" href="/css/custom.css">
 
-    
-
-    
-      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-3/">
-    
-
-    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io/posts/java-3/">
-  <meta property="og:site_name" content="Blog Tiến Phước">
-  <meta property="og:title" content="Java: Kế thừa và đa hình">
-  <meta property="og:description" content="Giới thiệu về Kế thừa và Đa hình Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.
-Kế thừa (Inheritance) Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).
-Cú pháp: class SubClass extends SuperClass { // code của lớp con } Ví dụ 1: Hệ thống động vật // Lớp cha - Animal public class Animal { protected String name; protected int age; protected String species; public Animal(String name, int age, String species) { this.name = name; this.age = age; this.species = species; } public void eat() { System.out.println(name &#43; &#34; đang ăn&#34;); } public void sleep() { System.out.println(name &#43; &#34; đang ngủ&#34;); } public void makeSound() { System.out.println(name &#43; &#34; phát ra âm thanh&#34;); } public void displayInfo() { System.out.println(&#34;Tên: &#34; &#43; name &#43; &#34;, Tuổi: &#34; &#43; age &#43; &#34;, Loài: &#34; &#43; species); } } // Lớp con - Dog public class Dog extends Animal { private String breed; public Dog(String name, int age, String breed) { super(name, age, &#34;Chó&#34;); // Gọi constructor của lớp cha this.breed = breed; } @Override public void makeSound() { System.out.println(name &#43; &#34; sủa: Gâu gâu!&#34;); } public void wagTail() { System.out.println(name &#43; &#34; đang vẫy đuôi&#34;); } public void fetch() { System.out.println(name &#43; &#34; đang chạy lấy bóng&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Giống: &#34; &#43; breed); } } // Lớp con - Cat public class Cat extends Animal { private boolean isIndoor; public Cat(String name, int age, boolean isIndoor) { super(name, age, &#34;Mèo&#34;); this.isIndoor = isIndoor; } @Override public void makeSound() { System.out.println(name &#43; &#34; kêu: Meo meo!&#34;); } public void purr() { System.out.println(name &#43; &#34; đang kêu rừ rừ&#34;); } public void climb() { System.out.println(name &#43; &#34; đang leo trèo&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Sống trong nhà: &#34; &#43; (isIndoor ? &#34;Có&#34; : &#34;Không&#34;)); } } Demo kế thừa: public class AnimalDemo { public static void main(String[] args) { Dog dog = new Dog(&#34;Buddy&#34;, 3, &#34;Golden Retriever&#34;); Cat cat = new Cat(&#34;Whiskers&#34;, 2, true); // Sử dụng phương thức từ lớp cha dog.eat(); cat.sleep(); // Sử dụng phương thức đã override dog.makeSound(); cat.makeSound(); // Sử dụng phương thức riêng của lớp con dog.wagTail(); cat.purr(); // Hiển thị thông tin dog.displayInfo(); cat.displayInfo(); } } Abstract Class (Lớp trừu tượng) Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.">
-  <meta property="og:locale" content="vi">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-10-17T09:20:00+07:00">
-    <meta property="article:modified_time" content="2025-10-17T09:20:00+07:00">
-    <meta property="article:tag" content="Inheritance">
-    <meta property="article:tag" content="Polymorphism">
-    <meta property="article:tag" content="Java">
-
-  <meta itemprop="name" content="Java: Kế thừa và đa hình">
-  <meta itemprop="description" content="Giới thiệu về Kế thừa và Đa hình Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.
-Kế thừa (Inheritance) Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).
-Cú pháp: class SubClass extends SuperClass { // code của lớp con } Ví dụ 1: Hệ thống động vật // Lớp cha - Animal public class Animal { protected String name; protected int age; protected String species; public Animal(String name, int age, String species) { this.name = name; this.age = age; this.species = species; } public void eat() { System.out.println(name &#43; &#34; đang ăn&#34;); } public void sleep() { System.out.println(name &#43; &#34; đang ngủ&#34;); } public void makeSound() { System.out.println(name &#43; &#34; phát ra âm thanh&#34;); } public void displayInfo() { System.out.println(&#34;Tên: &#34; &#43; name &#43; &#34;, Tuổi: &#34; &#43; age &#43; &#34;, Loài: &#34; &#43; species); } } // Lớp con - Dog public class Dog extends Animal { private String breed; public Dog(String name, int age, String breed) { super(name, age, &#34;Chó&#34;); // Gọi constructor của lớp cha this.breed = breed; } @Override public void makeSound() { System.out.println(name &#43; &#34; sủa: Gâu gâu!&#34;); } public void wagTail() { System.out.println(name &#43; &#34; đang vẫy đuôi&#34;); } public void fetch() { System.out.println(name &#43; &#34; đang chạy lấy bóng&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Giống: &#34; &#43; breed); } } // Lớp con - Cat public class Cat extends Animal { private boolean isIndoor; public Cat(String name, int age, boolean isIndoor) { super(name, age, &#34;Mèo&#34;); this.isIndoor = isIndoor; } @Override public void makeSound() { System.out.println(name &#43; &#34; kêu: Meo meo!&#34;); } public void purr() { System.out.println(name &#43; &#34; đang kêu rừ rừ&#34;); } public void climb() { System.out.println(name &#43; &#34; đang leo trèo&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Sống trong nhà: &#34; &#43; (isIndoor ? &#34;Có&#34; : &#34;Không&#34;)); } } Demo kế thừa: public class AnimalDemo { public static void main(String[] args) { Dog dog = new Dog(&#34;Buddy&#34;, 3, &#34;Golden Retriever&#34;); Cat cat = new Cat(&#34;Whiskers&#34;, 2, true); // Sử dụng phương thức từ lớp cha dog.eat(); cat.sleep(); // Sử dụng phương thức đã override dog.makeSound(); cat.makeSound(); // Sử dụng phương thức riêng của lớp con dog.wagTail(); cat.purr(); // Hiển thị thông tin dog.displayInfo(); cat.displayInfo(); } } Abstract Class (Lớp trừu tượng) Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.">
-  <meta itemprop="datePublished" content="2025-10-17T09:20:00+07:00">
-  <meta itemprop="dateModified" content="2025-10-17T09:20:00+07:00">
-  <meta itemprop="wordCount" content="1484">
-  <meta itemprop="keywords" content="Inheritance,Polymorphism,Java">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Java: Kế thừa và đa hình">
-  <meta name="twitter:description" content="Giới thiệu về Kế thừa và Đa hình Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.
-Kế thừa (Inheritance) Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).
-Cú pháp: class SubClass extends SuperClass { // code của lớp con } Ví dụ 1: Hệ thống động vật // Lớp cha - Animal public class Animal { protected String name; protected int age; protected String species; public Animal(String name, int age, String species) { this.name = name; this.age = age; this.species = species; } public void eat() { System.out.println(name &#43; &#34; đang ăn&#34;); } public void sleep() { System.out.println(name &#43; &#34; đang ngủ&#34;); } public void makeSound() { System.out.println(name &#43; &#34; phát ra âm thanh&#34;); } public void displayInfo() { System.out.println(&#34;Tên: &#34; &#43; name &#43; &#34;, Tuổi: &#34; &#43; age &#43; &#34;, Loài: &#34; &#43; species); } } // Lớp con - Dog public class Dog extends Animal { private String breed; public Dog(String name, int age, String breed) { super(name, age, &#34;Chó&#34;); // Gọi constructor của lớp cha this.breed = breed; } @Override public void makeSound() { System.out.println(name &#43; &#34; sủa: Gâu gâu!&#34;); } public void wagTail() { System.out.println(name &#43; &#34; đang vẫy đuôi&#34;); } public void fetch() { System.out.println(name &#43; &#34; đang chạy lấy bóng&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Giống: &#34; &#43; breed); } } // Lớp con - Cat public class Cat extends Animal { private boolean isIndoor; public Cat(String name, int age, boolean isIndoor) { super(name, age, &#34;Mèo&#34;); this.isIndoor = isIndoor; } @Override public void makeSound() { System.out.println(name &#43; &#34; kêu: Meo meo!&#34;); } public void purr() { System.out.println(name &#43; &#34; đang kêu rừ rừ&#34;); } public void climb() { System.out.println(name &#43; &#34; đang leo trèo&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Sống trong nhà: &#34; &#43; (isIndoor ? &#34;Có&#34; : &#34;Không&#34;)); } } Demo kế thừa: public class AnimalDemo { public static void main(String[] args) { Dog dog = new Dog(&#34;Buddy&#34;, 3, &#34;Golden Retriever&#34;); Cat cat = new Cat(&#34;Whiskers&#34;, 2, true); // Sử dụng phương thức từ lớp cha dog.eat(); cat.sleep(); // Sử dụng phương thức đã override dog.makeSound(); cat.makeSound(); // Sử dụng phương thức riêng của lớp con dog.wagTail(); cat.purr(); // Hiển thị thông tin dog.displayInfo(); cat.displayInfo(); } } Abstract Class (Lớp trừu tượng) Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.">
-      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
-
-      
-    
-	<link rel="stylesheet" href="/css/blogger-about.css" />
+  <link rel="stylesheet" href="/css/blogger-about.css" />
 <script src="/js/search.js" defer></script>
 <script src="/js/animations.js" defer></script>
 
 
-  </head><body class="ma0 avenir bg-near-white production">
+</head><body class="ma0 avenir bg-near-white production">
 
     
 
@@ -252,13 +90,15 @@ Cú pháp: class SubClass extends SuperClass { // code của lớp con } Ví d�
 
     <main class="pb7" role="main">
       
-  <article class="pa3 pa4-ns nested-copy-line-height">
+  <article class="mw8 center ph3 ph5-ns pv5">
     <header class="mb4">
-      <h1 class="f2 lh-title mv0">Java: Kế thừa và đa hình</h1>
-      <p class="f6 gray mt2">October 17, 2025</p>
+      <h1 class="f2 lh-title mb2">Java: Kế thừa và đa hình</h1>
+      
+        <p class="f6 gray">17 Oct 2025</p>
+      
     </header>
 
-    <section class="nested-copy-line-height lh-copy">
+    <section class="lh-copy f5 nested-copy-line-height">
       <h2 id="giới-thiệu-về-kế-thừa-và-đa-hình">Giới thiệu về Kế thừa và Đa hình</h2>
 <p>Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.</p>
 <h2 id="kế-thừa-inheritance">Kế thừa (Inheritance)</h2>
@@ -692,23 +532,13 @@ Cú pháp: class SubClass extends SuperClass { // code của lớp con } Ví d�
 
     </section>
 
-    <footer class="mt5">
-      <p class="f6 gray">Tags:</p>
-      <ul class="list pl0">
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/inheritance" class="link dim blue">inheritance</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/polymorphism" class="link dim blue">polymorphism</a>
-          </li>
-        
-          <li class="dib mr2">
-            <a href="/blogphuoc.github.io/tags/java" class="link dim blue">java</a>
-          </li>
-        
-      </ul>
+    <footer class="mt5 pt3 bt b--moon-gray">
+      
+        <a href="/blogphuoc.github.io/posts/java-2/" class="link dim gray mr3">← Java: Lập trình hướng đối tượng - Lớp và đối tượng</a>
+      
+      
+        <a href="/blogphuoc.github.io/posts/java-4/" class="link dim gray">→ Java: Xử lý ngoại lệ và logging</a>
+      
     </footer>
   </article>
 
