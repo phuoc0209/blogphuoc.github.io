@@ -2,124 +2,115 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blogphuoc.github.io/categories/blog/</loc>
-    <lastmod>2025-10-17T20:16:49+07:00</lastmod>
-  </url><url>
-    <loc>https://blogphuoc.github.io/categories/</loc>
-    <lastmod>2025-10-17T20:16:49+07:00</lastmod>
-  </url><url>
-    <loc>https://blogphuoc.github.io/tags/intro/</loc>
-    <lastmod>2025-10-17T20:16:49+07:00</lastmod>
-  </url><url>
-    <loc>https://blogphuoc.github.io/</loc>
-    <lastmod>2025-10-17T20:16:49+07:00</lastmod>
-  </url><url>
-    <loc>https://blogphuoc.github.io/posts/</loc>
-    <lastmod>2025-10-17T20:16:49+07:00</lastmod>
-  </url><url>
-    <loc>https://blogphuoc.github.io/tags/</loc>
-    <lastmod>2025-10-17T20:16:49+07:00</lastmod>
-  </url><url>
-    <loc>https://blogphuoc.github.io/tags/welcome/</loc>
-    <lastmod>2025-10-17T20:16:49+07:00</lastmod>
-  </url><url>
-    <loc>https://blogphuoc.github.io/posts/hello-world/</loc>
-    <lastmod>2025-10-17T20:16:49+07:00</lastmod>
-  </url><url>
-    <loc>https://blogphuoc.github.io/tags/dom/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/event/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//categories/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/javascript/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/dom/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/categories/javascript/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/event/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/js-4/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/javascript/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/async/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//categories/javascript/</loc>
+    <lastmod>2025-10-17T10:30:00+07:00</lastmod>
+  </url><url>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/js-4/</loc>
+    <lastmod>2025-10-17T10:30:00+07:00</lastmod>
+  </url><url>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/</loc>
+    <lastmod>2025-10-17T10:30:00+07:00</lastmod>
+  </url><url>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/</loc>
+    <lastmod>2025-10-17T10:30:00+07:00</lastmod>
+  </url><url>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/async/</loc>
     <lastmod>2025-10-17T10:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/await/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/await/</loc>
     <lastmod>2025-10-17T10:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/js-3/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/js-3/</loc>
     <lastmod>2025-10-17T10:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/promise/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/promise/</loc>
     <lastmod>2025-10-17T10:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/closure/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/closure/</loc>
     <lastmod>2025-10-17T10:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/function/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/function/</loc>
     <lastmod>2025-10-17T10:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/js-2/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/js-2/</loc>
     <lastmod>2025-10-17T10:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/scope/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/scope/</loc>
     <lastmod>2025-10-17T10:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/js-1/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/js-1/</loc>
     <lastmod>2025-10-17T10:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/file/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/file/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/io/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/io/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/categories/java/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//categories/java/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/java/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/java/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-5/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/java-5/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/exception/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/exception/</loc>
     <lastmod>2025-10-17T09:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-4/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/java-4/</loc>
     <lastmod>2025-10-17T09:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/logging/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/logging/</loc>
     <lastmod>2025-10-17T09:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/inheritance/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/inheritance/</loc>
     <lastmod>2025-10-17T09:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-3/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/java-3/</loc>
     <lastmod>2025-10-17T09:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/polymorphism/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/polymorphism/</loc>
     <lastmod>2025-10-17T09:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/class/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/class/</loc>
     <lastmod>2025-10-17T09:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-2/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/java-2/</loc>
     <lastmod>2025-10-17T09:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/object/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/object/</loc>
     <lastmod>2025-10-17T09:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/oop/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/oop/</loc>
     <lastmod>2025-10-17T09:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/c%C6%A1-b%E1%BA%A3n/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/c%C6%A1-b%E1%BA%A3n/</loc>
     <lastmod>2025-10-17T09:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-1/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//tags/intro/</loc>
     <lastmod>2025-10-17T09:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/about/</loc>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//posts/java-1/</loc>
+    <lastmod>2025-10-17T09:00:00+07:00</lastmod>
+  </url><url>
+    <loc>https://phuoc0209.github.io/blogphuoc.github.io//about/</loc>
     <lastmod>2025-10-17T00:00:00+07:00</lastmod>
   </url>
 </urlset>

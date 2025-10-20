@@ -1,22 +1,75 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="vi">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>JavaScript: Tổng quan và cách thêm script vào trang web | phước Blog</title>
+    <title>JavaScript: Tổng quan và cách thêm script vào trang web | Blog Tiến Phước</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Giới thiệu JavaScript, cách nhúng script trong HTML, và thao tác DOM cơ bản (getElementById, querySelector, addEventListener).">
+    <meta name="description" content="Giới thiệu về JavaScript
+JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.
+Cách thêm JavaScript vào HTML
+1. Inline JavaScript (trong thẻ HTML)
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;vi&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;JavaScript Cơ bản&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Chào mừng đến với JavaScript!&lt;/h1&gt;
+    &lt;button onclick=&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;&gt;Nhấn tôi&lt;/button&gt;
+    
+    &lt;!-- Inline script --&gt;
+    &lt;script&gt;
+        console.log(&#34;JavaScript đang chạy!&#34;);
+        document.write(&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+2. Internal JavaScript (trong thẻ script)
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;vi&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;title&gt;Internal JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id=&#34;title&#34;&gt;Tiêu đề động&lt;/h1&gt;
+    &lt;p id=&#34;content&#34;&gt;Nội dung sẽ thay đổi&lt;/p&gt;
+    &lt;button id=&#34;changeBtn&#34;&gt;Thay đổi nội dung&lt;/button&gt;
+    
+    &lt;script&gt;
+        // Chờ DOM load xong
+        document.addEventListener(&#39;DOMContentLoaded&#39;, function() {
+            const title = document.getElementById(&#39;title&#39;);
+            const content = document.getElementById(&#39;content&#39;);
+            const changeBtn = document.getElementById(&#39;changeBtn&#39;);
+            
+            changeBtn.addEventListener(&#39;click&#39;, function() {
+                title.textContent = &#39;Tiêu đề đã thay đổi!&#39;;
+                content.innerHTML = &#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;;
+                changeBtn.style.backgroundColor = &#39;#4CAF50&#39;;
+                changeBtn.textContent = &#39;Đã thay đổi!&#39;;
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+3. External JavaScript (file riêng)
+index.html:">
     <meta name="generator" content="Hugo 0.151.2">
     
     
     
       <meta name="robots" content="index, follow">
     
+    <meta name="author" content="Nguyễn Tiến Phước">
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
+<link rel="stylesheet" href="/blogphuoc.github.io//ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
@@ -32,14 +85,15 @@
     
 
     
-      <link rel="canonical" href="https://blogphuoc.github.io/posts/js-1/">
+      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io//posts/js-1/">
     
 
-    <meta property="og:url" content="https://blogphuoc.github.io/posts/js-1/">
-  <meta property="og:site_name" content="phước Blog">
+    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io//posts/js-1/">
+  <meta property="og:site_name" content="Blog Tiến Phước">
   <meta property="og:title" content="JavaScript: Tổng quan và cách thêm script vào trang web">
-  <meta property="og:description" content="Giới thiệu JavaScript, cách nhúng script trong HTML, và thao tác DOM cơ bản (getElementById, querySelector, addEventListener).">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:description" content="Giới thiệu về JavaScript JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.
+Cách thêm JavaScript vào HTML 1. Inline JavaScript (trong thẻ HTML) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt; &lt;title&gt;JavaScript Cơ bản&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Chào mừng đến với JavaScript!&lt;/h1&gt; &lt;button onclick=&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;&gt;Nhấn tôi&lt;/button&gt; &lt;!-- Inline script --&gt; &lt;script&gt; console.log(&#34;JavaScript đang chạy!&#34;); document.write(&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 2. Internal JavaScript (trong thẻ script) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;title&gt;Internal JavaScript&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1 id=&#34;title&#34;&gt;Tiêu đề động&lt;/h1&gt; &lt;p id=&#34;content&#34;&gt;Nội dung sẽ thay đổi&lt;/p&gt; &lt;button id=&#34;changeBtn&#34;&gt;Thay đổi nội dung&lt;/button&gt; &lt;script&gt; // Chờ DOM load xong document.addEventListener(&#39;DOMContentLoaded&#39;, function() { const title = document.getElementById(&#39;title&#39;); const content = document.getElementById(&#39;content&#39;); const changeBtn = document.getElementById(&#39;changeBtn&#39;); changeBtn.addEventListener(&#39;click&#39;, function() { title.textContent = &#39;Tiêu đề đã thay đổi!&#39;; content.innerHTML = &#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;; changeBtn.style.backgroundColor = &#39;#4CAF50&#39;; changeBtn.textContent = &#39;Đã thay đổi!&#39;; }); }); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 3. External JavaScript (file riêng) index.html:">
+  <meta property="og:locale" content="vi">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-10-17T10:00:00+07:00">
@@ -48,18 +102,23 @@
     <meta property="article:tag" content="Dom">
 
   <meta itemprop="name" content="JavaScript: Tổng quan và cách thêm script vào trang web">
-  <meta itemprop="description" content="Giới thiệu JavaScript, cách nhúng script trong HTML, và thao tác DOM cơ bản (getElementById, querySelector, addEventListener).">
+  <meta itemprop="description" content="Giới thiệu về JavaScript JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.
+Cách thêm JavaScript vào HTML 1. Inline JavaScript (trong thẻ HTML) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt; &lt;title&gt;JavaScript Cơ bản&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Chào mừng đến với JavaScript!&lt;/h1&gt; &lt;button onclick=&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;&gt;Nhấn tôi&lt;/button&gt; &lt;!-- Inline script --&gt; &lt;script&gt; console.log(&#34;JavaScript đang chạy!&#34;); document.write(&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 2. Internal JavaScript (trong thẻ script) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;title&gt;Internal JavaScript&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1 id=&#34;title&#34;&gt;Tiêu đề động&lt;/h1&gt; &lt;p id=&#34;content&#34;&gt;Nội dung sẽ thay đổi&lt;/p&gt; &lt;button id=&#34;changeBtn&#34;&gt;Thay đổi nội dung&lt;/button&gt; &lt;script&gt; // Chờ DOM load xong document.addEventListener(&#39;DOMContentLoaded&#39;, function() { const title = document.getElementById(&#39;title&#39;); const content = document.getElementById(&#39;content&#39;); const changeBtn = document.getElementById(&#39;changeBtn&#39;); changeBtn.addEventListener(&#39;click&#39;, function() { title.textContent = &#39;Tiêu đề đã thay đổi!&#39;; content.innerHTML = &#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;; changeBtn.style.backgroundColor = &#39;#4CAF50&#39;; changeBtn.textContent = &#39;Đã thay đổi!&#39;; }); }); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 3. External JavaScript (file riêng) index.html:">
   <meta itemprop="datePublished" content="2025-10-17T10:00:00+07:00">
   <meta itemprop="dateModified" content="2025-10-17T10:00:00+07:00">
-  <meta itemprop="wordCount" content="17">
+  <meta itemprop="wordCount" content="1492">
   <meta itemprop="keywords" content="Javascript,Dom">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="JavaScript: Tổng quan và cách thêm script vào trang web">
-  <meta name="twitter:description" content="Giới thiệu JavaScript, cách nhúng script trong HTML, và thao tác DOM cơ bản (getElementById, querySelector, addEventListener).">
+  <meta name="twitter:description" content="Giới thiệu về JavaScript JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.
+Cách thêm JavaScript vào HTML 1. Inline JavaScript (trong thẻ HTML) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt; &lt;title&gt;JavaScript Cơ bản&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Chào mừng đến với JavaScript!&lt;/h1&gt; &lt;button onclick=&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;&gt;Nhấn tôi&lt;/button&gt; &lt;!-- Inline script --&gt; &lt;script&gt; console.log(&#34;JavaScript đang chạy!&#34;); document.write(&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 2. Internal JavaScript (trong thẻ script) &lt;!DOCTYPE html&gt; &lt;html lang=&#34;vi&#34;&gt; &lt;head&gt; &lt;meta charset=&#34;UTF-8&#34;&gt; &lt;title&gt;Internal JavaScript&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1 id=&#34;title&#34;&gt;Tiêu đề động&lt;/h1&gt; &lt;p id=&#34;content&#34;&gt;Nội dung sẽ thay đổi&lt;/p&gt; &lt;button id=&#34;changeBtn&#34;&gt;Thay đổi nội dung&lt;/button&gt; &lt;script&gt; // Chờ DOM load xong document.addEventListener(&#39;DOMContentLoaded&#39;, function() { const title = document.getElementById(&#39;title&#39;); const content = document.getElementById(&#39;content&#39;); const changeBtn = document.getElementById(&#39;changeBtn&#39;); changeBtn.addEventListener(&#39;click&#39;, function() { title.textContent = &#39;Tiêu đề đã thay đổi!&#39;; content.innerHTML = &#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;; changeBtn.style.backgroundColor = &#39;#4CAF50&#39;; changeBtn.textContent = &#39;Đã thay đổi!&#39;; }); }); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 3. External JavaScript (file riêng) index.html:">
+      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
 
       
     
 	<link rel="stylesheet" href="/css/blogger-about.css" />
+<script src="/js/search.js" defer></script>
+<script src="/js/animations.js" defer></script>
 
 
   </head><body class="ma0 avenir bg-near-white production">
@@ -72,9 +131,9 @@
     <div class="bg-black">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
-    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+    <a href="/blogphuoc.github.io/" class="f3 fw2 hover-white white-90 dib no-underline">
       
-        phước Blog
+        Blog Tiến Phước
       
     </a>
     <div class="flex-l items-center">
@@ -84,14 +143,20 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="Home page">
-              Home
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/" title="Trang chủ page">
+              Trang chủ
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/posts/" title="Blog page">
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/posts/" title="Blog page">
               Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/about/" title="Giới thiệu page">
+              Giới thiệu
             </a>
           </li>
           
@@ -100,7 +165,7 @@
       <div class="ananke-socials"></div>
 
       
-        <a class="ml3 f6 white-80 no-underline" href="https://blogphuoc.github.io/" target="_blank" rel="noopener">GitHub</a>
+        <a class="ml3 f6 white-80 no-underline" href="https://phuoc0209.github.io/blogphuoc.github.io/" target="_blank" rel="noopener">GitHub</a>
       
     </div>
   </div>
@@ -123,6 +188,9 @@
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
 <h1 class="f1 athelas mt3 mb1">JavaScript: Tổng quan và cách thêm script vào trang web</h1>
       
+      <p class="tracked"><strong>Nguyễn Tiến Phước</strong>
+      </p>
+      
       
       
       <time class="f6 mv4 dib tracked" datetime="2025-10-17T10:00:00+07:00">October 17, 2025</time>
@@ -131,15 +199,544 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Giới thiệu JavaScript, cách nhúng script trong HTML, và thao tác DOM cơ bản (getElementById, querySelector, addEventListener).</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="giới-thiệu-về-javascript">Giới thiệu về JavaScript</h2>
+<p>JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu để tạo tương tác trên trang web. Nó chạy trên trình duyệt và có thể thao tác với DOM (Document Object Model) để thay đổi nội dung, cấu trúc và style của trang web.</p>
+<h2 id="cách-thêm-javascript-vào-html">Cách thêm JavaScript vào HTML</h2>
+<h3 id="1-inline-javascript-trong-thẻ-html">1. Inline JavaScript (trong thẻ HTML)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vi&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;JavaScript Cơ bản&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;Chào mừng đến với JavaScript!&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;alert(&#39;Xin chào từ JavaScript!&#39;)&#34;</span>&gt;Nhấn tôi&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- Inline script --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;JavaScript đang chạy!&#34;</span>);
+</span></span><span style="display:flex;"><span>        document.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;&lt;p&gt;Đây là nội dung được tạo bởi JavaScript&lt;/p&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="2-internal-javascript-trong-thẻ-script">2. Internal JavaScript (trong thẻ script)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vi&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Internal JavaScript&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span>&gt;Tiêu đề động&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;content&#34;</span>&gt;Nội dung sẽ thay đổi&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;changeBtn&#34;</span>&gt;Thay đổi nội dung&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Chờ DOM load xong
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;DOMContentLoaded&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;title&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;content&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">changeBtn</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;changeBtn&#39;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">changeBtn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">title</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Tiêu đề đã thay đổi!&#39;</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">changeBtn</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">backgroundColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#4CAF50&#39;</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">changeBtn</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Đã thay đổi!&#39;</span>;
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="3-external-javascript-file-riêng">3. External JavaScript (file riêng)</h3>
+<p><strong>index.html:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vi&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;External JavaScript&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;styles.css&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;Ứng dụng JavaScript&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nameInput&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Nhập tên của bạn&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;greetBtn&#34;</span>&gt;Chào mừng&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;output&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- Load JavaScript file --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;script.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p><strong>script.js:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Chờ DOM load xong
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;DOMContentLoaded&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nameInput</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;nameInput&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">greetBtn</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;greetBtn&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;output&#39;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">greetBtn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nameInput</span>.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">trim</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">name</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">output</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;p style=&#34;color: red;&#34;&gt;Vui lòng nhập tên!&lt;/p&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">output</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &lt;div style=&#34;background: #e8f5e8; padding: 15px; border-radius: 5px; margin-top: 10px;&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &lt;h3&gt;Xin chào, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!&lt;/h3&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &lt;p&gt;Chào mừng bạn đến với JavaScript!&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &lt;small&gt;Thời gian: </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toLocaleString</span>(<span style="color:#e6db74">&#39;vi-VN&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/small&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            `</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Xử lý khi nhấn Enter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">nameInput</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;keypress&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;Enter&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">greetBtn</span>.<span style="color:#a6e22e">click</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="thao-tác-dom-cơ-bản">Thao tác DOM cơ bản</h2>
+<h3 id="1-lấy-phần-tử-getelementbyid-queryselector">1. Lấy phần tử (getElementById, querySelector)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vi&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;DOM Selectors&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">highlight</span> { <span style="color:#66d9ef">background-color</span>: <span style="color:#66d9ef">yellow</span>; }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">error</span> { <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">red</span>; }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">success</span> { <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">green</span>; }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mainTitle&#34;</span>&gt;Thao tác DOM&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;intro&#34;</span>&gt;Đây là đoạn văn giới thiệu&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;content&#34;</span>&gt;Nội dung chính của trang&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;list&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">li</span>&gt;Mục 1&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">li</span>&gt;Mục 2&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">li</span>&gt;Mục 3&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Các cách lấy phần tử
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;=== Các cách lấy phần tử ===&#34;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// getElementById
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;mainTitle&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;getElementById:&#39;</span>, <span style="color:#a6e22e">title</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// querySelector (CSS selector)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">intro</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.intro&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;querySelector class:&#39;</span>, <span style="color:#a6e22e">intro</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstLi</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;li&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;querySelector tag:&#39;</span>, <span style="color:#a6e22e">firstLi</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// querySelectorAll (lấy tất cả)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">allLis</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#39;li&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;querySelectorAll:&#39;</span>, <span style="color:#a6e22e">allLis</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// getElementsByClassName
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">paragraphs</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementsByClassName</span>(<span style="color:#e6db74">&#39;content&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;getElementsByClassName:&#39;</span>, <span style="color:#a6e22e">paragraphs</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// getElementsByTagName
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">allPs</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#39;p&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;getElementsByTagName:&#39;</span>, <span style="color:#a6e22e">allPs</span>);
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="2-thay-đổi-nội-dung-và-thuộc-tính">2. Thay đổi nội dung và thuộc tính</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vi&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Thay đổi DOM&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">card</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#ccc</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#f9f9f9</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">hidden</span> { <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">none</span>; }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">visible</span> { <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">block</span>; }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;card&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">h2</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cardTitle&#34;</span>&gt;Thẻ thông tin&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cardContent&#34;</span>&gt;Nội dung ban đầu&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cardImage&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Hình ảnh&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 200px; height: 150px; background: #ddd;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;updateBtn&#34;</span>&gt;Cập nhật&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toggleBtn&#34;</span>&gt;Ẩn/Hiện&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cardTitle</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;cardTitle&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cardContent</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;cardContent&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cardImage</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;cardImage&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">updateBtn</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;updateBtn&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">toggleBtn</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;toggleBtn&#39;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thay đổi nội dung text
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">updateBtn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">cardTitle</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Thẻ đã được cập nhật!&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">cardContent</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;strong&gt;Nội dung mới với HTML!&lt;/strong&gt;&lt;br&gt;&lt;em&gt;Thời gian: &#39;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toLocaleTimeString</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;&lt;/em&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Thay đổi thuộc tính
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">cardImage</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://via.placeholder.com/200x150/4CAF50/white?text=Updated&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">cardImage</span>.<span style="color:#a6e22e">alt</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Hình ảnh đã cập nhật&#39;</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Thay đổi style
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">cardTitle</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;#4CAF50&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">cardContent</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">fontSize</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;16px&#39;</span>;
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Ẩn/hiện phần tử
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">toggleBtn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cardContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#39;hidden&#39;</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">cardContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;hidden&#39;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">cardContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;visible&#39;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">toggleBtn</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Ẩn&#39;</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">cardContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#39;visible&#39;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">cardContent</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#39;hidden&#39;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">toggleBtn</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Hiện&#39;</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h3 id="3-tạo-và-xóa-phần-tử">3. Tạo và xóa phần tử</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vi&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Tạo và xóa phần tử&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">todo-item</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#f0f0f0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">3</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">justify-content</span>: <span style="color:#66d9ef">space-between</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">align-items</span>: <span style="color:#66d9ef">center</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">todo-item</span>.<span style="color:#a6e22e">completed</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">text-decoration</span>: <span style="color:#66d9ef">line-through</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">opacity</span>: <span style="color:#ae81ff">0.6</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">delete-btn</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#ff4444</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">3</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">pointer</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">delete-btn</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#cc0000</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;Danh sách công việc&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todoInput&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Nhập công việc mới&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;addBtn&#34;</span>&gt;Thêm&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todoList&#34;</span>&gt;&lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">todoInput</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;todoInput&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">addBtn</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;addBtn&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">todoList</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;todoList&#39;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thêm công việc mới
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">addBtn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#a6e22e">addTodo</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">todoInput</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;keypress&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;Enter&#39;</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">addTodo</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">addTodo</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">todoInput</span>.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">trim</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">text</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Tạo phần tử li
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">li</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;li&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">li</span>.<span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;todo-item&#39;</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Tạo nội dung
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">li</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &lt;span&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">text</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/span&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &lt;div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &lt;button class=&#34;complete-btn&#34;&gt;Hoàn thành&lt;/button&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    &lt;button class=&#34;delete-btn&#34;&gt;Xóa&lt;/button&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            `</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Thêm event listeners
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">completeBtn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">li</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.complete-btn&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">deleteBtn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">li</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.delete-btn&#39;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">completeBtn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">li</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">toggle</span>(<span style="color:#e6db74">&#39;completed&#39;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">completeBtn</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">li</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#39;completed&#39;</span>) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;Chưa hoàn thành&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hoàn thành&#39;</span>;
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">deleteBtn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">li</span>.<span style="color:#a6e22e">remove</span>();
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Thêm vào danh sách
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">todoList</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">li</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Xóa nội dung input
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">todoInput</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h2 id="ví-dụ-thực-tế-calculator-đơn-giản">Ví dụ thực tế: Calculator đơn giản</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vi&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Máy tính đơn giản&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">calculator</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">300</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">auto</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">20</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#333</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#f5f5f5</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">display</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">24</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">text-align</span>: <span style="color:#66d9ef">right</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">margin-bottom</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#ccc</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">buttons</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">grid</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">grid-template-columns</span>: <span style="color:#a6e22e">repeat</span>(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>fr);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">gap</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">btn</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">50</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">18</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#ccc</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">pointer</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">btn</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#e0e0e0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">operator</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#ff9800</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">operator</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#f57c00</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">clear</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#f44336</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">clear</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#d32f2f</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;calculator&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display&#34;</span> <span style="color:#a6e22e">readonly</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;buttons&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn clear&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;clearDisplay()&#34;</span>&gt;C&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn operator&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;deleteLast()&#34;</span>&gt;⌫&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn operator&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;/&#39;)&#34;</span>&gt;/&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn operator&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;*&#39;)&#34;</span>&gt;×&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;7&#39;)&#34;</span>&gt;7&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;8&#39;)&#34;</span>&gt;8&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;9&#39;)&#34;</span>&gt;9&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn operator&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;-&#39;)&#34;</span>&gt;-&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;4&#39;)&#34;</span>&gt;4&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;5&#39;)&#34;</span>&gt;5&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;6&#39;)&#34;</span>&gt;6&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn operator&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;+&#39;)&#34;</span>&gt;+&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;1&#39;)&#34;</span>&gt;1&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;2&#39;)&#34;</span>&gt;2&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;3&#39;)&#34;</span>&gt;3&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn operator&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;calculate()&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;grid-row: span 2;&#34;</span>&gt;=&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;0&#39;)&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;grid-column: span 2;&#34;</span>&gt;0&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;appendToDisplay(&#39;.&#39;)&#34;</span>&gt;.&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;display&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">operator</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">previousInput</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">appendToDisplay</span>(<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">currentInput</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#39;.&#39;</span>)) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;0&#39;</span>) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">display</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">currentInput</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">clearDisplay</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">operator</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">previousInput</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">display</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">deleteLast</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">currentInput</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">display</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">currentInput</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setOperator</span>(<span style="color:#a6e22e">op</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">previousInput</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;&#39;</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">calculate</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">operator</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">op</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">previousInput</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">currentInput</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculate</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">previousInput</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">prev</span> <span style="color:#f92672">=</span> parseFloat(<span style="color:#a6e22e">previousInput</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">current</span> <span style="color:#f92672">=</span> parseFloat(<span style="color:#a6e22e">currentInput</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">operator</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;+&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prev</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">current</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;-&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prev</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">current</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;*&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prev</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">current</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;/&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">current</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">display</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Lỗi: Chia cho 0&#39;</span>;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prev</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">current</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">display</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">currentInput</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">operator</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">previousInput</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Xử lý phím bàn phím
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;keydown&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">&gt;=</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">&lt;=</span> <span style="color:#e6db74">&#39;9&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;.&#39;</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">appendToDisplay</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;+&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;-&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;*&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">setOperator</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;Enter&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;=&#39;</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">calculate</span>();
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;Escape&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;c&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;C&#39;</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">clearDisplay</span>();
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;Backspace&#39;</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">deleteLast</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h2 id="best-practices-cho-javascript-dom">Best Practices cho JavaScript DOM</h2>
+<h3 id="1-chờ-dom-load-xong">1. Chờ DOM load xong</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tốt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;DOMContentLoaded&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Code của bạn ở đây
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hoặc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;load&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Code của bạn ở đây
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>});
+</span></span></code></pre></div><h3 id="2-sử-dụng-event-delegation">2. Sử dụng event delegation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tốt - sử dụng event delegation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;todoList&#39;</span>).<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">classList</span>.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#39;delete-btn&#39;</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">parentElement</span>.<span style="color:#a6e22e">remove</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tránh - thêm listener cho từng phần tử
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// document.querySelectorAll(&#39;.delete-btn&#39;).forEach(btn =&gt; {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     btn.addEventListener(&#39;click&#39;, function() { ... });
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// });
+</span></span></span></code></pre></div><h3 id="3-kiểm-tra-phần-tử-tồn-tại">3. Kiểm tra phần tử tồn tại</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;myElement&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">element</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Hello&#39;</span>;
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Element not found&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="4-sử-dụng-data-attributes">4. Sử dụng data attributes</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">data-action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;delete&#34;</span> <span style="color:#a6e22e">data-id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;123&#34;</span>&gt;Xóa&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">dataset</span>.<span style="color:#a6e22e">action</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;delete&#39;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">dataset</span>.<span style="color:#a6e22e">id</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Xử lý xóa với ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><h2 id="kết-luận">Kết luận</h2>
+<p>JavaScript DOM là nền tảng quan trọng để tạo tương tác trên web. Việc hiểu cách thao tác với DOM sẽ giúp bạn tạo ra các trang web động và hấp dẫn. Hãy thực hành nhiều với các ví dụ trên để nắm vững kiến thức cơ bản!</p>
 <ul class="pa0">
   
    <li class="list di">
-     <a href="/tags/javascript/" class="tag-badge">Javascript</a>
+     <a href="/blogphuoc.github.io/tags/javascript/" class="tag-badge">Javascript</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/dom/" class="tag-badge">Dom</a>
+     <a href="/blogphuoc.github.io/tags/dom/" class="tag-badge">Dom</a>
    </li>
   
 </ul>
@@ -161,8 +758,8 @@
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://blogphuoc.github.io/" >
-    &copy;  phước Blog 2025 
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://phuoc0209.github.io/blogphuoc.github.io//" >
+    &copy;  Blog Tiến Phước 2025 
   </a>
     <div><div class="ananke-socials"></div>
 </div>

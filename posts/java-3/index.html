@@ -1,22 +1,142 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="vi">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Java: Kế thừa và đa hình | phước Blog</title>
+    <title>Java: Kế thừa và đa hình | Blog Tiến Phước</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Giải thích kế thừa (extends), sử dụng abstract class và interface, cùng ví dụ minh họa đa hình trong Java.">
+    <meta name="description" content="Giới thiệu về Kế thừa và Đa hình
+Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.
+Kế thừa (Inheritance)
+Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).
+Cú pháp:
+class SubClass extends SuperClass {
+    // code của lớp con
+}
+Ví dụ 1: Hệ thống động vật
+// Lớp cha - Animal
+public class Animal {
+    protected String name;
+    protected int age;
+    protected String species;
+    
+    public Animal(String name, int age, String species) {
+        this.name = name;
+        this.age = age;
+        this.species = species;
+    }
+    
+    public void eat() {
+        System.out.println(name &#43; &#34; đang ăn&#34;);
+    }
+    
+    public void sleep() {
+        System.out.println(name &#43; &#34; đang ngủ&#34;);
+    }
+    
+    public void makeSound() {
+        System.out.println(name &#43; &#34; phát ra âm thanh&#34;);
+    }
+    
+    public void displayInfo() {
+        System.out.println(&#34;Tên: &#34; &#43; name &#43; &#34;, Tuổi: &#34; &#43; age &#43; &#34;, Loài: &#34; &#43; species);
+    }
+}
+
+// Lớp con - Dog
+public class Dog extends Animal {
+    private String breed;
+    
+    public Dog(String name, int age, String breed) {
+        super(name, age, &#34;Chó&#34;); // Gọi constructor của lớp cha
+        this.breed = breed;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println(name &#43; &#34; sủa: Gâu gâu!&#34;);
+    }
+    
+    public void wagTail() {
+        System.out.println(name &#43; &#34; đang vẫy đuôi&#34;);
+    }
+    
+    public void fetch() {
+        System.out.println(name &#43; &#34; đang chạy lấy bóng&#34;);
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println(&#34;Giống: &#34; &#43; breed);
+    }
+}
+
+// Lớp con - Cat
+public class Cat extends Animal {
+    private boolean isIndoor;
+    
+    public Cat(String name, int age, boolean isIndoor) {
+        super(name, age, &#34;Mèo&#34;);
+        this.isIndoor = isIndoor;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println(name &#43; &#34; kêu: Meo meo!&#34;);
+    }
+    
+    public void purr() {
+        System.out.println(name &#43; &#34; đang kêu rừ rừ&#34;);
+    }
+    
+    public void climb() {
+        System.out.println(name &#43; &#34; đang leo trèo&#34;);
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println(&#34;Sống trong nhà: &#34; &#43; (isIndoor ? &#34;Có&#34; : &#34;Không&#34;));
+    }
+}
+Demo kế thừa:
+public class AnimalDemo {
+    public static void main(String[] args) {
+        Dog dog = new Dog(&#34;Buddy&#34;, 3, &#34;Golden Retriever&#34;);
+        Cat cat = new Cat(&#34;Whiskers&#34;, 2, true);
+        
+        // Sử dụng phương thức từ lớp cha
+        dog.eat();
+        cat.sleep();
+        
+        // Sử dụng phương thức đã override
+        dog.makeSound();
+        cat.makeSound();
+        
+        // Sử dụng phương thức riêng của lớp con
+        dog.wagTail();
+        cat.purr();
+        
+        // Hiển thị thông tin
+        dog.displayInfo();
+        cat.displayInfo();
+    }
+}
+Abstract Class (Lớp trừu tượng)
+Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.">
     <meta name="generator" content="Hugo 0.151.2">
     
     
     
       <meta name="robots" content="index, follow">
     
+    <meta name="author" content="Nguyễn Tiến Phước">
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
+<link rel="stylesheet" href="/blogphuoc.github.io//ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
@@ -32,14 +152,16 @@
     
 
     
-      <link rel="canonical" href="https://blogphuoc.github.io/posts/java-3/">
+      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io//posts/java-3/">
     
 
-    <meta property="og:url" content="https://blogphuoc.github.io/posts/java-3/">
-  <meta property="og:site_name" content="phước Blog">
+    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io//posts/java-3/">
+  <meta property="og:site_name" content="Blog Tiến Phước">
   <meta property="og:title" content="Java: Kế thừa và đa hình">
-  <meta property="og:description" content="Giải thích kế thừa (extends), sử dụng abstract class và interface, cùng ví dụ minh họa đa hình trong Java.">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:description" content="Giới thiệu về Kế thừa và Đa hình Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.
+Kế thừa (Inheritance) Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).
+Cú pháp: class SubClass extends SuperClass { // code của lớp con } Ví dụ 1: Hệ thống động vật // Lớp cha - Animal public class Animal { protected String name; protected int age; protected String species; public Animal(String name, int age, String species) { this.name = name; this.age = age; this.species = species; } public void eat() { System.out.println(name &#43; &#34; đang ăn&#34;); } public void sleep() { System.out.println(name &#43; &#34; đang ngủ&#34;); } public void makeSound() { System.out.println(name &#43; &#34; phát ra âm thanh&#34;); } public void displayInfo() { System.out.println(&#34;Tên: &#34; &#43; name &#43; &#34;, Tuổi: &#34; &#43; age &#43; &#34;, Loài: &#34; &#43; species); } } // Lớp con - Dog public class Dog extends Animal { private String breed; public Dog(String name, int age, String breed) { super(name, age, &#34;Chó&#34;); // Gọi constructor của lớp cha this.breed = breed; } @Override public void makeSound() { System.out.println(name &#43; &#34; sủa: Gâu gâu!&#34;); } public void wagTail() { System.out.println(name &#43; &#34; đang vẫy đuôi&#34;); } public void fetch() { System.out.println(name &#43; &#34; đang chạy lấy bóng&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Giống: &#34; &#43; breed); } } // Lớp con - Cat public class Cat extends Animal { private boolean isIndoor; public Cat(String name, int age, boolean isIndoor) { super(name, age, &#34;Mèo&#34;); this.isIndoor = isIndoor; } @Override public void makeSound() { System.out.println(name &#43; &#34; kêu: Meo meo!&#34;); } public void purr() { System.out.println(name &#43; &#34; đang kêu rừ rừ&#34;); } public void climb() { System.out.println(name &#43; &#34; đang leo trèo&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Sống trong nhà: &#34; &#43; (isIndoor ? &#34;Có&#34; : &#34;Không&#34;)); } } Demo kế thừa: public class AnimalDemo { public static void main(String[] args) { Dog dog = new Dog(&#34;Buddy&#34;, 3, &#34;Golden Retriever&#34;); Cat cat = new Cat(&#34;Whiskers&#34;, 2, true); // Sử dụng phương thức từ lớp cha dog.eat(); cat.sleep(); // Sử dụng phương thức đã override dog.makeSound(); cat.makeSound(); // Sử dụng phương thức riêng của lớp con dog.wagTail(); cat.purr(); // Hiển thị thông tin dog.displayInfo(); cat.displayInfo(); } } Abstract Class (Lớp trừu tượng) Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.">
+  <meta property="og:locale" content="vi">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-10-17T09:20:00+07:00">
@@ -49,18 +171,25 @@
     <meta property="article:tag" content="Java">
 
   <meta itemprop="name" content="Java: Kế thừa và đa hình">
-  <meta itemprop="description" content="Giải thích kế thừa (extends), sử dụng abstract class và interface, cùng ví dụ minh họa đa hình trong Java.">
+  <meta itemprop="description" content="Giới thiệu về Kế thừa và Đa hình Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.
+Kế thừa (Inheritance) Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).
+Cú pháp: class SubClass extends SuperClass { // code của lớp con } Ví dụ 1: Hệ thống động vật // Lớp cha - Animal public class Animal { protected String name; protected int age; protected String species; public Animal(String name, int age, String species) { this.name = name; this.age = age; this.species = species; } public void eat() { System.out.println(name &#43; &#34; đang ăn&#34;); } public void sleep() { System.out.println(name &#43; &#34; đang ngủ&#34;); } public void makeSound() { System.out.println(name &#43; &#34; phát ra âm thanh&#34;); } public void displayInfo() { System.out.println(&#34;Tên: &#34; &#43; name &#43; &#34;, Tuổi: &#34; &#43; age &#43; &#34;, Loài: &#34; &#43; species); } } // Lớp con - Dog public class Dog extends Animal { private String breed; public Dog(String name, int age, String breed) { super(name, age, &#34;Chó&#34;); // Gọi constructor của lớp cha this.breed = breed; } @Override public void makeSound() { System.out.println(name &#43; &#34; sủa: Gâu gâu!&#34;); } public void wagTail() { System.out.println(name &#43; &#34; đang vẫy đuôi&#34;); } public void fetch() { System.out.println(name &#43; &#34; đang chạy lấy bóng&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Giống: &#34; &#43; breed); } } // Lớp con - Cat public class Cat extends Animal { private boolean isIndoor; public Cat(String name, int age, boolean isIndoor) { super(name, age, &#34;Mèo&#34;); this.isIndoor = isIndoor; } @Override public void makeSound() { System.out.println(name &#43; &#34; kêu: Meo meo!&#34;); } public void purr() { System.out.println(name &#43; &#34; đang kêu rừ rừ&#34;); } public void climb() { System.out.println(name &#43; &#34; đang leo trèo&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Sống trong nhà: &#34; &#43; (isIndoor ? &#34;Có&#34; : &#34;Không&#34;)); } } Demo kế thừa: public class AnimalDemo { public static void main(String[] args) { Dog dog = new Dog(&#34;Buddy&#34;, 3, &#34;Golden Retriever&#34;); Cat cat = new Cat(&#34;Whiskers&#34;, 2, true); // Sử dụng phương thức từ lớp cha dog.eat(); cat.sleep(); // Sử dụng phương thức đã override dog.makeSound(); cat.makeSound(); // Sử dụng phương thức riêng của lớp con dog.wagTail(); cat.purr(); // Hiển thị thông tin dog.displayInfo(); cat.displayInfo(); } } Abstract Class (Lớp trừu tượng) Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.">
   <meta itemprop="datePublished" content="2025-10-17T09:20:00+07:00">
   <meta itemprop="dateModified" content="2025-10-17T09:20:00+07:00">
-  <meta itemprop="wordCount" content="20">
+  <meta itemprop="wordCount" content="1484">
   <meta itemprop="keywords" content="Inheritance,Polymorphism,Java">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Java: Kế thừa và đa hình">
-  <meta name="twitter:description" content="Giải thích kế thừa (extends), sử dụng abstract class và interface, cùng ví dụ minh họa đa hình trong Java.">
+  <meta name="twitter:description" content="Giới thiệu về Kế thừa và Đa hình Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.
+Kế thừa (Inheritance) Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).
+Cú pháp: class SubClass extends SuperClass { // code của lớp con } Ví dụ 1: Hệ thống động vật // Lớp cha - Animal public class Animal { protected String name; protected int age; protected String species; public Animal(String name, int age, String species) { this.name = name; this.age = age; this.species = species; } public void eat() { System.out.println(name &#43; &#34; đang ăn&#34;); } public void sleep() { System.out.println(name &#43; &#34; đang ngủ&#34;); } public void makeSound() { System.out.println(name &#43; &#34; phát ra âm thanh&#34;); } public void displayInfo() { System.out.println(&#34;Tên: &#34; &#43; name &#43; &#34;, Tuổi: &#34; &#43; age &#43; &#34;, Loài: &#34; &#43; species); } } // Lớp con - Dog public class Dog extends Animal { private String breed; public Dog(String name, int age, String breed) { super(name, age, &#34;Chó&#34;); // Gọi constructor của lớp cha this.breed = breed; } @Override public void makeSound() { System.out.println(name &#43; &#34; sủa: Gâu gâu!&#34;); } public void wagTail() { System.out.println(name &#43; &#34; đang vẫy đuôi&#34;); } public void fetch() { System.out.println(name &#43; &#34; đang chạy lấy bóng&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Giống: &#34; &#43; breed); } } // Lớp con - Cat public class Cat extends Animal { private boolean isIndoor; public Cat(String name, int age, boolean isIndoor) { super(name, age, &#34;Mèo&#34;); this.isIndoor = isIndoor; } @Override public void makeSound() { System.out.println(name &#43; &#34; kêu: Meo meo!&#34;); } public void purr() { System.out.println(name &#43; &#34; đang kêu rừ rừ&#34;); } public void climb() { System.out.println(name &#43; &#34; đang leo trèo&#34;); } @Override public void displayInfo() { super.displayInfo(); System.out.println(&#34;Sống trong nhà: &#34; &#43; (isIndoor ? &#34;Có&#34; : &#34;Không&#34;)); } } Demo kế thừa: public class AnimalDemo { public static void main(String[] args) { Dog dog = new Dog(&#34;Buddy&#34;, 3, &#34;Golden Retriever&#34;); Cat cat = new Cat(&#34;Whiskers&#34;, 2, true); // Sử dụng phương thức từ lớp cha dog.eat(); cat.sleep(); // Sử dụng phương thức đã override dog.makeSound(); cat.makeSound(); // Sử dụng phương thức riêng của lớp con dog.wagTail(); cat.purr(); // Hiển thị thông tin dog.displayInfo(); cat.displayInfo(); } } Abstract Class (Lớp trừu tượng) Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.">
+      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
 
       
     
 	<link rel="stylesheet" href="/css/blogger-about.css" />
+<script src="/js/search.js" defer></script>
+<script src="/js/animations.js" defer></script>
 
 
   </head><body class="ma0 avenir bg-near-white production">
@@ -73,9 +202,9 @@
     <div class="bg-black">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
-    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+    <a href="/blogphuoc.github.io/" class="f3 fw2 hover-white white-90 dib no-underline">
       
-        phước Blog
+        Blog Tiến Phước
       
     </a>
     <div class="flex-l items-center">
@@ -85,14 +214,20 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="Home page">
-              Home
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/" title="Trang chủ page">
+              Trang chủ
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/posts/" title="Blog page">
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/posts/" title="Blog page">
               Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/about/" title="Giới thiệu page">
+              Giới thiệu
             </a>
           </li>
           
@@ -101,7 +236,7 @@
       <div class="ananke-socials"></div>
 
       
-        <a class="ml3 f6 white-80 no-underline" href="https://blogphuoc.github.io/" target="_blank" rel="noopener">GitHub</a>
+        <a class="ml3 f6 white-80 no-underline" href="https://phuoc0209.github.io/blogphuoc.github.io/" target="_blank" rel="noopener">GitHub</a>
       
     </div>
   </div>
@@ -124,6 +259,9 @@
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
 <h1 class="f1 athelas mt3 mb1">Java: Kế thừa và đa hình</h1>
       
+      <p class="tracked"><strong>Nguyễn Tiến Phước</strong>
+      </p>
+      
       
       
       <time class="f6 mv4 dib tracked" datetime="2025-10-17T09:20:00+07:00">October 17, 2025</time>
@@ -132,19 +270,448 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Giải thích kế thừa (extends), sử dụng abstract class và interface, cùng ví dụ minh họa đa hình trong Java.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="giới-thiệu-về-kế-thừa-và-đa-hình">Giới thiệu về Kế thừa và Đa hình</h2>
+<p>Kế thừa (Inheritance) và Đa hình (Polymorphism) là hai trong bốn nguyên lý cơ bản của lập trình hướng đối tượng, giúp tạo ra code có thể tái sử dụng và linh hoạt hơn.</p>
+<h2 id="kế-thừa-inheritance">Kế thừa (Inheritance)</h2>
+<p>Kế thừa cho phép một lớp con (subclass) kế thừa các thuộc tính và phương thức từ lớp cha (superclass).</p>
+<h3 id="cú-pháp">Cú pháp:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SubClass</span> <span style="color:#66d9ef">extends</span> SuperClass {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// code của lớp con</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="ví-dụ-1-hệ-thống-động-vật">Ví dụ 1: Hệ thống động vật</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Lớp cha - Animal</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> String name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> age;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> String species;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Animal</span>(String name, <span style="color:#66d9ef">int</span> age, String species) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">species</span> <span style="color:#f92672">=</span> species;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">eat</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang ăn&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sleep</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang ngủ&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">makeSound</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; phát ra âm thanh&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">displayInfo</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Tên: &#34;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, Tuổi: &#34;</span> <span style="color:#f92672">+</span> age <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, Loài: &#34;</span> <span style="color:#f92672">+</span> species);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lớp con - Dog</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dog</span> <span style="color:#66d9ef">extends</span> Animal {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String breed;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Dog</span>(String name, <span style="color:#66d9ef">int</span> age, String breed) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(name, age, <span style="color:#e6db74">&#34;Chó&#34;</span>); <span style="color:#75715e">// Gọi constructor của lớp cha</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">breed</span> <span style="color:#f92672">=</span> breed;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">makeSound</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; sủa: Gâu gâu!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">wagTail</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang vẫy đuôi&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fetch</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang chạy lấy bóng&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">displayInfo</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">displayInfo</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Giống: &#34;</span> <span style="color:#f92672">+</span> breed);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lớp con - Cat</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cat</span> <span style="color:#66d9ef">extends</span> Animal {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> isIndoor;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Cat</span>(String name, <span style="color:#66d9ef">int</span> age, <span style="color:#66d9ef">boolean</span> isIndoor) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(name, age, <span style="color:#e6db74">&#34;Mèo&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isIndoor</span> <span style="color:#f92672">=</span> isIndoor;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">makeSound</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; kêu: Meo meo!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">purr</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang kêu rừ rừ&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">climb</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang leo trèo&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">displayInfo</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">displayInfo</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Sống trong nhà: &#34;</span> <span style="color:#f92672">+</span> (isIndoor <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Có&#34;</span> : <span style="color:#e6db74">&#34;Không&#34;</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="demo-kế-thừa">Demo kế thừa:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AnimalDemo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        Dog dog <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Dog(<span style="color:#e6db74">&#34;Buddy&#34;</span>, 3, <span style="color:#e6db74">&#34;Golden Retriever&#34;</span>);
+</span></span><span style="display:flex;"><span>        Cat cat <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Cat(<span style="color:#e6db74">&#34;Whiskers&#34;</span>, 2, <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Sử dụng phương thức từ lớp cha</span>
+</span></span><span style="display:flex;"><span>        dog.<span style="color:#a6e22e">eat</span>();
+</span></span><span style="display:flex;"><span>        cat.<span style="color:#a6e22e">sleep</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Sử dụng phương thức đã override</span>
+</span></span><span style="display:flex;"><span>        dog.<span style="color:#a6e22e">makeSound</span>();
+</span></span><span style="display:flex;"><span>        cat.<span style="color:#a6e22e">makeSound</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Sử dụng phương thức riêng của lớp con</span>
+</span></span><span style="display:flex;"><span>        dog.<span style="color:#a6e22e">wagTail</span>();
+</span></span><span style="display:flex;"><span>        cat.<span style="color:#a6e22e">purr</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Hiển thị thông tin</span>
+</span></span><span style="display:flex;"><span>        dog.<span style="color:#a6e22e">displayInfo</span>();
+</span></span><span style="display:flex;"><span>        cat.<span style="color:#a6e22e">displayInfo</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="abstract-class-lớp-trừu-tượng">Abstract Class (Lớp trừu tượng)</h2>
+<p>Abstract class không thể khởi tạo trực tiếp, chỉ có thể được kế thừa.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Abstract class - Shape</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Shape</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> String color;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">boolean</span> filled;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Shape</span>(String color, <span style="color:#66d9ef">boolean</span> filled) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> color;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">filled</span> <span style="color:#f92672">=</span> filled;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Abstract method - phải được implement bởi lớp con</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getArea</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getPerimeter</span>();
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Concrete method - có thể sử dụng trực tiếp</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getColor</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> color;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isFilled</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> filled;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Shape[color=&#34;</span> <span style="color:#f92672">+</span> color <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, filled=&#34;</span> <span style="color:#f92672">+</span> filled <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;]&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lớp con - Circle</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Circle</span> <span style="color:#66d9ef">extends</span> Shape {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> radius;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Circle</span>(String color, <span style="color:#66d9ef">boolean</span> filled, <span style="color:#66d9ef">double</span> radius) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(color, filled);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">radius</span> <span style="color:#f92672">=</span> radius;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getArea</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> radius <span style="color:#f92672">*</span> radius;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getPerimeter</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> 2 <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> radius;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getRadius</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> radius;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lớp con - Rectangle</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rectangle</span> <span style="color:#66d9ef">extends</span> Shape {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> width;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> height;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Rectangle</span>(String color, <span style="color:#66d9ef">boolean</span> filled, <span style="color:#66d9ef">double</span> width, <span style="color:#66d9ef">double</span> height) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(color, filled);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> width;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> height;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getArea</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> width <span style="color:#f92672">*</span> height;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getPerimeter</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> 2 <span style="color:#f92672">*</span> (width <span style="color:#f92672">+</span> height);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getWidth</span>() { <span style="color:#66d9ef">return</span> width; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getHeight</span>() { <span style="color:#66d9ef">return</span> height; }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="interface-giao-diện">Interface (Giao diện)</h2>
+<p>Interface định nghĩa các phương thức mà lớp implement phải có.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Interface - Flyable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Flyable</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fly</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">land</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getMaxAltitude</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Interface - Swimmable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Swimmable</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swim</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dive</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getMaxDepth</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lớp Bird implement Flyable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bird</span> <span style="color:#66d9ef">extends</span> Animal <span style="color:#66d9ef">implements</span> Flyable {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> maxAltitude;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Bird</span>(String name, <span style="color:#66d9ef">int</span> age, <span style="color:#66d9ef">double</span> maxAltitude) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(name, age, <span style="color:#e6db74">&#34;Chim&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">maxAltitude</span> <span style="color:#f92672">=</span> maxAltitude;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">makeSound</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; hót: Chip chip!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fly</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang bay trên trời&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">land</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đã hạ cánh&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getMaxAltitude</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> maxAltitude;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lớp Duck implement cả Flyable và Swimmable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Duck</span> <span style="color:#66d9ef">extends</span> Animal <span style="color:#66d9ef">implements</span> Flyable, Swimmable {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> maxAltitude;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> maxDepth;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Duck</span>(String name, <span style="color:#66d9ef">int</span> age, <span style="color:#66d9ef">double</span> maxAltitude, <span style="color:#66d9ef">int</span> maxDepth) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(name, age, <span style="color:#e6db74">&#34;Vịt&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">maxAltitude</span> <span style="color:#f92672">=</span> maxAltitude;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">maxDepth</span> <span style="color:#f92672">=</span> maxDepth;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">makeSound</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; kêu: Quạc quạc!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fly</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang bay thấp&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">land</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đã hạ cánh xuống nước&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getMaxAltitude</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> maxAltitude;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swim</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang bơi&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dive</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang lặn&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getMaxDepth</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> maxDepth;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="đa-hình-polymorphism">Đa hình (Polymorphism)</h2>
+<p>Đa hình cho phép một đối tượng có thể có nhiều hình thái khác nhau.</p>
+<h3 id="ví-dụ-đa-hình">Ví dụ đa hình:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PolymorphismDemo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Mảng chứa các đối tượng khác nhau</span>
+</span></span><span style="display:flex;"><span>        Animal<span style="color:#f92672">[]</span> animals <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> Dog(<span style="color:#e6db74">&#34;Buddy&#34;</span>, 3, <span style="color:#e6db74">&#34;Golden Retriever&#34;</span>),
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> Cat(<span style="color:#e6db74">&#34;Whiskers&#34;</span>, 2, <span style="color:#66d9ef">true</span>),
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> Bird(<span style="color:#e6db74">&#34;Tweety&#34;</span>, 1, 100.<span style="color:#a6e22e">0</span>),
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> Duck(<span style="color:#e6db74">&#34;Donald&#34;</span>, 4, 50.<span style="color:#a6e22e">0</span>, 5)
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Đa hình - cùng một phương thức nhưng hành vi khác nhau</span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;=== Các con vật phát âm thanh ===&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Animal animal : animals) {
+</span></span><span style="display:flex;"><span>            animal.<span style="color:#a6e22e">makeSound</span>(); <span style="color:#75715e">// Mỗi con vật có âm thanh riêng</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Đa hình với interface</span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;\n=== Các con vật có thể bay ===&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Animal animal : animals) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (animal <span style="color:#66d9ef">instanceof</span> Flyable) {
+</span></span><span style="display:flex;"><span>                Flyable flyable <span style="color:#f92672">=</span> (Flyable) animal;
+</span></span><span style="display:flex;"><span>                flyable.<span style="color:#a6e22e">fly</span>();
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Độ cao tối đa: &#34;</span> <span style="color:#f92672">+</span> flyable.<span style="color:#a6e22e">getMaxAltitude</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;m&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Đa hình với interface</span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;\n=== Các con vật có thể bơi ===&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Animal animal : animals) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (animal <span style="color:#66d9ef">instanceof</span> Swimmable) {
+</span></span><span style="display:flex;"><span>                Swimmable swimmable <span style="color:#f92672">=</span> (Swimmable) animal;
+</span></span><span style="display:flex;"><span>                swimmable.<span style="color:#a6e22e">swim</span>();
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Độ sâu tối đa: &#34;</span> <span style="color:#f92672">+</span> swimmable.<span style="color:#a6e22e">getMaxDepth</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;m&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="ví-dụ-thực-tế-hệ-thống-nhân-viên">Ví dụ thực tế: Hệ thống nhân viên</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Abstract class Employee</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> String name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> id;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">double</span> baseSalary;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Employee</span>(String name, <span style="color:#66d9ef">int</span> id, <span style="color:#66d9ef">double</span> baseSalary) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> id;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">baseSalary</span> <span style="color:#f92672">=</span> baseSalary;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Abstract method</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calculateSalary</span>();
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">displayInfo</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Tên: &#34;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, ID: &#34;</span> <span style="color:#f92672">+</span> id);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lương cơ bản: &#34;</span> <span style="color:#f92672">+</span> baseSalary);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lương thực tế: &#34;</span> <span style="color:#f92672">+</span> calculateSalary());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lớp con - Manager</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Manager</span> <span style="color:#66d9ef">extends</span> Employee {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> bonus;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Manager</span>(String name, <span style="color:#66d9ef">int</span> id, <span style="color:#66d9ef">double</span> baseSalary, <span style="color:#66d9ef">double</span> bonus) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(name, id, baseSalary);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">bonus</span> <span style="color:#f92672">=</span> bonus;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calculateSalary</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> baseSalary <span style="color:#f92672">+</span> bonus;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">conductMeeting</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang tổ chức cuộc họp&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lớp con - Developer</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Developer</span> <span style="color:#66d9ef">extends</span> Employee {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> overtimeHours;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> overtimeRate;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Developer</span>(String name, <span style="color:#66d9ef">int</span> id, <span style="color:#66d9ef">double</span> baseSalary, <span style="color:#66d9ef">int</span> overtimeHours, <span style="color:#66d9ef">double</span> overtimeRate) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(name, id, baseSalary);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">overtimeHours</span> <span style="color:#f92672">=</span> overtimeHours;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">overtimeRate</span> <span style="color:#f92672">=</span> overtimeRate;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calculateSalary</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> baseSalary <span style="color:#f92672">+</span> (overtimeHours <span style="color:#f92672">*</span> overtimeRate);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">code</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đang viết code&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Demo hệ thống nhân viên</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeDemo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        Employee<span style="color:#f92672">[]</span> employees <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> Manager(<span style="color:#e6db74">&#34;Nguyễn Văn A&#34;</span>, 1, 15000000, 3000000),
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> Developer(<span style="color:#e6db74">&#34;Trần Thị B&#34;</span>, 2, 12000000, 20, 100000),
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> Developer(<span style="color:#e6db74">&#34;Lê Văn C&#34;</span>, 3, 10000000, 15, 80000)
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;=== Thông tin nhân viên ===&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Employee emp : employees) {
+</span></span><span style="display:flex;"><span>            emp.<span style="color:#a6e22e">displayInfo</span>();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;---&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tính tổng lương</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">double</span> totalSalary <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Employee emp : employees) {
+</span></span><span style="display:flex;"><span>            totalSalary <span style="color:#f92672">+=</span> emp.<span style="color:#a6e22e">calculateSalary</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Tổng lương công ty: &#34;</span> <span style="color:#f92672">+</span> totalSalary <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; VND&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="lợi-ích-của-kế-thừa-và-đa-hình">Lợi ích của Kế thừa và Đa hình</h2>
+<h3 id="kế-thừa">Kế thừa:</h3>
+<ul>
+<li><strong>Tái sử dụng code</strong>: Tránh lặp lại code</li>
+<li><strong>Tổ chức code</strong>: Tạo cấu trúc phân cấp rõ ràng</li>
+<li><strong>Dễ bảo trì</strong>: Thay đổi ở lớp cha ảnh hưởng tất cả lớp con</li>
+</ul>
+<h3 id="đa-hình">Đa hình:</h3>
+<ul>
+<li><strong>Linh hoạt</strong>: Cùng một interface, nhiều implementation</li>
+<li><strong>Mở rộng dễ dàng</strong>: Thêm lớp mới mà không ảnh hưởng code cũ</li>
+<li><strong>Code sạch</strong>: Giảm if-else phức tạp</li>
+</ul>
+<h2 id="kết-luận">Kết luận</h2>
+<p>Kế thừa và đa hình là những công cụ mạnh mẽ trong lập trình hướng đối tượng Java. Chúng giúp tạo ra code có cấu trúc tốt, dễ mở rộng và bảo trì. Việc hiểu và áp dụng đúng các nguyên lý này sẽ giúp bạn trở thành lập trình viên Java chuyên nghiệp.</p>
 <ul class="pa0">
   
    <li class="list di">
-     <a href="/tags/inheritance/" class="tag-badge">Inheritance</a>
+     <a href="/blogphuoc.github.io/tags/inheritance/" class="tag-badge">Inheritance</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/polymorphism/" class="tag-badge">Polymorphism</a>
+     <a href="/blogphuoc.github.io/tags/polymorphism/" class="tag-badge">Polymorphism</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/java/" class="tag-badge">Java</a>
+     <a href="/blogphuoc.github.io/tags/java/" class="tag-badge">Java</a>
    </li>
   
 </ul>
@@ -164,11 +731,11 @@
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/posts/java-2/">Java: Lập trình hướng đối tượng - Lớp và đối tượng</a>
+          <a href="/blogphuoc.github.io/posts/java-2/">Java: Lập trình hướng đối tượng - Lớp và đối tượng</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/posts/java-1/">Java: Kiến thức cơ bản và môi trường phát triển</a>
+          <a href="/blogphuoc.github.io/posts/java-1/">Java: Kiến thức cơ bản và môi trường phát triển</a>
         </li>
 	    
     </ul>
@@ -181,8 +748,8 @@
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://blogphuoc.github.io/" >
-    &copy;  phước Blog 2025 
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://phuoc0209.github.io/blogphuoc.github.io//" >
+    &copy;  Blog Tiến Phước 2025 
   </a>
     <div><div class="ananke-socials"></div>
 </div>

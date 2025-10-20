@@ -1,22 +1,172 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="vi">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>JavaScript: Hàm, closure và scope | phước Blog</title>
+    <title>JavaScript: Hàm, closure và scope | Blog Tiến Phước</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Giải thích hàm, biến cục bộ và toàn cục, hoisting, và closure với ví dụ thực tế.">
+    <meta name="description" content="Giới thiệu về Hàm trong JavaScript
+Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.
+Các cách khai báo hàm
+1. Function Declaration (Khai báo hàm)
+// Function declaration
+function greet(name) {
+    return `Xin chào, ${name}!`;
+}
+
+// Sử dụng
+console.log(greet(&#34;Nguyễn Văn A&#34;)); // Xin chào, Nguyễn Văn A!
+2. Function Expression (Biểu thức hàm)
+// Function expression
+const greet = function(name) {
+    return `Xin chào, ${name}!`;
+};
+
+// Sử dụng
+console.log(greet(&#34;Trần Thị B&#34;)); // Xin chào, Trần Thị B!
+3. Arrow Function (Hàm mũi tên)
+// Arrow function
+const greet = (name) =&gt; {
+    return `Xin chào, ${name}!`;
+};
+
+// Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return)
+const greet = name =&gt; `Xin chào, ${name}!`;
+
+// Sử dụng
+console.log(greet(&#34;Lê Văn C&#34;)); // Xin chào, Lê Văn C!
+Ví dụ 1: Các loại hàm cơ bản
+// 1. Hàm không tham số
+function sayHello() {
+    console.log(&#34;Xin chào thế giới!&#34;);
+}
+
+// 2. Hàm có tham số
+function add(a, b) {
+    return a &#43; b;
+}
+
+// 3. Hàm có tham số mặc định
+function greet(name = &#34;Khách&#34;) {
+    return `Xin chào, ${name}!`;
+}
+
+// 4. Hàm với rest parameters
+function sum(...numbers) {
+    return numbers.reduce((total, num) =&gt; total &#43; num, 0);
+}
+
+// 5. Hàm trả về một hàm
+function createMultiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+// Sử dụng các hàm
+sayHello(); // Xin chào thế giới!
+console.log(add(5, 3)); // 8
+console.log(greet()); // Xin chào, Khách!
+console.log(greet(&#34;Alice&#34;)); // Xin chào, Alice!
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+const double = createMultiplier(2);
+console.log(double(5)); // 10
+Scope (Phạm vi) trong JavaScript
+1. Global Scope (Phạm vi toàn cục)
+// Biến toàn cục
+var globalVar = &#34;Tôi là biến toàn cục&#34;;
+let globalLet = &#34;Tôi cũng là biến toàn cục&#34;;
+const globalConst = &#34;Tôi cũng là biến toàn cục&#34;;
+
+function checkGlobalScope() {
+    console.log(globalVar); // Có thể truy cập
+    console.log(globalLet); // Có thể truy cập
+    console.log(globalConst); // Có thể truy cập
+}
+
+checkGlobalScope();
+2. Local Scope (Phạm vi cục bộ)
+function demonstrateLocalScope() {
+    // Biến cục bộ
+    var localVar = &#34;Tôi là biến cục bộ&#34;;
+    let localLet = &#34;Tôi cũng là biến cục bộ&#34;;
+    const localConst = &#34;Tôi cũng là biến cục bộ&#34;;
+    
+    console.log(localVar); // Có thể truy cập
+    console.log(localLet); // Có thể truy cập
+    console.log(localConst); // Có thể truy cập
+    
+    // Nested function
+    function innerFunction() {
+        console.log(localVar); // Có thể truy cập từ hàm con
+        console.log(localLet); // Có thể truy cập từ hàm con
+        console.log(localConst); // Có thể truy cập từ hàm con
+    }
+    
+    innerFunction();
+}
+
+demonstrateLocalScope();
+
+// console.log(localVar); // Lỗi: localVar is not defined
+// console.log(localLet); // Lỗi: localLet is not defined
+// console.log(localConst); // Lỗi: localConst is not defined
+3. Block Scope (Phạm vi khối)
+function demonstrateBlockScope() {
+    if (true) {
+        var varVariable = &#34;Tôi là var&#34;;
+        let letVariable = &#34;Tôi là let&#34;;
+        const constVariable = &#34;Tôi là const&#34;;
+        
+        console.log(varVariable); // Có thể truy cập
+        console.log(letVariable); // Có thể truy cập
+        console.log(constVariable); // Có thể truy cập
+    }
+    
+    console.log(varVariable); // Có thể truy cập (var không có block scope)
+    // console.log(letVariable); // Lỗi: letVariable is not defined
+    // console.log(constVariable); // Lỗi: constVariable is not defined
+}
+
+demonstrateBlockScope();
+Hoisting trong JavaScript
+1. Function Hoisting
+// Có thể gọi hàm trước khi khai báo (function declaration)
+console.log(hoistedFunction()); // &#34;Tôi được hoisted!&#34;
+
+function hoistedFunction() {
+    return &#34;Tôi được hoisted!&#34;;
+}
+
+// Không thể gọi trước khi khai báo (function expression)
+// console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization
+
+const notHoistedFunction = function() {
+    return &#34;Tôi không được hoisted!&#34;;
+};
+2. Variable Hoisting
+console.log(hoistedVar); // undefined (không lỗi)
+console.log(hoistedLet); // Lỗi: Cannot access before initialization
+console.log(hoistedConst); // Lỗi: Cannot access before initialization
+
+var hoistedVar = &#34;Tôi được hoisted nhưng giá trị là undefined&#34;;
+let hoistedLet = &#34;Tôi không được hoisted&#34;;
+const hoistedConst = &#34;Tôi không được hoisted&#34;;
+Closure (Đóng gói) trong JavaScript
+Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.">
     <meta name="generator" content="Hugo 0.151.2">
     
     
     
       <meta name="robots" content="index, follow">
     
+    <meta name="author" content="Nguyễn Tiến Phước">
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
+<link rel="stylesheet" href="/blogphuoc.github.io//ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
@@ -32,14 +182,15 @@
     
 
     
-      <link rel="canonical" href="https://blogphuoc.github.io/posts/js-2/">
+      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io//posts/js-2/">
     
 
-    <meta property="og:url" content="https://blogphuoc.github.io/posts/js-2/">
-  <meta property="og:site_name" content="phước Blog">
+    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io//posts/js-2/">
+  <meta property="og:site_name" content="Blog Tiến Phước">
   <meta property="og:title" content="JavaScript: Hàm, closure và scope">
-  <meta property="og:description" content="Giải thích hàm, biến cục bộ và toàn cục, hoisting, và closure với ví dụ thực tế.">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:description" content="Giới thiệu về Hàm trong JavaScript Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.
+Các cách khai báo hàm 1. Function Declaration (Khai báo hàm) // Function declaration function greet(name) { return `Xin chào, ${name}!`; } // Sử dụng console.log(greet(&#34;Nguyễn Văn A&#34;)); // Xin chào, Nguyễn Văn A! 2. Function Expression (Biểu thức hàm) // Function expression const greet = function(name) { return `Xin chào, ${name}!`; }; // Sử dụng console.log(greet(&#34;Trần Thị B&#34;)); // Xin chào, Trần Thị B! 3. Arrow Function (Hàm mũi tên) // Arrow function const greet = (name) =&gt; { return `Xin chào, ${name}!`; }; // Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return) const greet = name =&gt; `Xin chào, ${name}!`; // Sử dụng console.log(greet(&#34;Lê Văn C&#34;)); // Xin chào, Lê Văn C! Ví dụ 1: Các loại hàm cơ bản // 1. Hàm không tham số function sayHello() { console.log(&#34;Xin chào thế giới!&#34;); } // 2. Hàm có tham số function add(a, b) { return a &#43; b; } // 3. Hàm có tham số mặc định function greet(name = &#34;Khách&#34;) { return `Xin chào, ${name}!`; } // 4. Hàm với rest parameters function sum(...numbers) { return numbers.reduce((total, num) =&gt; total &#43; num, 0); } // 5. Hàm trả về một hàm function createMultiplier(factor) { return function(number) { return number * factor; }; } // Sử dụng các hàm sayHello(); // Xin chào thế giới! console.log(add(5, 3)); // 8 console.log(greet()); // Xin chào, Khách! console.log(greet(&#34;Alice&#34;)); // Xin chào, Alice! console.log(sum(1, 2, 3, 4, 5)); // 15 const double = createMultiplier(2); console.log(double(5)); // 10 Scope (Phạm vi) trong JavaScript 1. Global Scope (Phạm vi toàn cục) // Biến toàn cục var globalVar = &#34;Tôi là biến toàn cục&#34;; let globalLet = &#34;Tôi cũng là biến toàn cục&#34;; const globalConst = &#34;Tôi cũng là biến toàn cục&#34;; function checkGlobalScope() { console.log(globalVar); // Có thể truy cập console.log(globalLet); // Có thể truy cập console.log(globalConst); // Có thể truy cập } checkGlobalScope(); 2. Local Scope (Phạm vi cục bộ) function demonstrateLocalScope() { // Biến cục bộ var localVar = &#34;Tôi là biến cục bộ&#34;; let localLet = &#34;Tôi cũng là biến cục bộ&#34;; const localConst = &#34;Tôi cũng là biến cục bộ&#34;; console.log(localVar); // Có thể truy cập console.log(localLet); // Có thể truy cập console.log(localConst); // Có thể truy cập // Nested function function innerFunction() { console.log(localVar); // Có thể truy cập từ hàm con console.log(localLet); // Có thể truy cập từ hàm con console.log(localConst); // Có thể truy cập từ hàm con } innerFunction(); } demonstrateLocalScope(); // console.log(localVar); // Lỗi: localVar is not defined // console.log(localLet); // Lỗi: localLet is not defined // console.log(localConst); // Lỗi: localConst is not defined 3. Block Scope (Phạm vi khối) function demonstrateBlockScope() { if (true) { var varVariable = &#34;Tôi là var&#34;; let letVariable = &#34;Tôi là let&#34;; const constVariable = &#34;Tôi là const&#34;; console.log(varVariable); // Có thể truy cập console.log(letVariable); // Có thể truy cập console.log(constVariable); // Có thể truy cập } console.log(varVariable); // Có thể truy cập (var không có block scope) // console.log(letVariable); // Lỗi: letVariable is not defined // console.log(constVariable); // Lỗi: constVariable is not defined } demonstrateBlockScope(); Hoisting trong JavaScript 1. Function Hoisting // Có thể gọi hàm trước khi khai báo (function declaration) console.log(hoistedFunction()); // &#34;Tôi được hoisted!&#34; function hoistedFunction() { return &#34;Tôi được hoisted!&#34;; } // Không thể gọi trước khi khai báo (function expression) // console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization const notHoistedFunction = function() { return &#34;Tôi không được hoisted!&#34;; }; 2. Variable Hoisting console.log(hoistedVar); // undefined (không lỗi) console.log(hoistedLet); // Lỗi: Cannot access before initialization console.log(hoistedConst); // Lỗi: Cannot access before initialization var hoistedVar = &#34;Tôi được hoisted nhưng giá trị là undefined&#34;; let hoistedLet = &#34;Tôi không được hoisted&#34;; const hoistedConst = &#34;Tôi không được hoisted&#34;; Closure (Đóng gói) trong JavaScript Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.">
+  <meta property="og:locale" content="vi">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-10-17T10:10:00+07:00">
@@ -50,18 +201,23 @@
     <meta property="article:tag" content="Javascript">
 
   <meta itemprop="name" content="JavaScript: Hàm, closure và scope">
-  <meta itemprop="description" content="Giải thích hàm, biến cục bộ và toàn cục, hoisting, và closure với ví dụ thực tế.">
+  <meta itemprop="description" content="Giới thiệu về Hàm trong JavaScript Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.
+Các cách khai báo hàm 1. Function Declaration (Khai báo hàm) // Function declaration function greet(name) { return `Xin chào, ${name}!`; } // Sử dụng console.log(greet(&#34;Nguyễn Văn A&#34;)); // Xin chào, Nguyễn Văn A! 2. Function Expression (Biểu thức hàm) // Function expression const greet = function(name) { return `Xin chào, ${name}!`; }; // Sử dụng console.log(greet(&#34;Trần Thị B&#34;)); // Xin chào, Trần Thị B! 3. Arrow Function (Hàm mũi tên) // Arrow function const greet = (name) =&gt; { return `Xin chào, ${name}!`; }; // Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return) const greet = name =&gt; `Xin chào, ${name}!`; // Sử dụng console.log(greet(&#34;Lê Văn C&#34;)); // Xin chào, Lê Văn C! Ví dụ 1: Các loại hàm cơ bản // 1. Hàm không tham số function sayHello() { console.log(&#34;Xin chào thế giới!&#34;); } // 2. Hàm có tham số function add(a, b) { return a &#43; b; } // 3. Hàm có tham số mặc định function greet(name = &#34;Khách&#34;) { return `Xin chào, ${name}!`; } // 4. Hàm với rest parameters function sum(...numbers) { return numbers.reduce((total, num) =&gt; total &#43; num, 0); } // 5. Hàm trả về một hàm function createMultiplier(factor) { return function(number) { return number * factor; }; } // Sử dụng các hàm sayHello(); // Xin chào thế giới! console.log(add(5, 3)); // 8 console.log(greet()); // Xin chào, Khách! console.log(greet(&#34;Alice&#34;)); // Xin chào, Alice! console.log(sum(1, 2, 3, 4, 5)); // 15 const double = createMultiplier(2); console.log(double(5)); // 10 Scope (Phạm vi) trong JavaScript 1. Global Scope (Phạm vi toàn cục) // Biến toàn cục var globalVar = &#34;Tôi là biến toàn cục&#34;; let globalLet = &#34;Tôi cũng là biến toàn cục&#34;; const globalConst = &#34;Tôi cũng là biến toàn cục&#34;; function checkGlobalScope() { console.log(globalVar); // Có thể truy cập console.log(globalLet); // Có thể truy cập console.log(globalConst); // Có thể truy cập } checkGlobalScope(); 2. Local Scope (Phạm vi cục bộ) function demonstrateLocalScope() { // Biến cục bộ var localVar = &#34;Tôi là biến cục bộ&#34;; let localLet = &#34;Tôi cũng là biến cục bộ&#34;; const localConst = &#34;Tôi cũng là biến cục bộ&#34;; console.log(localVar); // Có thể truy cập console.log(localLet); // Có thể truy cập console.log(localConst); // Có thể truy cập // Nested function function innerFunction() { console.log(localVar); // Có thể truy cập từ hàm con console.log(localLet); // Có thể truy cập từ hàm con console.log(localConst); // Có thể truy cập từ hàm con } innerFunction(); } demonstrateLocalScope(); // console.log(localVar); // Lỗi: localVar is not defined // console.log(localLet); // Lỗi: localLet is not defined // console.log(localConst); // Lỗi: localConst is not defined 3. Block Scope (Phạm vi khối) function demonstrateBlockScope() { if (true) { var varVariable = &#34;Tôi là var&#34;; let letVariable = &#34;Tôi là let&#34;; const constVariable = &#34;Tôi là const&#34;; console.log(varVariable); // Có thể truy cập console.log(letVariable); // Có thể truy cập console.log(constVariable); // Có thể truy cập } console.log(varVariable); // Có thể truy cập (var không có block scope) // console.log(letVariable); // Lỗi: letVariable is not defined // console.log(constVariable); // Lỗi: constVariable is not defined } demonstrateBlockScope(); Hoisting trong JavaScript 1. Function Hoisting // Có thể gọi hàm trước khi khai báo (function declaration) console.log(hoistedFunction()); // &#34;Tôi được hoisted!&#34; function hoistedFunction() { return &#34;Tôi được hoisted!&#34;; } // Không thể gọi trước khi khai báo (function expression) // console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization const notHoistedFunction = function() { return &#34;Tôi không được hoisted!&#34;; }; 2. Variable Hoisting console.log(hoistedVar); // undefined (không lỗi) console.log(hoistedLet); // Lỗi: Cannot access before initialization console.log(hoistedConst); // Lỗi: Cannot access before initialization var hoistedVar = &#34;Tôi được hoisted nhưng giá trị là undefined&#34;; let hoistedLet = &#34;Tôi không được hoisted&#34;; const hoistedConst = &#34;Tôi không được hoisted&#34;; Closure (Đóng gói) trong JavaScript Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.">
   <meta itemprop="datePublished" content="2025-10-17T10:10:00+07:00">
   <meta itemprop="dateModified" content="2025-10-17T10:10:00+07:00">
-  <meta itemprop="wordCount" content="17">
+  <meta itemprop="wordCount" content="1738">
   <meta itemprop="keywords" content="Function,Closure,Scope,Javascript">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="JavaScript: Hàm, closure và scope">
-  <meta name="twitter:description" content="Giải thích hàm, biến cục bộ và toàn cục, hoisting, và closure với ví dụ thực tế.">
+  <meta name="twitter:description" content="Giới thiệu về Hàm trong JavaScript Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.
+Các cách khai báo hàm 1. Function Declaration (Khai báo hàm) // Function declaration function greet(name) { return `Xin chào, ${name}!`; } // Sử dụng console.log(greet(&#34;Nguyễn Văn A&#34;)); // Xin chào, Nguyễn Văn A! 2. Function Expression (Biểu thức hàm) // Function expression const greet = function(name) { return `Xin chào, ${name}!`; }; // Sử dụng console.log(greet(&#34;Trần Thị B&#34;)); // Xin chào, Trần Thị B! 3. Arrow Function (Hàm mũi tên) // Arrow function const greet = (name) =&gt; { return `Xin chào, ${name}!`; }; // Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return) const greet = name =&gt; `Xin chào, ${name}!`; // Sử dụng console.log(greet(&#34;Lê Văn C&#34;)); // Xin chào, Lê Văn C! Ví dụ 1: Các loại hàm cơ bản // 1. Hàm không tham số function sayHello() { console.log(&#34;Xin chào thế giới!&#34;); } // 2. Hàm có tham số function add(a, b) { return a &#43; b; } // 3. Hàm có tham số mặc định function greet(name = &#34;Khách&#34;) { return `Xin chào, ${name}!`; } // 4. Hàm với rest parameters function sum(...numbers) { return numbers.reduce((total, num) =&gt; total &#43; num, 0); } // 5. Hàm trả về một hàm function createMultiplier(factor) { return function(number) { return number * factor; }; } // Sử dụng các hàm sayHello(); // Xin chào thế giới! console.log(add(5, 3)); // 8 console.log(greet()); // Xin chào, Khách! console.log(greet(&#34;Alice&#34;)); // Xin chào, Alice! console.log(sum(1, 2, 3, 4, 5)); // 15 const double = createMultiplier(2); console.log(double(5)); // 10 Scope (Phạm vi) trong JavaScript 1. Global Scope (Phạm vi toàn cục) // Biến toàn cục var globalVar = &#34;Tôi là biến toàn cục&#34;; let globalLet = &#34;Tôi cũng là biến toàn cục&#34;; const globalConst = &#34;Tôi cũng là biến toàn cục&#34;; function checkGlobalScope() { console.log(globalVar); // Có thể truy cập console.log(globalLet); // Có thể truy cập console.log(globalConst); // Có thể truy cập } checkGlobalScope(); 2. Local Scope (Phạm vi cục bộ) function demonstrateLocalScope() { // Biến cục bộ var localVar = &#34;Tôi là biến cục bộ&#34;; let localLet = &#34;Tôi cũng là biến cục bộ&#34;; const localConst = &#34;Tôi cũng là biến cục bộ&#34;; console.log(localVar); // Có thể truy cập console.log(localLet); // Có thể truy cập console.log(localConst); // Có thể truy cập // Nested function function innerFunction() { console.log(localVar); // Có thể truy cập từ hàm con console.log(localLet); // Có thể truy cập từ hàm con console.log(localConst); // Có thể truy cập từ hàm con } innerFunction(); } demonstrateLocalScope(); // console.log(localVar); // Lỗi: localVar is not defined // console.log(localLet); // Lỗi: localLet is not defined // console.log(localConst); // Lỗi: localConst is not defined 3. Block Scope (Phạm vi khối) function demonstrateBlockScope() { if (true) { var varVariable = &#34;Tôi là var&#34;; let letVariable = &#34;Tôi là let&#34;; const constVariable = &#34;Tôi là const&#34;; console.log(varVariable); // Có thể truy cập console.log(letVariable); // Có thể truy cập console.log(constVariable); // Có thể truy cập } console.log(varVariable); // Có thể truy cập (var không có block scope) // console.log(letVariable); // Lỗi: letVariable is not defined // console.log(constVariable); // Lỗi: constVariable is not defined } demonstrateBlockScope(); Hoisting trong JavaScript 1. Function Hoisting // Có thể gọi hàm trước khi khai báo (function declaration) console.log(hoistedFunction()); // &#34;Tôi được hoisted!&#34; function hoistedFunction() { return &#34;Tôi được hoisted!&#34;; } // Không thể gọi trước khi khai báo (function expression) // console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization const notHoistedFunction = function() { return &#34;Tôi không được hoisted!&#34;; }; 2. Variable Hoisting console.log(hoistedVar); // undefined (không lỗi) console.log(hoistedLet); // Lỗi: Cannot access before initialization console.log(hoistedConst); // Lỗi: Cannot access before initialization var hoistedVar = &#34;Tôi được hoisted nhưng giá trị là undefined&#34;; let hoistedLet = &#34;Tôi không được hoisted&#34;; const hoistedConst = &#34;Tôi không được hoisted&#34;; Closure (Đóng gói) trong JavaScript Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.">
+      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
 
       
     
 	<link rel="stylesheet" href="/css/blogger-about.css" />
+<script src="/js/search.js" defer></script>
+<script src="/js/animations.js" defer></script>
 
 
   </head><body class="ma0 avenir bg-near-white production">
@@ -74,9 +230,9 @@
     <div class="bg-black">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
-    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+    <a href="/blogphuoc.github.io/" class="f3 fw2 hover-white white-90 dib no-underline">
       
-        phước Blog
+        Blog Tiến Phước
       
     </a>
     <div class="flex-l items-center">
@@ -86,14 +242,20 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="Home page">
-              Home
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/" title="Trang chủ page">
+              Trang chủ
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/posts/" title="Blog page">
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/posts/" title="Blog page">
               Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/about/" title="Giới thiệu page">
+              Giới thiệu
             </a>
           </li>
           
@@ -102,7 +264,7 @@
       <div class="ananke-socials"></div>
 
       
-        <a class="ml3 f6 white-80 no-underline" href="https://blogphuoc.github.io/" target="_blank" rel="noopener">GitHub</a>
+        <a class="ml3 f6 white-80 no-underline" href="https://phuoc0209.github.io/blogphuoc.github.io/" target="_blank" rel="noopener">GitHub</a>
       
     </div>
   </div>
@@ -125,6 +287,9 @@
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
 <h1 class="f1 athelas mt3 mb1">JavaScript: Hàm, closure và scope</h1>
       
+      <p class="tracked"><strong>Nguyễn Tiến Phước</strong>
+      </p>
+      
       
       
       <time class="f6 mv4 dib tracked" datetime="2025-10-17T10:10:00+07:00">October 17, 2025</time>
@@ -133,23 +298,522 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Giải thích hàm, biến cục bộ và toàn cục, hoisting, và closure với ví dụ thực tế.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="giới-thiệu-về-hàm-trong-javascript">Giới thiệu về Hàm trong JavaScript</h2>
+<p>Hàm (Function) là một trong những khái niệm quan trọng nhất trong JavaScript. Hàm cho phép bạn đóng gói code thành các khối có thể tái sử dụng và thực thi khi cần thiết.</p>
+<h2 id="các-cách-khai-báo-hàm">Các cách khai báo hàm</h2>
+<h3 id="1-function-declaration-khai-báo-hàm">1. Function Declaration (Khai báo hàm)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Function declaration
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Xin chào, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;Nguyễn Văn A&#34;</span>)); <span style="color:#75715e">// Xin chào, Nguyễn Văn A!
+</span></span></span></code></pre></div><h3 id="2-function-expression-biểu-thức-hàm">2. Function Expression (Biểu thức hàm)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Function expression
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">greet</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Xin chào, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;Trần Thị B&#34;</span>)); <span style="color:#75715e">// Xin chào, Trần Thị B!
+</span></span></span></code></pre></div><h3 id="3-arrow-function-hàm-mũi-tên">3. Arrow Function (Hàm mũi tên)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Arrow function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">greet</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">name</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Xin chào, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Arrow function ngắn gọn (khi chỉ có 1 câu lệnh return)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">greet</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span> =&gt; <span style="color:#e6db74">`Xin chào, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;Lê Văn C&#34;</span>)); <span style="color:#75715e">// Xin chào, Lê Văn C!
+</span></span></span></code></pre></div><h2 id="ví-dụ-1-các-loại-hàm-cơ-bản">Ví dụ 1: Các loại hàm cơ bản</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// 1. Hàm không tham số
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sayHello</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Xin chào thế giới!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. Hàm có tham số
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 3. Hàm có tham số mặc định
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>(<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Khách&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Xin chào, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 4. Hàm với rest parameters
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sum</span>(...<span style="color:#a6e22e">numbers</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">total</span>, <span style="color:#a6e22e">num</span>) =&gt; <span style="color:#a6e22e">total</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">num</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 5. Hàm trả về một hàm
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createMultiplier</span>(<span style="color:#a6e22e">factor</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">number</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">number</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">factor</span>;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng các hàm
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">sayHello</span>(); <span style="color:#75715e">// Xin chào thế giới!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// 8
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>()); <span style="color:#75715e">// Xin chào, Khách!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;Alice&#34;</span>)); <span style="color:#75715e">// Xin chào, Alice!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// 15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">double</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createMultiplier</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">double</span>(<span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// 10
+</span></span></span></code></pre></div><h2 id="scope-phạm-vi-trong-javascript">Scope (Phạm vi) trong JavaScript</h2>
+<h3 id="1-global-scope-phạm-vi-toàn-cục">1. Global Scope (Phạm vi toàn cục)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Biến toàn cục
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">globalVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi là biến toàn cục&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">globalLet</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi cũng là biến toàn cục&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">globalConst</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi cũng là biến toàn cục&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkGlobalScope</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">globalVar</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">globalLet</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">globalConst</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">checkGlobalScope</span>();
+</span></span></code></pre></div><h3 id="2-local-scope-phạm-vi-cục-bộ">2. Local Scope (Phạm vi cục bộ)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">demonstrateLocalScope</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Biến cục bộ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">localVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi là biến cục bộ&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">localLet</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi cũng là biến cục bộ&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">localConst</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi cũng là biến cục bộ&#34;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">localVar</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">localLet</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">localConst</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Nested function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">innerFunction</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">localVar</span>); <span style="color:#75715e">// Có thể truy cập từ hàm con
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">localLet</span>); <span style="color:#75715e">// Có thể truy cập từ hàm con
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">localConst</span>); <span style="color:#75715e">// Có thể truy cập từ hàm con
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">innerFunction</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">demonstrateLocalScope</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(localVar); // Lỗi: localVar is not defined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(localLet); // Lỗi: localLet is not defined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(localConst); // Lỗi: localConst is not defined
+</span></span></span></code></pre></div><h3 id="3-block-scope-phạm-vi-khối">3. Block Scope (Phạm vi khối)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">demonstrateBlockScope</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">varVariable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi là var&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">letVariable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi là let&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">constVariable</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi là const&#34;</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">varVariable</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">letVariable</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">constVariable</span>); <span style="color:#75715e">// Có thể truy cập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">varVariable</span>); <span style="color:#75715e">// Có thể truy cập (var không có block scope)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(letVariable); // Lỗi: letVariable is not defined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// console.log(constVariable); // Lỗi: constVariable is not defined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">demonstrateBlockScope</span>();
+</span></span></code></pre></div><h2 id="hoisting-trong-javascript">Hoisting trong JavaScript</h2>
+<h3 id="1-function-hoisting">1. Function Hoisting</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Có thể gọi hàm trước khi khai báo (function declaration)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hoistedFunction</span>()); <span style="color:#75715e">// &#34;Tôi được hoisted!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">hoistedFunction</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Tôi được hoisted!&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Không thể gọi trước khi khai báo (function expression)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// console.log(notHoistedFunction()); // Lỗi: Cannot access before initialization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">notHoistedFunction</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Tôi không được hoisted!&#34;</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="2-variable-hoisting">2. Variable Hoisting</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hoistedVar</span>); <span style="color:#75715e">// undefined (không lỗi)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hoistedLet</span>); <span style="color:#75715e">// Lỗi: Cannot access before initialization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">hoistedConst</span>); <span style="color:#75715e">// Lỗi: Cannot access before initialization
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">hoistedVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi được hoisted nhưng giá trị là undefined&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hoistedLet</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi không được hoisted&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hoistedConst</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tôi không được hoisted&#34;</span>;
+</span></span></code></pre></div><h2 id="closure-đóng-gói-trong-javascript">Closure (Đóng gói) trong JavaScript</h2>
+<p>Closure là khả năng của một hàm bên trong truy cập các biến của hàm bên ngoài, ngay cả sau khi hàm bên ngoài đã thực thi xong.</p>
+<h3 id="ví-dụ-1-closure-cơ-bản">Ví dụ 1: Closure cơ bản</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">outerFunction</span>(<span style="color:#a6e22e">x</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Biến của hàm ngoài
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">outerVariable</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Hàm bên trong (closure)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">innerFunction</span>(<span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">outerVariable</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>); <span style="color:#75715e">// Truy cập biến của hàm ngoài
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">innerFunction</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">closure</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">outerFunction</span>(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">closure</span>(<span style="color:#ae81ff">5</span>); <span style="color:#75715e">// 15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">closure</span>(<span style="color:#ae81ff">3</span>); <span style="color:#75715e">// 13
+</span></span></span></code></pre></div><h3 id="ví-dụ-2-counter-với-closure">Ví dụ 2: Counter với Closure</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createCounter</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">increment</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">count</span>;
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">decrement</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">count</span><span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">count</span>;
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getCount</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">count</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">counter1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createCounter</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">counter2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createCounter</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter1</span>.<span style="color:#a6e22e">increment</span>()); <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter1</span>.<span style="color:#a6e22e">increment</span>()); <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter1</span>.<span style="color:#a6e22e">getCount</span>()); <span style="color:#75715e">// 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter2</span>.<span style="color:#a6e22e">increment</span>()); <span style="color:#75715e">// 1 (riêng biệt với counter1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">counter2</span>.<span style="color:#a6e22e">getCount</span>()); <span style="color:#75715e">// 1
+</span></span></span></code></pre></div><h3 id="ví-dụ-3-module-pattern-với-closure">Ví dụ 3: Module Pattern với Closure</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Calculator</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Biến private
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Hàm private
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">validateNumber</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;number&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isNaN(<span style="color:#a6e22e">num</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Trả về object public
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">add</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">validateNumber</span>(<span style="color:#a6e22e">num</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">result</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">num</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">subtract</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">validateNumber</span>(<span style="color:#a6e22e">num</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">result</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">num</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">multiply</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">validateNumber</span>(<span style="color:#a6e22e">num</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">result</span> <span style="color:#f92672">*=</span> <span style="color:#a6e22e">num</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">divide</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">validateNumber</span>(<span style="color:#a6e22e">num</span>) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">!==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">result</span> <span style="color:#f92672">/=</span> <span style="color:#a6e22e">num</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getResult</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">reset</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>})();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng Calculator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Calculator</span>.<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">10</span>).<span style="color:#a6e22e">multiply</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">subtract</span>(<span style="color:#ae81ff">5</span>).<span style="color:#a6e22e">getResult</span>()); <span style="color:#75715e">// 15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Calculator</span>.<span style="color:#a6e22e">reset</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">Calculator</span>.<span style="color:#a6e22e">getResult</span>()); <span style="color:#75715e">// 0
+</span></span></span></code></pre></div><h2 id="ví-dụ-thực-tế-tạo-hệ-thống-quản-lý-sự-kiện">Ví dụ thực tế: Tạo hệ thống quản lý sự kiện</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">EventManager</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Biến private để lưu trữ các event listeners
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">events</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Đăng ký event listener
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">on</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">eventName</span>, <span style="color:#a6e22e">callback</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">events</span>[<span style="color:#a6e22e">eventName</span>]) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">events</span>[<span style="color:#a6e22e">eventName</span>] <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">events</span>[<span style="color:#a6e22e">eventName</span>].<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">callback</span>);
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Hủy đăng ký event listener
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">off</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">eventName</span>, <span style="color:#a6e22e">callback</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">events</span>[<span style="color:#a6e22e">eventName</span>]) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">events</span>[<span style="color:#a6e22e">eventName</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">events</span>[<span style="color:#a6e22e">eventName</span>].<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">cb</span> =&gt; <span style="color:#a6e22e">cb</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">callback</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Kích hoạt event
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">emit</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">eventName</span>, <span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">events</span>[<span style="color:#a6e22e">eventName</span>]) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">events</span>[<span style="color:#a6e22e">eventName</span>].<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">callback</span> =&gt; {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">callback</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Lấy danh sách events
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">getEvents</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">events</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>})();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng EventManager
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">logUserAction</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`User action: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">action</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> at </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">timestamp</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateUI</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`UI updated: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">message</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Đăng ký event listeners
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">EventManager</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;userClick&#39;</span>, <span style="color:#a6e22e">logUserAction</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">EventManager</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;userClick&#39;</span>, <span style="color:#a6e22e">updateUI</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">EventManager</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;dataLoad&#39;</span>, <span style="color:#a6e22e">updateUI</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kích hoạt events
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">EventManager</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;userClick&#39;</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">action</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;button clicked&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toISOString</span>()
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">EventManager</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;dataLoad&#39;</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Data loaded successfully&#39;</span>
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Available events:&#39;</span>, <span style="color:#a6e22e">EventManager</span>.<span style="color:#a6e22e">getEvents</span>());
+</span></span></code></pre></div><h2 id="ví-dụ-thực-tế-tạo-cache-với-closure">Ví dụ thực tế: Tạo Cache với Closure</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createCache</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cache</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hitCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">missCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">get</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">key</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">has</span>(<span style="color:#a6e22e">key</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">hitCount</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Cache hit for key: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">missCount</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Cache miss for key: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">set</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Cached key: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">has</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">key</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">has</span>(<span style="color:#a6e22e">key</span>);
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">key</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cache</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">key</span>);
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">clear</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">clear</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">hitCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">missCount</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Cache cleared&#39;</span>);
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getStats</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hitCount</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">missCount</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hitRate</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> (<span style="color:#a6e22e">hitCount</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>) <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">hits</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">hitCount</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">misses</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">missCount</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">total</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">total</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">hitRate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">hitRate</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%`</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">size</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">size</span>
+</span></span><span style="display:flex;"><span>            };
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng Cache
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cache</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createCache</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Giả lập việc tính toán tốn kém
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">expensiveCalculation</span>(<span style="color:#a6e22e">n</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Computing for </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">n</span><span style="color:#e6db74">}</span><span style="color:#e6db74">...`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Giả lập delay
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">n</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getCachedResult</span>(<span style="color:#a6e22e">n</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`calc_</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">n</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">key</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">expensiveCalculation</span>(<span style="color:#a6e22e">n</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">result</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Test cache
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">getCachedResult</span>(<span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// Computing... 125
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">getCachedResult</span>(<span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// Cache hit... 125
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">getCachedResult</span>(<span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// Computing... 27
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">getCachedResult</span>(<span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// Cache hit... 27
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">getCachedResult</span>(<span style="color:#ae81ff">5</span>)); <span style="color:#75715e">// Cache hit... 125
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Cache stats:&#39;</span>, <span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">getStats</span>());
+</span></span></code></pre></div><h2 id="ví-dụ-thực-tế-tạo-debounce-và-throttle">Ví dụ thực tế: Tạo Debounce và Throttle</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Debounce: Chỉ thực thi sau khi dừng gọi trong một khoảng thời gian
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createDebounce</span>(<span style="color:#a6e22e">func</span>, <span style="color:#a6e22e">delay</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">timeoutId</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>(...<span style="color:#a6e22e">args</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">clearTimeout</span>(<span style="color:#a6e22e">timeoutId</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">timeoutId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">func</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">args</span>), <span style="color:#a6e22e">delay</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Throttle: Thực thi tối đa một lần trong một khoảng thời gian
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createThrottle</span>(<span style="color:#a6e22e">func</span>, <span style="color:#a6e22e">delay</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">lastCall</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span>(...<span style="color:#a6e22e">args</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">now</span> <span style="color:#f92672">=</span> Date.<span style="color:#a6e22e">now</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">now</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">lastCall</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">delay</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">lastCall</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">now</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">func</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">args</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Ví dụ sử dụng Debounce cho search
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">search</span>(<span style="color:#a6e22e">query</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Searching for: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">query</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Giả lập API call
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debouncedSearch</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createDebounce</span>(<span style="color:#a6e22e">search</span>, <span style="color:#ae81ff">300</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Test debounce
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">debouncedSearch</span>(<span style="color:#e6db74">&#39;a&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">debouncedSearch</span>(<span style="color:#e6db74">&#39;ab&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">debouncedSearch</span>(<span style="color:#e6db74">&#39;abc&#39;</span>); <span style="color:#75715e">// Chỉ cái này được thực thi sau 300ms
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Ví dụ sử dụng Throttle cho scroll
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">handleScroll</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Scroll event handled&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">throttledScroll</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createThrottle</span>(<span style="color:#a6e22e">handleScroll</span>, <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Test throttle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">throttledScroll</span>(); <span style="color:#75715e">// Thực thi ngay
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">throttledScroll</span>(); <span style="color:#75715e">// Bị bỏ qua
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">throttledScroll</span>(); <span style="color:#75715e">// Bị bỏ qua
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">throttledScroll</span>(), <span style="color:#ae81ff">150</span>); <span style="color:#75715e">// Thực thi sau 150ms
+</span></span></span></code></pre></div><h2 id="best-practices-cho-hàm-và-closure">Best Practices cho Hàm và Closure</h2>
+<h3 id="1-sử-dụng-const-cho-function-expression">1. Sử dụng const cho function expression</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tốt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() { <span style="color:#75715e">/* ... */</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tránh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() { <span style="color:#75715e">/* ... */</span> };
+</span></span></code></pre></div><h3 id="2-sử-dụng-arrow-function-cho-callback-ngắn">2. Sử dụng arrow function cho callback ngắn</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tốt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">doubled</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">n</span> =&gt; <span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tránh khi cần this binding
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Test&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Không dùng arrow function ở đây vì mất this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">getName</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="3-sử-dụng-closure-để-tạo-private-variables">3. Sử dụng closure để tạo private variables</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tốt - sử dụng closure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Counter</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// Private variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">increment</span><span style="color:#f92672">:</span> () =&gt; <span style="color:#f92672">++</span><span style="color:#a6e22e">count</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getCount</span><span style="color:#f92672">:</span> () =&gt; <span style="color:#a6e22e">count</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>})();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tránh - biến public
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">BadCounter</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// Public variable - có thể bị thay đổi từ bên ngoài
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">increment</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() { <span style="color:#66d9ef">return</span> <span style="color:#f92672">++</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">count</span>; }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h3 id="4-tránh-memory-leak-với-closure">4. Tránh memory leak với closure</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tốt - cleanup event listeners
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createComponent</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">element</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handler</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;clicked&#39;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#a6e22e">handler</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">element</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">destroy</span><span style="color:#f92672">:</span> () =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">removeEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#a6e22e">handler</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">element</span>.<span style="color:#a6e22e">remove</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="kết-luận">Kết luận</h2>
+<p>Hàm, scope và closure là những khái niệm cốt lõi trong JavaScript. Hiểu rõ các khái niệm này sẽ giúp bạn:</p>
+<ul>
+<li>Viết code JavaScript hiệu quả và có tổ chức</li>
+<li>Tạo ra các module và pattern mạnh mẽ</li>
+<li>Tránh các lỗi phổ biến về scope và hoisting</li>
+<li>Sử dụng closure để tạo private variables và methods</li>
+</ul>
+<p>Hãy thực hành nhiều với các ví dụ trên để nắm vững kiến thức!</p>
 <ul class="pa0">
   
    <li class="list di">
-     <a href="/tags/function/" class="tag-badge">Function</a>
+     <a href="/blogphuoc.github.io/tags/function/" class="tag-badge">Function</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/closure/" class="tag-badge">Closure</a>
+     <a href="/blogphuoc.github.io/tags/closure/" class="tag-badge">Closure</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/scope/" class="tag-badge">Scope</a>
+     <a href="/blogphuoc.github.io/tags/scope/" class="tag-badge">Scope</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/javascript/" class="tag-badge">Javascript</a>
+     <a href="/blogphuoc.github.io/tags/javascript/" class="tag-badge">Javascript</a>
    </li>
   
 </ul>
@@ -169,7 +833,7 @@
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/posts/js-1/">JavaScript: Tổng quan và cách thêm script vào trang web</a>
+          <a href="/blogphuoc.github.io/posts/js-1/">JavaScript: Tổng quan và cách thêm script vào trang web</a>
         </li>
 	    
     </ul>
@@ -182,8 +846,8 @@
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://blogphuoc.github.io/" >
-    &copy;  phước Blog 2025 
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://phuoc0209.github.io/blogphuoc.github.io//" >
+    &copy;  Blog Tiến Phước 2025 
   </a>
     <div><div class="ananke-socials"></div>
 </div>

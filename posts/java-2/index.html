@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="vi">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Java: Lập trình hướng đối tượng - Lớp và đối tượng | phước Blog</title>
+    <title>Java: Lập trình hướng đối tượng - Lớp và đối tượng | Blog Tiến Phước</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Trình bày các khái niệm lớp, đối tượng, thuộc tính và phương thức trong Java. Ví dụ định nghĩa lớp Person và cách khởi tạo đối tượng.">
+    <meta name="description" content="Giới thiệu về OOP trong Java
+Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm &ldquo;đối tượng&rdquo;, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.
+Các khái niệm cơ bản
+1. Lớp (Class)
+Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.">
     <meta name="generator" content="Hugo 0.151.2">
     
     
     
       <meta name="robots" content="index, follow">
     
+    <meta name="author" content="Nguyễn Tiến Phước">
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
+<link rel="stylesheet" href="/blogphuoc.github.io//ananke/css/main.min.35b2896b31743d661fd733de1ee2155d455ab40db1eab0652f3e9f3140728b69.css" >
 
 
 
@@ -32,14 +37,15 @@
     
 
     
-      <link rel="canonical" href="https://blogphuoc.github.io/posts/java-2/">
+      <link rel="canonical" href="https://phuoc0209.github.io/blogphuoc.github.io//posts/java-2/">
     
 
-    <meta property="og:url" content="https://blogphuoc.github.io/posts/java-2/">
-  <meta property="og:site_name" content="phước Blog">
+    <meta property="og:url" content="https://phuoc0209.github.io/blogphuoc.github.io//posts/java-2/">
+  <meta property="og:site_name" content="Blog Tiến Phước">
   <meta property="og:title" content="Java: Lập trình hướng đối tượng - Lớp và đối tượng">
-  <meta property="og:description" content="Trình bày các khái niệm lớp, đối tượng, thuộc tính và phương thức trong Java. Ví dụ định nghĩa lớp Person và cách khởi tạo đối tượng.">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:description" content="Giới thiệu về OOP trong Java Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm “đối tượng”, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.
+Các khái niệm cơ bản 1. Lớp (Class) Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.">
+  <meta property="og:locale" content="vi">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-10-17T09:10:00+07:00">
@@ -50,18 +56,23 @@
     <meta property="article:tag" content="Java">
 
   <meta itemprop="name" content="Java: Lập trình hướng đối tượng - Lớp và đối tượng">
-  <meta itemprop="description" content="Trình bày các khái niệm lớp, đối tượng, thuộc tính và phương thức trong Java. Ví dụ định nghĩa lớp Person và cách khởi tạo đối tượng.">
+  <meta itemprop="description" content="Giới thiệu về OOP trong Java Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm “đối tượng”, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.
+Các khái niệm cơ bản 1. Lớp (Class) Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.">
   <meta itemprop="datePublished" content="2025-10-17T09:10:00+07:00">
   <meta itemprop="dateModified" content="2025-10-17T09:10:00+07:00">
-  <meta itemprop="wordCount" content="27">
+  <meta itemprop="wordCount" content="1089">
   <meta itemprop="keywords" content="Oop,Class,Object,Java">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Java: Lập trình hướng đối tượng - Lớp và đối tượng">
-  <meta name="twitter:description" content="Trình bày các khái niệm lớp, đối tượng, thuộc tính và phương thức trong Java. Ví dụ định nghĩa lớp Person và cách khởi tạo đối tượng.">
+  <meta name="twitter:description" content="Giới thiệu về OOP trong Java Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm “đối tượng”, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.
+Các khái niệm cơ bản 1. Lớp (Class) Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.">
+      <meta name="twitter:site" content="@https://twitter.com/phuoc_dev">
 
       
     
 	<link rel="stylesheet" href="/css/blogger-about.css" />
+<script src="/js/search.js" defer></script>
+<script src="/js/animations.js" defer></script>
 
 
   </head><body class="ma0 avenir bg-near-white production">
@@ -74,9 +85,9 @@
     <div class="bg-black">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
-    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+    <a href="/blogphuoc.github.io/" class="f3 fw2 hover-white white-90 dib no-underline">
       
-        phước Blog
+        Blog Tiến Phước
       
     </a>
     <div class="flex-l items-center">
@@ -86,14 +97,20 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/" title="Home page">
-              Home
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/" title="Trang chủ page">
+              Trang chủ
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/posts/" title="Blog page">
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/posts/" title="Blog page">
               Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/blogphuoc.github.io/about/" title="Giới thiệu page">
+              Giới thiệu
             </a>
           </li>
           
@@ -102,7 +119,7 @@
       <div class="ananke-socials"></div>
 
       
-        <a class="ml3 f6 white-80 no-underline" href="https://blogphuoc.github.io/" target="_blank" rel="noopener">GitHub</a>
+        <a class="ml3 f6 white-80 no-underline" href="https://phuoc0209.github.io/blogphuoc.github.io/" target="_blank" rel="noopener">GitHub</a>
       
     </div>
   </div>
@@ -125,6 +142,9 @@
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
 <h1 class="f1 athelas mt3 mb1">Java: Lập trình hướng đối tượng - Lớp và đối tượng</h1>
       
+      <p class="tracked"><strong>Nguyễn Tiến Phước</strong>
+      </p>
+      
       
       
       <time class="f6 mv4 dib tracked" datetime="2025-10-17T09:10:00+07:00">October 17, 2025</time>
@@ -133,23 +153,278 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Trình bày các khái niệm lớp, đối tượng, thuộc tính và phương thức trong Java. Ví dụ định nghĩa lớp Person và cách khởi tạo đối tượng.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="giới-thiệu-về-oop-trong-java">Giới thiệu về OOP trong Java</h2>
+<p>Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm &ldquo;đối tượng&rdquo;, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.</p>
+<h2 id="các-khái-niệm-cơ-bản">Các khái niệm cơ bản</h2>
+<h3 id="1-lớp-class">1. Lớp (Class)</h3>
+<p>Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.</p>
+<h3 id="2-đối-tượng-object">2. Đối tượng (Object)</h3>
+<p>Đối tượng là một thể hiện cụ thể của lớp, có các thuộc tính và phương thức riêng.</p>
+<h2 id="ví-dụ-1-lớp-person-cơ-bản">Ví dụ 1: Lớp Person cơ bản</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Thuộc tính (Attributes/Fields)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> age;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String email;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Constructor - Phương thức khởi tạo</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Person</span>(String name, <span style="color:#66d9ef">int</span> age, String email) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> email;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức getter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAge</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> age;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getEmail</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> email;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức setter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span>(String name) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAge</span>(<span style="color:#66d9ef">int</span> age) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (age <span style="color:#f92672">&gt;=</span> 0) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setEmail</span>(String email) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> email;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức hành động</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">introduce</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Xin chào, tôi là &#34;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#34;</span> <span style="color:#f92672">+</span> age <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; tuổi.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">celebrateBirthday</span>() {
+</span></span><span style="display:flex;"><span>        age<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Chúc mừng sinh nhật! Bây giờ tôi &#34;</span> <span style="color:#f92672">+</span> age <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; tuổi.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="sử-dụng-lớp-person">Sử dụng lớp Person:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PersonDemo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tạo đối tượng Person</span>
+</span></span><span style="display:flex;"><span>        Person person1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Person(<span style="color:#e6db74">&#34;Nguyễn Văn A&#34;</span>, 25, <span style="color:#e6db74">&#34;nguyenvana@email.com&#34;</span>);
+</span></span><span style="display:flex;"><span>        Person person2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Person(<span style="color:#e6db74">&#34;Trần Thị B&#34;</span>, 30, <span style="color:#e6db74">&#34;tranthib@email.com&#34;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Sử dụng phương thức</span>
+</span></span><span style="display:flex;"><span>        person1.<span style="color:#a6e22e">introduce</span>();
+</span></span><span style="display:flex;"><span>        person2.<span style="color:#a6e22e">introduce</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thay đổi thuộc tính</span>
+</span></span><span style="display:flex;"><span>        person1.<span style="color:#a6e22e">setAge</span>(26);
+</span></span><span style="display:flex;"><span>        person1.<span style="color:#a6e22e">celebrateBirthday</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Truy cập thuộc tính</span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Email của &#34;</span> <span style="color:#f92672">+</span> person1.<span style="color:#a6e22e">getName</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> person1.<span style="color:#a6e22e">getEmail</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="ví-dụ-2-lớp-bankaccount">Ví dụ 2: Lớp BankAccount</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BankAccount</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String accountNumber;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String accountHolder;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> balance;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> totalAccounts <span style="color:#f92672">=</span> 0; <span style="color:#75715e">// Biến static</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Constructor</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BankAccount</span>(String accountHolder, <span style="color:#66d9ef">double</span> initialBalance) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">accountNumber</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ACC&#34;</span> <span style="color:#f92672">+</span> (<span style="color:#f92672">++</span>totalAccounts);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">accountHolder</span> <span style="color:#f92672">=</span> accountHolder;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">balance</span> <span style="color:#f92672">=</span> initialBalance;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức nạp tiền</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deposit</span>(<span style="color:#66d9ef">double</span> amount) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (amount <span style="color:#f92672">&gt;</span> 0) {
+</span></span><span style="display:flex;"><span>            balance <span style="color:#f92672">+=</span> amount;
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Nạp thành công &#34;</span> <span style="color:#f92672">+</span> amount <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; VND. Số dư: &#34;</span> <span style="color:#f92672">+</span> balance);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Số tiền nạp phải lớn hơn 0&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức rút tiền</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">withdraw</span>(<span style="color:#66d9ef">double</span> amount) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (amount <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> amount <span style="color:#f92672">&lt;=</span> balance) {
+</span></span><span style="display:flex;"><span>            balance <span style="color:#f92672">-=</span> amount;
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Rút thành công &#34;</span> <span style="color:#f92672">+</span> amount <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; VND. Số dư còn lại: &#34;</span> <span style="color:#f92672">+</span> balance);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Không thể rút tiền. Số dư không đủ hoặc số tiền không hợp lệ&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức kiểm tra số dư</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">checkBalance</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Số dư tài khoản &#34;</span> <span style="color:#f92672">+</span> accountNumber <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> balance <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; VND&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức chuyển tiền</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">transfer</span>(BankAccount targetAccount, <span style="color:#66d9ef">double</span> amount) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (withdraw(amount)) {
+</span></span><span style="display:flex;"><span>            targetAccount.<span style="color:#a6e22e">deposit</span>(amount);
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Chuyển tiền thành công đến &#34;</span> <span style="color:#f92672">+</span> targetAccount.<span style="color:#a6e22e">accountHolder</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Getter methods</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getAccountNumber</span>() { <span style="color:#66d9ef">return</span> accountNumber; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getAccountHolder</span>() { <span style="color:#66d9ef">return</span> accountHolder; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getBalance</span>() { <span style="color:#66d9ef">return</span> balance; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getTotalAccounts</span>() { <span style="color:#66d9ef">return</span> totalAccounts; }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="demo-bankaccount">Demo BankAccount:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BankDemo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tạo tài khoản</span>
+</span></span><span style="display:flex;"><span>        BankAccount account1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BankAccount(<span style="color:#e6db74">&#34;Nguyễn Văn A&#34;</span>, 1000000);
+</span></span><span style="display:flex;"><span>        BankAccount account2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BankAccount(<span style="color:#e6db74">&#34;Trần Thị B&#34;</span>, 500000);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thao tác với tài khoản</span>
+</span></span><span style="display:flex;"><span>        account1.<span style="color:#a6e22e">checkBalance</span>();
+</span></span><span style="display:flex;"><span>        account1.<span style="color:#a6e22e">deposit</span>(500000);
+</span></span><span style="display:flex;"><span>        account1.<span style="color:#a6e22e">withdraw</span>(200000);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Chuyển tiền</span>
+</span></span><span style="display:flex;"><span>        account1.<span style="color:#a6e22e">transfer</span>(account2, 300000);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Kiểm tra số dư sau chuyển</span>
+</span></span><span style="display:flex;"><span>        account1.<span style="color:#a6e22e">checkBalance</span>();
+</span></span><span style="display:flex;"><span>        account2.<span style="color:#a6e22e">checkBalance</span>();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Tổng số tài khoản: &#34;</span> <span style="color:#f92672">+</span> BankAccount.<span style="color:#a6e22e">getTotalAccounts</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="ví-dụ-3-lớp-car-với-nhiều-thuộc-tính">Ví dụ 3: Lớp Car với nhiều thuộc tính</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Car</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String brand;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String model;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> year;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> price;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> isRunning;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> speed;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Constructor</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Car</span>(String brand, String model, <span style="color:#66d9ef">int</span> year, <span style="color:#66d9ef">double</span> price) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">brand</span> <span style="color:#f92672">=</span> brand;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">model</span> <span style="color:#f92672">=</span> model;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">year</span> <span style="color:#f92672">=</span> year;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> price;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">isRunning</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">speed</span> <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức khởi động xe</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>isRunning) {
+</span></span><span style="display:flex;"><span>            isRunning <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(brand <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> model <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đã được khởi động&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Xe đã đang chạy rồi&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức tắt xe</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">stop</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isRunning) {
+</span></span><span style="display:flex;"><span>            isRunning <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            speed <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(brand <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> model <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; đã được tắt&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Xe đã tắt rồi&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức tăng tốc</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">accelerate</span>(<span style="color:#66d9ef">int</span> increment) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isRunning) {
+</span></span><span style="display:flex;"><span>            speed <span style="color:#f92672">+=</span> increment;
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Tăng tốc! Tốc độ hiện tại: &#34;</span> <span style="color:#f92672">+</span> speed <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; km/h&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Cần khởi động xe trước khi tăng tốc&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức giảm tốc</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">brake</span>(<span style="color:#66d9ef">int</span> decrement) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isRunning <span style="color:#f92672">&amp;&amp;</span> speed <span style="color:#f92672">&gt;</span> 0) {
+</span></span><span style="display:flex;"><span>            speed <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">max</span>(0, speed <span style="color:#f92672">-</span> decrement);
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Giảm tốc! Tốc độ hiện tại: &#34;</span> <span style="color:#f92672">+</span> speed <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; km/h&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Phương thức hiển thị thông tin</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">displayInfo</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;=== Thông tin xe ===&#34;</span>);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hãng: &#34;</span> <span style="color:#f92672">+</span> brand);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Model: &#34;</span> <span style="color:#f92672">+</span> model);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Năm: &#34;</span> <span style="color:#f92672">+</span> year);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Giá: &#34;</span> <span style="color:#f92672">+</span> price <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; VND&#34;</span>);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Trạng thái: &#34;</span> <span style="color:#f92672">+</span> (isRunning <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Đang chạy&#34;</span> : <span style="color:#e6db74">&#34;Đã tắt&#34;</span>));
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Tốc độ: &#34;</span> <span style="color:#f92672">+</span> speed <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; km/h&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Getter methods</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getBrand</span>() { <span style="color:#66d9ef">return</span> brand; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getModel</span>() { <span style="color:#66d9ef">return</span> model; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getYear</span>() { <span style="color:#66d9ef">return</span> year; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getPrice</span>() { <span style="color:#66d9ef">return</span> price; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isRunning</span>() { <span style="color:#66d9ef">return</span> isRunning; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getSpeed</span>() { <span style="color:#66d9ef">return</span> speed; }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="demo-car">Demo Car:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CarDemo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        Car myCar <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Car(<span style="color:#e6db74">&#34;Toyota&#34;</span>, <span style="color:#e6db74">&#34;Camry&#34;</span>, 2023, 1200000000);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        myCar.<span style="color:#a6e22e">displayInfo</span>();
+</span></span><span style="display:flex;"><span>        myCar.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        myCar.<span style="color:#a6e22e">accelerate</span>(50);
+</span></span><span style="display:flex;"><span>        myCar.<span style="color:#a6e22e">accelerate</span>(30);
+</span></span><span style="display:flex;"><span>        myCar.<span style="color:#a6e22e">brake</span>(20);
+</span></span><span style="display:flex;"><span>        myCar.<span style="color:#a6e22e">displayInfo</span>();
+</span></span><span style="display:flex;"><span>        myCar.<span style="color:#a6e22e">stop</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="encapsulation-đóng-gói">Encapsulation (Đóng gói)</h2>
+<p>Encapsulation là nguyên lý che giấu dữ liệu bên trong lớp và chỉ cho phép truy cập thông qua các phương thức công khai.</p>
+<h3 id="lợi-ích">Lợi ích:</h3>
+<ul>
+<li><strong>Bảo mật dữ liệu</strong>: Ngăn chặn truy cập trực tiếp không mong muốn</li>
+<li><strong>Kiểm soát dữ liệu</strong>: Có thể validate dữ liệu trước khi gán</li>
+<li><strong>Dễ bảo trì</strong>: Thay đổi implementation mà không ảnh hưởng code bên ngoài</li>
+</ul>
+<h2 id="kết-luận">Kết luận</h2>
+<p>Lập trình hướng đối tượng trong Java giúp code trở nên có tổ chức, dễ hiểu và dễ bảo trì. Việc nắm vững các khái niệm cơ bản như lớp, đối tượng, thuộc tính và phương thức là nền tảng quan trọng để phát triển các ứng dụng Java phức tạp hơn.</p>
 <ul class="pa0">
   
    <li class="list di">
-     <a href="/tags/oop/" class="tag-badge">Oop</a>
+     <a href="/blogphuoc.github.io/tags/oop/" class="tag-badge">Oop</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/class/" class="tag-badge">Class</a>
+     <a href="/blogphuoc.github.io/tags/class/" class="tag-badge">Class</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/object/" class="tag-badge">Object</a>
+     <a href="/blogphuoc.github.io/tags/object/" class="tag-badge">Object</a>
    </li>
   
    <li class="list di">
-     <a href="/tags/java/" class="tag-badge">Java</a>
+     <a href="/blogphuoc.github.io/tags/java/" class="tag-badge">Java</a>
    </li>
   
 </ul>
@@ -169,7 +444,7 @@
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/posts/java-1/">Java: Kiến thức cơ bản và môi trường phát triển</a>
+          <a href="/blogphuoc.github.io/posts/java-1/">Java: Kiến thức cơ bản và môi trường phát triển</a>
         </li>
 	    
     </ul>
@@ -182,8 +457,8 @@
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://blogphuoc.github.io/" >
-    &copy;  phước Blog 2025 
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://phuoc0209.github.io/blogphuoc.github.io//" >
+    &copy;  Blog Tiến Phước 2025 
   </a>
     <div><div class="ananke-socials"></div>
 </div>
