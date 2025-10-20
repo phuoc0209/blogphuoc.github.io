@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on phước Blog</title>
+    <title>Categories on Blog Tiến Phước</title>
     <link>https://blogphuoc.github.io/categories/</link>
-    <description>Recent content in Categories on phước Blog</description>
+    <description>Recent content in Categories on Blog Tiến Phước</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 17 Oct 2025 20:16:49 +0700</lastBuildDate>
+    <language>vi</language>
+    <lastBuildDate>Fri, 17 Oct 2025 10:30:00 +0700</lastBuildDate>
     <atom:link href="https://blogphuoc.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Blog</title>
-      <link>https://blogphuoc.github.io/categories/blog/</link>
-      <pubDate>Fri, 17 Oct 2025 20:16:49 +0700</pubDate>
-      <guid>https://blogphuoc.github.io/categories/blog/</guid>
-      <description></description>
-    </item>
     <item>
       <title>JavaScript</title>
       <link>https://blogphuoc.github.io/categories/javascript/</link>
