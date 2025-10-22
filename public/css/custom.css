@@ -186,3 +186,81 @@ body {
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
+/* Header tổng thể */
+.navbar-header {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero */
+.hero-header {
+  position: relative;
+  text-align: center;
+  padding: 5rem 1rem 6rem;
+  color: #1e293b;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-header.no-image {
+  background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 100%);
+}
+
+.hero-header .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Nội dung hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  color: #475569;
+  font-size: 1.1rem;
+}
+
+/* Navbar */
+nav {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  z-index: 3;
+}
+
+nav a {
+  margin-left: 1rem;
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+/* Khi có nền ảnh tối, đổi màu chữ */
+.hero-header[style*="background-image"] nav a {
+  color: white;
+}
+
+.hero-header[style*="background-image"] .hero-content h1,
+.hero-header[style*="background-image"] .hero-content p {
+  color: white;
+}
+
+.hero-header[style*="background-image"] .overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
