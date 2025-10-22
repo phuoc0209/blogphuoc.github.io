@@ -2,30 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Class on Blog Tiến Phước</title>
-<<<<<<< HEAD
-    <link>http://localhost:1313/tags/class/</link>
-=======
     <link>https://phuoc0209.github.io/blogphuoc.github.io/tags/class/</link>
->>>>>>> f2bc04f (Update home layout)
     <description>Recent content in Class on Blog Tiến Phước</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate>Fri, 17 Oct 2025 09:10:00 +0700</lastBuildDate>
-<<<<<<< HEAD
-    <atom:link href="http://localhost:1313/tags/class/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Java: Lập trình hướng đối tượng - Lớp và đối tượng</title>
-      <link>http://localhost:1313/posts/java-2/</link>
-      <pubDate>Fri, 17 Oct 2025 09:10:00 +0700</pubDate>
-      <guid>http://localhost:1313/posts/java-2/</guid>
-=======
     <atom:link href="https://phuoc0209.github.io/blogphuoc.github.io/tags/class/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java: Lập trình hướng đối tượng - Lớp và đối tượng</title>
       <link>https://phuoc0209.github.io/blogphuoc.github.io/posts/java-2/</link>
       <pubDate>Fri, 17 Oct 2025 09:10:00 +0700</pubDate>
       <guid>https://phuoc0209.github.io/blogphuoc.github.io/posts/java-2/</guid>
->>>>>>> f2bc04f (Update home layout)
       <description>&lt;h2 id=&#34;giới-thiệu-về-oop-trong-java&#34;&gt;Giới thiệu về OOP trong Java&lt;/h2&gt;&#xA;&lt;p&gt;Lập trình hướng đối tượng (OOP) là một mô hình lập trình dựa trên khái niệm &amp;ldquo;đối tượng&amp;rdquo;, chứa dữ liệu (thuộc tính) và mã (phương thức). Java là ngôn ngữ hoàn toàn hướng đối tượng.&lt;/p&gt;&#xA;&lt;h2 id=&#34;các-khái-niệm-cơ-bản&#34;&gt;Các khái niệm cơ bản&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-lớp-class&#34;&gt;1. Lớp (Class)&lt;/h3&gt;&#xA;&lt;p&gt;Lớp là khuôn mẫu để tạo ra các đối tượng. Nó định nghĩa các thuộc tính và phương thức mà đối tượng sẽ có.&lt;/p&gt;</description>
     </item>
   </channel>
