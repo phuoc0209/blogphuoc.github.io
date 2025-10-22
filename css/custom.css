@@ -264,3 +264,55 @@ nav a:hover {
 .hero-header[style*="background-image"] .overlay {
   background: rgba(0, 0, 0, 0.4);
 }
+/* === Trang Chủ - Phần Giới thiệu (Home Header) === */
+.home-header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(240, 240, 255, 0.6));
+  border-radius: 20px;
+  max-width: 850px;
+  margin: 2rem auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+/* Tiêu đề blog (chữ thảo) */
+.site-title {
+  font-family: "Dancing Script", "Segoe Script", cursive;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #e91e63; /* hồng nổi bật */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.site-title:hover {
+  transform: scale(1.05);
+  text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Mô tả blog (chữ thảo mềm hơn) */
+.site-desc {
+  font-family: "Dancing Script", "Segoe Script", cursive;
+  font-size: 1.5rem;
+  color: #512da8; /* tím nhạt hài hòa */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  margin-top: 0.3rem;
+  opacity: 0.9;
+}
+
+/* Avatar phía dưới */
+.home-avatar img {
+  max-width: 160px;
+  height: auto;
+  border-radius: 50%;
+  margin: 1rem auto 2rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  display: block;
+}
+.home-avatar img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
