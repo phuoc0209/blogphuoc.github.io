@@ -2,115 +2,115 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blogphuoc.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/dom/</loc>
+    <loc>http://localhost:1313/tags/dom/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/event/</loc>
+    <loc>http://localhost:1313/tags/event/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/javascript/</loc>
+    <loc>http://localhost:1313/tags/javascript/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/categories/javascript/</loc>
+    <loc>http://localhost:1313/categories/javascript/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/js-4/</loc>
+    <loc>http://localhost:1313/posts/js-4/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-10-17T10:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/async/</loc>
+    <loc>http://localhost:1313/tags/async/</loc>
     <lastmod>2025-10-17T10:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/await/</loc>
+    <loc>http://localhost:1313/tags/await/</loc>
     <lastmod>2025-10-17T10:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/js-3/</loc>
+    <loc>http://localhost:1313/posts/js-3/</loc>
     <lastmod>2025-10-17T10:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/promise/</loc>
+    <loc>http://localhost:1313/tags/promise/</loc>
     <lastmod>2025-10-17T10:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/closure/</loc>
+    <loc>http://localhost:1313/tags/closure/</loc>
     <lastmod>2025-10-17T10:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/function/</loc>
+    <loc>http://localhost:1313/tags/function/</loc>
     <lastmod>2025-10-17T10:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/js-2/</loc>
+    <loc>http://localhost:1313/posts/js-2/</loc>
     <lastmod>2025-10-17T10:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/scope/</loc>
+    <loc>http://localhost:1313/tags/scope/</loc>
     <lastmod>2025-10-17T10:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/js-1/</loc>
+    <loc>http://localhost:1313/posts/js-1/</loc>
     <lastmod>2025-10-17T10:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/file/</loc>
+    <loc>http://localhost:1313/tags/file/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/io/</loc>
+    <loc>http://localhost:1313/tags/io/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/categories/java/</loc>
+    <loc>http://localhost:1313/categories/java/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/java/</loc>
+    <loc>http://localhost:1313/tags/java/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-5/</loc>
+    <loc>http://localhost:1313/posts/java-5/</loc>
     <lastmod>2025-10-17T09:40:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/exception/</loc>
+    <loc>http://localhost:1313/tags/exception/</loc>
     <lastmod>2025-10-17T09:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-4/</loc>
+    <loc>http://localhost:1313/posts/java-4/</loc>
     <lastmod>2025-10-17T09:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/logging/</loc>
+    <loc>http://localhost:1313/tags/logging/</loc>
     <lastmod>2025-10-17T09:30:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/inheritance/</loc>
+    <loc>http://localhost:1313/tags/inheritance/</loc>
     <lastmod>2025-10-17T09:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-3/</loc>
+    <loc>http://localhost:1313/posts/java-3/</loc>
     <lastmod>2025-10-17T09:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/polymorphism/</loc>
+    <loc>http://localhost:1313/tags/polymorphism/</loc>
     <lastmod>2025-10-17T09:20:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/class/</loc>
+    <loc>http://localhost:1313/tags/class/</loc>
     <lastmod>2025-10-17T09:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-2/</loc>
+    <loc>http://localhost:1313/posts/java-2/</loc>
     <lastmod>2025-10-17T09:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/object/</loc>
+    <loc>http://localhost:1313/tags/object/</loc>
     <lastmod>2025-10-17T09:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/oop/</loc>
+    <loc>http://localhost:1313/tags/oop/</loc>
     <lastmod>2025-10-17T09:10:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/c%C6%A1-b%E1%BA%A3n/</loc>
+    <loc>http://localhost:1313/tags/c%C6%A1-b%E1%BA%A3n/</loc>
     <lastmod>2025-10-17T09:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/tags/intro/</loc>
+    <loc>http://localhost:1313/tags/intro/</loc>
     <lastmod>2025-10-17T09:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/posts/java-1/</loc>
+    <loc>http://localhost:1313/posts/java-1/</loc>
     <lastmod>2025-10-17T09:00:00+07:00</lastmod>
   </url><url>
-    <loc>https://blogphuoc.github.io/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-10-17T00:00:00+07:00</lastmod>
   </url>
 </urlset>
