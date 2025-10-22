@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cơ Bản on Blog Tiến Phước</title>
-    <link>http://localhost:1313/tags/c%C6%A1-b%E1%BA%A3n/</link>
+    <link>https://blogphuoc.github.io/tags/c%C6%A1-b%E1%BA%A3n/</link>
     <description>Recent content in Cơ Bản on Blog Tiến Phước</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate>Fri, 17 Oct 2025 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/c%C6%A1-b%E1%BA%A3n/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blogphuoc.github.io/tags/c%C6%A1-b%E1%BA%A3n/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java: Kiến thức cơ bản và môi trường phát triển</title>
-      <link>http://localhost:1313/posts/java-1/</link>
+      <link>https://blogphuoc.github.io/posts/java-1/</link>
       <pubDate>Fri, 17 Oct 2025 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/posts/java-1/</guid>
+      <guid>https://blogphuoc.github.io/posts/java-1/</guid>
       <description>&lt;h2 id=&#34;giới-thiệu-về-java&#34;&gt;Giới thiệu về Java&lt;/h2&gt;&#xA;&lt;p&gt;Java là một ngôn ngữ lập trình hướng đối tượng, được phát triển bởi Sun Microsystems (nay thuộc Oracle). Java có đặc điểm &amp;ldquo;Write Once, Run Anywhere&amp;rdquo; - viết một lần, chạy mọi nơi.&lt;/p&gt;&#xA;&lt;h2 id=&#34;môi-trường-phát-triển&#34;&gt;Môi trường phát triển&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-jdk-java-development-kit&#34;&gt;1. JDK (Java Development Kit)&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;JDK&lt;/strong&gt;: Bộ công cụ phát triển Java, bao gồm compiler (javac) và JRE&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;JRE&lt;/strong&gt;: Java Runtime Environment, môi trường chạy ứng dụng Java&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;JVM&lt;/strong&gt;: Java Virtual Machine, máy ảo thực thi bytecode&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-ide-phổ-biến&#34;&gt;2. IDE phổ biến&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;IntelliJ IDEA&lt;/strong&gt;: IDE mạnh mẽ nhất cho Java&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Eclipse&lt;/strong&gt;: IDE miễn phí và phổ biến&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Visual Studio Code&lt;/strong&gt;: Editor nhẹ với extension Java&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;cấu-trúc-chương-trình-java-cơ-bản&#34;&gt;Cấu trúc chương trình Java cơ bản&lt;/h2&gt;&#xA;&lt;h3 id=&#34;ví-dụ-1-hello-world&#34;&gt;Ví dụ 1: Hello World&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;HelloWorld&lt;/span&gt; {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello, World!&amp;#34;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Giải thích:&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
